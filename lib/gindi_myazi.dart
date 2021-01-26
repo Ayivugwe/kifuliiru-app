@@ -1,11 +1,13 @@
+//import 'package:crypto_font_icons/crypto_font_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AboutUs extends StatefulWidget {
+class GindiMyazi extends StatefulWidget {
   @override
-  _MainCollapsingToolbarState createState() => _MainCollapsingToolbarState();
+  _GindiMyaziState createState() => _GindiMyaziState();
 }
 
-class _MainCollapsingToolbarState extends State<AboutUs> {
+class _GindiMyaziState extends State<GindiMyazi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

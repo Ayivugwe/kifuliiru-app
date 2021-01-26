@@ -9,122 +9,141 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    void _yongeraIgambo() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => GamboLihyahya()),
+      );
+    }
+
     return MaterialApp(
-      title: 'Sobanura Kifuliiru',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Muyegerere tumenye Kifuliiru',
-              ),
-            ]),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('SOBANURA KIFULIIRU'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.directions_bike)),
+              ],
             ),
-            ListTile(
-              title: Text('Yongera ingambo lihyahya'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GamboLihyahya()),
-                );
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
+            title: Text('Sobanuura Kifuliiru'),
+          ),
+          drawer: Drawer(
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Text('SOBANUURA KIFULIIRU'),
+                ),
+                ListTile(
+                  title: Text('Yongera ingambo lihyahya'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GamboLihyahya()),
+                    );
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text('Informations'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Infos()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Text('Myazi yitu'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutUs()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Text('Site yitu'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SiteWebYitu()),
+                    );
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              title: Text('Informations'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Infos()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Myazi yitu'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AboutUs()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Myazi yitu'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AboutUs()),
-                );
-              },
-            ),
-          ],
+          ),
+          body: TabBarView(
+            children: [
+              //Icon(Icons.directions_car),
+              Center(
+                  child: Container(
+                //alignment: Align(1.0, 1.0),
+                color: Color.fromARGB(255, 255, 255, 245),
+                child: Container(
+                  child: new Text('Loza igambo mu Kifuliiru naho'),
+                ),
+              )),
+
+              //Icon(Icons.directions_transit),
+              Center(
+                  child: Container(
+                //alignment: Align(1.0, 1.0),
+                color: Color.fromARGB(255, 255, 255, 245),
+                child: Container(
+                  child: new Text('Loza igambo mu Kifuliiru na mu Kishahili'),
+                ),
+              )),
+
+              // Icon(Icons.directions_bike),
+              Center(
+                  child: Container(
+                //alignment: Align(1.0, 1.0),
+                color: Color.fromARGB(255, 255, 255, 245),
+                child: Container(
+                  child: new Text('Loza igambo mu Kifuliiru ne Kifaransa'),
+                ),
+              )),
+
+              //Icon(Icons.directions_bike),
+              Center(
+                  child: Container(
+                //alignment: Align(1.0, 1.0),
+                color: Color.fromARGB(255, 255, 255, 245),
+                child: Container(
+                  child: new Text('Loza igambo mu Kifuliiru na mu Kingereza'),
+                ),
+              )),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: _yongeraIgambo,
+            tooltip: 'Gambo lihyahya',
+            child: Icon(Icons.add),
+          ),
         ),
       ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
