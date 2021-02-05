@@ -126,7 +126,9 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                         ),
                         trailing: Icon(Icons.keyboard_arrow_right,
                             color: Colors.black, size: 30.0),
-                        onTap: () {},
+                        onTap: () {
+                          displayBottomSheet(context);
+                        },
                       ),
                     ),
                   );
