@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sobanura_kifuliiru/radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'myazi.dart';
 import 'site_web_yitu.dart';
@@ -21,14 +22,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: MyHomePage(title: appTitle),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageWidgetState createState() => _MyHomePageWidgetState();
+  final String title = '';
+}
+
+class _MyHomePageWidgetState extends State<MyHomePage> {
+  //_MyHomePageWidgetState({Key key, this.title}) : super(key: key);
+  int navigationIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -238,16 +245,34 @@ class MyHomePage extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home),
-            title: new Text('Home'),
+            title: new Text('Ndondeezo'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Tuyandikire'),
+            icon: new Icon(Icons.radio),
+            title: new Text('Radio Ibufuliiru'),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.chat), title: Text('Tuganuule')),
         ],
-        //onTap: (),
+        onTap: (int index) {
+          setState(() {
+            navigationIndex = index;
+            switch (navigationIndex) {
+              case 0:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                break;
+              case 1:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RadioIbufuliiru()));
+                break;
+              case 2:
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Chat()));
+                break;
+            }
+          });
+        },
       ),
 
       floatingActionButton: FloatingActionButton(

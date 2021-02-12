@@ -8,15 +8,76 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 }
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
-  void displayBottomSheet(BuildContext context) {
-    showModalBottomSheet(
+  var _amagambo = List<Igambo>();
+  var igambo;
+
+  void displayBottomSheet(BuildContext context, int index) {
+    showMaterialModalBottomSheet(
         context: context,
+        backgroundColor: Colors.transparent,
         builder: (ctx) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: Center(
-              child: Text(
-                  "Muyegerere. Hano tugakizi bonesa igambo ne'sobanuuro yalyo!"),
+            color: Colors.transparent,
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: new BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(40.0),
+                    topRight: const Radius.circular(40.0),
+                  )),
+              height: 600.0, //MediaQuery.of(context).size.height * 0.4,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 150.0,
+                      width: 150.0,
+                      child: Image.network(
+                        _amagambo[index].sobanuuroYalyo,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        _amagambo[index].igamboMuKifuliiru,
+                        style: new TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        _amagambo[index].sobanuuroYalyo,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    Container(
+                      child: RaisedButton(
+                        color: Colors.blue,
+                        onPressed: () {},
+                        textColor: Colors.white,
+                        padding: const EdgeInsets.all(0.0),
+                        child: InkWell(
+                          splashColor: Colors.green, // splash color
+                          onTap: () {}, // button pressed
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.volume_up), // icon
+                              Text("Yuvwa izu"), // text
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         });
@@ -24,25 +85,72 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
 
   @override
   Widget build(BuildContext context) {
-    var _amagambo = List<Igambo>();
-    var igambo;
-    igambo = new Igambo(0, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    _amagambo.clear();
+
+    igambo = new Igambo(
+        0,
+        'Mundu',
+        'Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(1, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        1,
+        'Mundu',
+        'Umundu ali mundu 1',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(2, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        2,
+        'Mundu',
+        'Umundu ali mundu 2',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(3, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        3,
+        'Mundu',
+        'Umundu ali mundu 3',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(4, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        4,
+        'Mundu',
+        'Umundu ali mundu 4',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(5, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        5,
+        'Mundu',
+        'Umundu ali mundu 4',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(6, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        6,
+        'Mundu',
+        'Umundu ali mundu 5',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    igambo = new Igambo(7, 'Mundu', 'Umundu ali mundu', '---', '---', '---');
+    igambo = new Igambo(
+        7,
+        'Mundu',
+        'Umundu ali mundu 6',
+        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
+        '---',
+        '---');
     _amagambo.add(igambo);
-    //BookList(this._books);
 
     return Scaffold(
       body: DefaultTabController(
@@ -65,19 +173,6 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                       "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
                       fit: BoxFit.cover,
                     )),
-              ),
-              SliverPersistentHeader(
-                delegate: _SliverAppBarDelegate(
-                  TabBar(
-                    labelColor: Colors.black87,
-                    unselectedLabelColor: Colors.grey,
-                    tabs: [
-                      Tab(icon: Icon(Icons.info), text: "Tab 1"),
-                      Tab(icon: Icon(Icons.lightbulb_outline), text: "Tab 2"),
-                    ],
-                  ),
-                ),
-                pinned: true,
               ),
             ];
           },
@@ -127,7 +222,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                         trailing: Icon(Icons.keyboard_arrow_right,
                             color: Colors.black, size: 30.0),
                         onTap: () {
-                          displayBottomSheet(context);
+                          displayBottomSheet(context, index);
                         },
                       ),
                     ),
@@ -137,10 +232,6 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => displayBottomSheet(context),
-        child: Icon(Icons.add),
       ),
     );
   }
