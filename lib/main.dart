@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:sobanura_kifuliiru/radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
@@ -40,39 +42,44 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sobanuura Kifuliiru'),
+        title: Text('Sobanuura - Tumenye Kifuliiru'),
       ),
+      backgroundColor: Colors.greenAccent[400],
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Center(
-              child: Container(
-                child: Text('Muyegerere Tumenye indeto yitu Kifuliiru!'),
-                color: Colors.greenAccent[400],
-              ),
-            ),
-            Center(
                 child: Container(
-              color: Colors.green,
+              padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40.0),
-                    bottomRight: Radius.circular(40.0),
-                    topLeft: Radius.circular(40.0),
-                    bottomLeft: Radius.circular(40.0)),
+                  topRight: Radius.circular(40.0),
+                  //bottomRight: Radius.circular(40.0),
+                  topLeft: Radius.circular(40.0),
+                  //bottomLeft: Radius.circular(40.0)
+                ),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(8),
-                    color: Colors.teal[100],
+                    color: Colors.greenAccent[400],
                     child: Expanded(
                         child: Column(
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.android),
-                          color: Colors.white,
-                          iconSize: 80.0,
+                        Image.asset('icons/flags/png/cd.png',
+                            package: 'country_icons'),
+                        RaisedButton(
+                          color: Colors.yellow,
+                          textColor: Colors.black,
+                          padding: EdgeInsets.all(8.0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              side: BorderSide(color: Colors.red)),
+                          child: Text('Kifuliiru-Kifuliiru'),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -81,30 +88,28 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             );
                           },
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          child: const Text('Kifuliiru-Kifuliiru'),
-                          color: Colors.teal[200],
-                        ),
                       ],
                     )),
                   ),
                   Container(
                       padding: const EdgeInsets.all(8),
-                      //color: Colors.pink[100],
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0)),
-                        color: Colors.blueAccent,
+                        color: Colors.greenAccent[400],
                       ),
                       child: Expanded(
                           child: Column(
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.android),
+                          Image.asset('icons/flags/png/tz.png',
+                              package: 'country_icons'),
+                          RaisedButton(
+                            child: Text('Kifuliiru-Kiswahili'),
                             color: Colors.white,
-                            iconSize: 80.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.red)),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -114,11 +119,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               );
                             },
                           ),
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            child: const Text('Kifuliiru-Kiswahili'),
-                            color: Colors.teal[200],
-                          ),
                         ],
                       ))),
                 ],
@@ -126,32 +126,37 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             )),
             Center(
                 child: Container(
-              color: Colors.purple,
+              padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40.0),
+                    //topRight: Radius.circular(40.0),
                     bottomRight: Radius.circular(40.0),
-                    topLeft: Radius.circular(40.0),
+                    //topLeft: Radius.circular(40.0),
                     bottomLeft: Radius.circular(40.0)),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                       padding: const EdgeInsets.all(8),
-                      // color: Colors.teal[300],
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0)),
-                        color: Colors.green,
+                        color: Colors.greenAccent[400],
                       ),
                       child: Expanded(
                           child: Column(
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.android),
+                          Image.asset('icons/flags/png/fr.png',
+                              package: 'country_icons'),
+                          RaisedButton(
                             color: Colors.white,
-                            iconSize: 80.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.red)),
+                            child: Text('Kifuliiru-Kifaransa'),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -160,11 +165,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                         KifuliiruNeKifaransa()),
                               );
                             },
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            child: const Text('Kifuliiru-Kifaransa'),
-                            color: Colors.teal[200],
                           ),
                         ],
                       ))),
@@ -180,10 +180,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                       child: Expanded(
                           child: Column(
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.android),
+                          Image.asset('icons/flags/png/gb.png',
+                              package: 'country_icons'),
+                          RaisedButton(
+                            child: Text('Kifuliiru-Kingereza'),
                             color: Colors.white,
-                            iconSize: 80.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.red)),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -192,17 +196,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                         KifuliiruNeKingereza()),
                               );
                             },
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            child: const Text('Kifuliiru-Kingereza'),
-                            // color: Colors.teal[200],
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10.0),
-                                  bottomRight: Radius.circular(10.0)),
-                              color: Colors.yellow,
-                            ),
                           ),
                         ],
                       ))),
