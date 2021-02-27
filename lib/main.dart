@@ -42,7 +42,16 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Sobanuura Kifuliiru'),
       ),
-      body: Center(
+      body: //Center(
+          // child: Column(
+          //children: [
+          // Center(
+          //   child: Container(
+          //     child: Text('Muyegerere Tumenye indeto yitu Kifuliiru!'),
+          //     color: Colors.greenAccent[400],
+          //   ),
+          // ),
+          Center(
         child: GridView.count(
           primary: false,
           padding: const EdgeInsets.all(20),
@@ -178,6 +187,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           ],
         ),
       ),
+      //Center(),
+      //],
+      //),
+      // ),
       //Icon(Icons.directions_transit),
 
       drawer: Drawer(
