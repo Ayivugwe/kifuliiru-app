@@ -42,157 +42,176 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Sobanuura Kifuliiru'),
       ),
-      body: //Center(
-          // child: Column(
-          //children: [
-          // Center(
-          //   child: Container(
-          //     child: Text('Muyegerere Tumenye indeto yitu Kifuliiru!'),
-          //     color: Colors.greenAccent[400],
-          //   ),
-          // ),
-          Center(
-        child: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[100],
-              child: Expanded(
-                  child: Column(
+      body: Center(
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                child: Text('Muyegerere Tumenye indeto yitu Kifuliiru!'),
+                color: Colors.greenAccent[400],
+              ),
+            ),
+            Center(
+                child: Container(
+              color: Colors.green,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(40.0),
+                    bottomRight: Radius.circular(40.0),
+                    topLeft: Radius.circular(40.0),
+                    bottomLeft: Radius.circular(40.0)),
+              ),
+              child: Row(
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.android),
-                    color: Colors.white,
-                    iconSize: 80.0,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => KifuliiruNeKifuliiru()),
-                      );
-                    },
-                  ),
                   Container(
                     padding: const EdgeInsets.all(8),
-                    child: const Text('Kifuliiru-Kifuliiru'),
-                    color: Colors.teal[200],
+                    color: Colors.teal[100],
+                    child: Expanded(
+                        child: Column(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.android),
+                          color: Colors.white,
+                          iconSize: 80.0,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KifuliiruNeKifuliiru()),
+                            );
+                          },
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          child: const Text('Kifuliiru-Kifuliiru'),
+                          color: Colors.teal[200],
+                        ),
+                      ],
+                    )),
                   ),
-                ],
-              )),
-            ),
-            Container(
-                padding: const EdgeInsets.all(8),
-                //color: Colors.pink[100],
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0)),
-                  color: Colors.blueAccent,
-                ),
-                child: Expanded(
-                    child: Column(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.android),
-                      color: Colors.white,
-                      iconSize: 80.0,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => KifuliiruNeKiswahili()),
-                        );
-                      },
-                    ),
-                    Container(
+                  Container(
                       padding: const EdgeInsets.all(8),
-                      child: const Text('Kifuliiru-Kiswahili'),
-                      color: Colors.teal[200],
-                    ),
-                  ],
-                ))),
-            Container(
-                padding: const EdgeInsets.all(8),
-                // color: Colors.teal[300],
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0)),
-                  color: Colors.green,
-                ),
-                child: Expanded(
-                    child: Column(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.android),
-                      color: Colors.white,
-                      iconSize: 80.0,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => KifuliiruNeKifaransa()),
-                        );
-                      },
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: const Text('Kifuliiru-Kifaransa'),
-                      color: Colors.teal[200],
-                    ),
-                  ],
-                ))),
-            Container(
-                padding: const EdgeInsets.all(8),
-                //color: Colors.teal[400],
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0)),
-                  color: Colors.purple,
-                ),
-                child: Expanded(
-                    child: Column(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.android),
-                      color: Colors.white,
-                      iconSize: 80.0,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => KifuliiruNeKingereza()),
-                        );
-                      },
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: const Text('Kifuliiru-Kingereza'),
-                      // color: Colors.teal[200],
+                      //color: Colors.pink[100],
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0)),
-                        color: Colors.yellow,
+                        color: Colors.blueAccent,
                       ),
-                    ),
-                  ],
-                ))),
+                      child: Expanded(
+                          child: Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.android),
+                            color: Colors.white,
+                            iconSize: 80.0,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKiswahili()),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            child: const Text('Kifuliiru-Kiswahili'),
+                            color: Colors.teal[200],
+                          ),
+                        ],
+                      ))),
+                ],
+              ),
+            )),
+            Center(
+                child: Container(
+              color: Colors.purple,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(40.0),
+                    bottomRight: Radius.circular(40.0),
+                    topLeft: Radius.circular(40.0),
+                    bottomLeft: Radius.circular(40.0)),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                      padding: const EdgeInsets.all(8),
+                      // color: Colors.teal[300],
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0)),
+                        color: Colors.green,
+                      ),
+                      child: Expanded(
+                          child: Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.android),
+                            color: Colors.white,
+                            iconSize: 80.0,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKifaransa()),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            child: const Text('Kifuliiru-Kifaransa'),
+                            color: Colors.teal[200],
+                          ),
+                        ],
+                      ))),
+                  Container(
+                      padding: const EdgeInsets.all(8),
+                      //color: Colors.teal[400],
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0)),
+                        color: Colors.purple,
+                      ),
+                      child: Expanded(
+                          child: Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.android),
+                            color: Colors.white,
+                            iconSize: 80.0,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKingereza()),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            child: const Text('Kifuliiru-Kingereza'),
+                            // color: Colors.teal[200],
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0)),
+                              color: Colors.yellow,
+                            ),
+                          ),
+                        ],
+                      ))),
+                ],
+              ),
+            )),
           ],
         ),
       ),
-      //Center(),
-      //],
-      //),
-      // ),
-      //Icon(Icons.directions_transit),
-
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -287,7 +306,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           });
         },
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
           context,
