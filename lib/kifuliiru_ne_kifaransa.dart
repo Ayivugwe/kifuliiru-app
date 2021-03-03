@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase/firebase.dart';
 
 class KifuliiruNeKifaransa extends StatefulWidget {
   @override
@@ -10,6 +12,8 @@ class KifuliiruNeKifaransa extends StatefulWidget {
 class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
   var _amagambo = List<Igambo>();
   var igambo;
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  //final dbRef = FirebaseDatabase.instance.reference().child("pets");
 
   void displayBottomSheet(BuildContext context, int index) {
     showMaterialModalBottomSheet(
@@ -178,7 +182,36 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
           },
           body: Center(
             child: Container(
-              child: ListView.builder(
+              /*  child: FutureBuilder(
+                    future: dbRef.once(),
+                    builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                      if (snapshot.hasData) {
+                        _amagambo.clear();
+                        Map<dynamic, dynamic> values = snapshot.data.value;
+                        values.forEach((key, values) {
+                          _amagambo.add(values);
+                        });
+                        return new ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: _amagambo.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text("Igambo mu Kifuliiru: " +
+                                        _amagambo[index].igamboMuKifuliiru),
+                                    Text("Sobaanuro: " +
+                                        _amagambo[index].sobanuuroYalyo),
+                                  ],
+                                ),
+                              );
+                            });
+                      }
+                      return CircularProgressIndicator();
+                    }) */
+
+              ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: _amagambo.length,

@@ -17,7 +17,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final appTitle = 'Sobanura Kifuliiru';
+  final appTitle = 'Sobaanura Kifuliiru';
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +42,56 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sobanuura - Tumenye Kifuliiru'),
+        title: Text('Sobaanura - Tumenye Kifuliiru'),
       ),
       backgroundColor: Colors.greenAccent[400],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.arrow_drop_down_circle),
+                    title: const Text('Card title 1'),
+                    subtitle: Text(
+                      'Secondary Text',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.start,
+                    children: [
+                      FlatButton(
+                        textColor: const Color(0xFF6200EE),
+                        onPressed: () {
+                          // Perform some action
+                        },
+                        child: const Text('ACTION 1'),
+                      ),
+                      FlatButton(
+                        textColor: const Color(0xFF6200EE),
+                        onPressed: () {
+                          // Perform some action
+                        },
+                        child: const Text('ACTION 2'),
+                      ),
+                    ],
+                  ),
+                  Image.asset('assets/card-sample-image.jpg'),
+                  Image.asset('assets/card-sample-image-2.jpg'),
+                ],
+              ),
+            ),
             Center(
                 child: Container(
               padding: EdgeInsets.all(20.0),
@@ -139,6 +182,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
+                      height: 140.0,
+                      width: 160.0,
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -156,7 +201,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 side: BorderSide(color: Colors.red)),
-                            child: Text('Kifuliiru-Kifaransa'),
+                            child: Text('KFLR-Kifaransa'),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -169,13 +214,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                         ],
                       ))),
                   Container(
+                      height: 140.0,
+                      width: 160.0,
                       padding: const EdgeInsets.all(8),
-                      //color: Colors.teal[400],
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0)),
-                        color: Colors.purple,
+                        color: Colors.greenAccent[400],
                       ),
                       child: Expanded(
                           child: Column(
@@ -183,11 +229,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           Image.asset('icons/flags/png/gb.png',
                               package: 'country_icons'),
                           RaisedButton(
-                            child: Text('Kifuliiru-Kingereza'),
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 side: BorderSide(color: Colors.red)),
+                            child: Text('KFLR-Kingereza'),
                             onPressed: () {
                               Navigator.push(
                                 context,
