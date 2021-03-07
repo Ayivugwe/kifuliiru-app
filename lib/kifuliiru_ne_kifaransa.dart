@@ -211,7 +211,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                       return CircularProgressIndicator();
                     }) */
 
-              ListView.builder(
+              child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: _amagambo.length,

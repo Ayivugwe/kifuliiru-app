@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sobanura_kifuliiru/radio_ibufuliiru.dart';
+import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'myazi.dart';
 import 'site_web_yitu.dart';
@@ -10,7 +10,7 @@ import 'kifuliiru_ne_kifuliiru.dart';
 import 'kifuliiru_ne_kifaransa.dart';
 import 'kifuliiru_ne_kingereza.dart';
 import 'kifuliiru_ne_kiswahili.dart';
-import 'package:sobanura_kifuliiru/chat.dart';
+import 'chat.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,7 +44,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Sobaanura - Tumenye Kifuliiru'),
       ),
-      backgroundColor: Colors.greenAccent[400],
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -53,201 +53,194 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               clipBehavior: Clip.antiAlias,
               child: Column(
                 children: [
-                  ListTile(
-                    leading: Icon(Icons.arrow_drop_down_circle),
-                    title: const Text('Card title 1'),
-                    subtitle: Text(
-                      'Secondary Text',
-                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    height: 220,
+                    width: double.maxFinite,
+                    child: Card(
+                      elevation: 5,
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            height: 220,
+                            width: (double.maxFinite / 2) - 5.0,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 190,
+                                      width: (double.maxFinite / 2) - 2.0,
+                                      child: Image.asset(
+                                          'icons/flags/png/cd.png',
+                                          package: 'country_icons'),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 100,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.yellow),
+                                        ),
+                                        child: Text('Kifuliiru-Kifuliiru'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKifuliiru()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            height: 220,
+                            width: (double.maxFinite / 2) - 5.0,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 190,
+                                      width: (double.maxFinite / 2) - 2.0,
+                                      child: Image.asset(
+                                          'icons/flags/png/cd.png',
+                                          package: 'country_icons'),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 100,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.yellow),
+                                        ),
+                                        child: Text('Kifuliiru-Kiswahili'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKiswahili()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    height: 220,
+                    width: double.maxFinite,
+                    child: Card(
+                      elevation: 5,
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            height: 220,
+                            width: (double.maxFinite / 2) - 5.0,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 190,
+                                      width: (double.maxFinite / 2) - 2.0,
+                                      child: Image.asset(
+                                          'icons/flags/png/cd.png',
+                                          package: 'country_icons'),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 100,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.yellow),
+                                        ),
+                                        child: Text('Kifuliiru-Kifaransa'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKifaransa()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            height: 220,
+                            width: (double.maxFinite / 2) - 5.0,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 190,
+                                      width: (double.maxFinite / 2) - 2.0,
+                                      child: Image.asset(
+                                          'icons/flags/png/cd.png',
+                                          package: 'country_icons'),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 100,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.yellow),
+                                        ),
+                                        child: Text('Kifuliiru-Kingereza'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKingereza()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                      'Menya imyazi ne bindi bingi.',
                       style: TextStyle(color: Colors.black.withOpacity(0.6)),
                     ),
-                  ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.start,
-                    children: [
-                      FlatButton(
-                        textColor: const Color(0xFF6200EE),
-                        onPressed: () {
-                          // Perform some action
-                        },
-                        child: const Text('ACTION 1'),
-                      ),
-                      FlatButton(
-                        textColor: const Color(0xFF6200EE),
-                        onPressed: () {
-                          // Perform some action
-                        },
-                        child: const Text('ACTION 2'),
-                      ),
-                    ],
                   ),
                   Image.asset('assets/card-sample-image.jpg'),
                   Image.asset('assets/card-sample-image-2.jpg'),
                 ],
               ),
             ),
-            Center(
-                child: Container(
-              padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(40.0),
-                  //bottomRight: Radius.circular(40.0),
-                  topLeft: Radius.circular(40.0),
-                  //bottomLeft: Radius.circular(40.0)
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.greenAccent[400],
-                    child: Expanded(
-                        child: Column(
-                      children: [
-                        Image.asset('icons/flags/png/cd.png',
-                            package: 'country_icons'),
-                        RaisedButton(
-                          color: Colors.yellow,
-                          textColor: Colors.black,
-                          padding: EdgeInsets.all(8.0),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.red)),
-                          child: Text('Kifuliiru-Kifuliiru'),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKifuliiru()),
-                            );
-                          },
-                        ),
-                      ],
-                    )),
-                  ),
-                  Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10.0),
-                            bottomRight: Radius.circular(10.0)),
-                        color: Colors.greenAccent[400],
-                      ),
-                      child: Expanded(
-                          child: Column(
-                        children: [
-                          Image.asset('icons/flags/png/tz.png',
-                              package: 'country_icons'),
-                          RaisedButton(
-                            child: Text('Kifuliiru-Kiswahili'),
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                side: BorderSide(color: Colors.red)),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKiswahili()),
-                              );
-                            },
-                          ),
-                        ],
-                      ))),
-                ],
-              ),
-            )),
-            Center(
-                child: Container(
-              padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    //topRight: Radius.circular(40.0),
-                    bottomRight: Radius.circular(40.0),
-                    //topLeft: Radius.circular(40.0),
-                    bottomLeft: Radius.circular(40.0)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                      height: 140.0,
-                      width: 160.0,
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10.0),
-                            bottomRight: Radius.circular(10.0)),
-                        color: Colors.greenAccent[400],
-                      ),
-                      child: Expanded(
-                          child: Column(
-                        children: [
-                          Image.asset('icons/flags/png/fr.png',
-                              package: 'country_icons'),
-                          RaisedButton(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                side: BorderSide(color: Colors.red)),
-                            child: Text('KFLR-Kifaransa'),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKifaransa()),
-                              );
-                            },
-                          ),
-                        ],
-                      ))),
-                  Container(
-                      height: 140.0,
-                      width: 160.0,
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10.0),
-                            bottomRight: Radius.circular(10.0)),
-                        color: Colors.greenAccent[400],
-                      ),
-                      child: Expanded(
-                          child: Column(
-                        children: [
-                          Image.asset('icons/flags/png/gb.png',
-                              package: 'country_icons'),
-                          RaisedButton(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                side: BorderSide(color: Colors.red)),
-                            child: Text('KFLR-Kingereza'),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKingereza()),
-                              );
-                            },
-                          ),
-                        ],
-                      ))),
-                ],
-              ),
-            )),
           ],
         ),
       ),
@@ -316,14 +309,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home),
-            title: new Text('Ndondeezo'),
+            label: 'Ndondeezo',
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.radio),
-            title: new Text('Radio Ibufuliiru'),
+            label: 'Radio Ibufuliiru',
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.chat), title: Text('Tuganuule')),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Tuganuule'),
         ],
         onTap: (int index) {
           setState(() {
