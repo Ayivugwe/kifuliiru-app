@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase/firebase.dart';
 
 class KifuliiruNeKifaransa extends StatefulWidget {
   @override
@@ -12,8 +10,6 @@ class KifuliiruNeKifaransa extends StatefulWidget {
 class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
   var _amagambo = List<Igambo>();
   var igambo;
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-  //final dbRef = FirebaseDatabase.instance.reference().child("pets");
 
   void displayBottomSheet(BuildContext context, int index) {
     showMaterialModalBottomSheet(
@@ -61,11 +57,8 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                       height: 15.0,
                     ),
                     Container(
-                      child: RaisedButton(
-                        color: Colors.blue,
+                      child: ElevatedButton(
                         onPressed: () {},
-                        textColor: Colors.white,
-                        padding: const EdgeInsets.all(0.0),
                         child: InkWell(
                           splashColor: Colors.green, // splash color
                           onTap: () {}, // button pressed
