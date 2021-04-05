@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:search_page/search_page.dart';
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   @override
@@ -21,24 +22,16 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             child: Container(
               padding: EdgeInsets.all(16.0),
               decoration: new BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.white,
                   borderRadius: new BorderRadius.only(
-                    topLeft: const Radius.circular(40.0),
-                    topRight: const Radius.circular(40.0),
+                    topLeft: const Radius.circular(15.0),
+                    topRight: const Radius.circular(15.0),
                   )),
               height: 600.0, //MediaQuery.of(context).size.height * 0.4,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 150.0,
-                      width: 150.0,
-                      child: Image.network(
-                        _amagambo[index].sobanuuroYalyo,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                     Container(
                       child: Text(
                         _amagambo[index].igamboMuKifuliiru,
@@ -57,11 +50,8 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                       height: 15.0,
                     ),
                     Container(
-                      child: RaisedButton(
-                        color: Colors.blue,
+                      child: ElevatedButton(
                         onPressed: () {},
-                        textColor: Colors.white,
-                        padding: const EdgeInsets.all(0.0),
                         child: InkWell(
                           splashColor: Colors.green, // splash color
                           onTap: () {}, // button pressed
@@ -163,16 +153,18 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    title: Text("Loza igambo mu Kifuliiru naho",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        )),
-                    background: Image.network(
-                      "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-                      fit: BoxFit.cover,
-                    )),
+                  centerTitle: true,
+                  title: Text("Loza igambo mu Kifuliiru naho",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      )),
+                  background: Image.asset(
+                    'icons/flags/png/cd.png',
+                    package: 'country_icons',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ];
           },

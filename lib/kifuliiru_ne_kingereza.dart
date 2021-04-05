@@ -23,8 +23,8 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
               decoration: new BoxDecoration(
                   color: Colors.blue,
                   borderRadius: new BorderRadius.only(
-                    topLeft: const Radius.circular(40.0),
-                    topRight: const Radius.circular(40.0),
+                    topLeft: const Radius.circular(15.0),
+                    topRight: const Radius.circular(15.0),
                   )),
               height: 600.0, //MediaQuery.of(context).size.height * 0.4,
               child: Center(
@@ -163,16 +163,18 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    title: Text("Loza igambo mu Kifuliiru naho",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        )),
-                    background: Image.network(
-                      "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-                      fit: BoxFit.cover,
-                    )),
+                  centerTitle: true,
+                  title: Text("Loza igambo mu Kifuliiru naho",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      )),
+                  background: Image.asset(
+                    'icons/flags/png/us.png',
+                    package: 'country_icons',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ];
           },

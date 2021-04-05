@@ -17,10 +17,7 @@ const String kNavigationExamplePage = '''
 <p>
 Muyegerere. Tuyuvwirize imyazi ye mwitu mu Kifuliiru
 </p>
-<ul>
-<ul><a href="https://ibufuliiru.editorx.io/ibufuliiru/radio-ibufuliiru/">https://ibufuliiru.editorx.io/ibufuliiru/radio-ibufuliiru/</a></ul>
-<ul><a href="https://ibufuliiru.editorx.io/ibufuliiru/">https://ibufuliiru.editorx.io/ibufuliiru/</a></ul>
-</ul>
+<iframe src="//www.zeno.fm/player/radio-ibufuliiru" width="575" height="240" frameborder="0" scrolling="no"></iframe><a href="https://www.zeno.fm" target="_blank" style="display: block; font-size: 0.9em; line-height: 10px;">A Zeno Media Station</a>
 </body>
 </html>
 ''';
@@ -44,7 +41,7 @@ class _RadioIbufuliiruState extends State<RadioIbufuliiru> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter WebView example'),
+        title: const Text('Radio Ibufuliiru'),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
         actions: <Widget>[
           NavigationControls(_controller.future),
