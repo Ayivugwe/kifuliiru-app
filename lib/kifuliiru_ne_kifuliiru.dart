@@ -149,7 +149,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                expandedHeight: 200.0,
+                expandedHeight: 100.0,
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
@@ -169,7 +169,8 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             ];
           },
           body: Center(
-            child: Container(
+            child:
+             Container(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,

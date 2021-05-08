@@ -74,36 +74,38 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                         Padding(
                             padding: EdgeInsets.all(1.0),
                             child: Card(
+                                color: Colors.deepPurple,
                                 child: Column(
-                              children: [
-                                Container(
-                                  height: 150,
-                                  width: 80,
-                                  child: Image.asset('icons/flags/png/cd.png',
-                                      package: 'country_icons'),
-                                ),
-                                Container(
-                                  height: 20,
-                                  width: 155,
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.purple),
+                                  children: [
+                                    Container(
+                                      height: 150,
+                                      width: 80,
+                                      child: Image.asset(
+                                          'icons/flags/png/cd.png',
+                                          package: 'country_icons'),
                                     ),
-                                    child: Text('Kifuliiru-Kifuliiru'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                KifuliiruNeKifuliiru()),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ))),
+                                    Container(
+                                      height: 20,
+                                      width: 155,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.purple),
+                                        ),
+                                        child: Text('Kifuliiru-Kifuliiru'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKifuliiru()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ))),
                         Padding(
                             padding: EdgeInsets.all(2.0),
                             child: Card(
