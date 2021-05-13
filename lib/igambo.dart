@@ -16,4 +16,12 @@ class Igambo {
     this.holishaziri = holishaziri;
     this.indetoYeSobanuuro = indetoYeSobanuuro;
   }
+
+  factory Igambo.fromJson(Map<String, dynamic> json) {
+    return Album(
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+    );
+  }
 }

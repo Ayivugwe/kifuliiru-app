@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:search_page/search_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   @override
@@ -9,8 +12,24 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 }
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
+  // ignore: deprecated_member_use
   var _amagambo = List<Igambo>();
   var igambo;
+
+  Future<Igambo> fetchAmagambo() async {
+    final response = await http.get(Uri.https('jsonplaceholder.typicode.com',
+        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return Igambo.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Twayabirwa ukulonga amagambo');
+    }
+  }
 
   void displayBottomSheet(BuildContext context, int index) {
     showMaterialModalBottomSheet(
@@ -77,71 +96,6 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   Widget build(BuildContext context) {
     _amagambo.clear();
 
-    igambo = new Igambo(
-        0,
-        'Mundu',
-        'Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        1,
-        'Mundu',
-        'Umundu ali mundu 1',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        2,
-        'Mundu',
-        'Umundu ali mundu 2',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        3,
-        'Mundu',
-        'Umundu ali mundu 3',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        4,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        5,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        6,
-        'Mundu',
-        'Umundu ali mundu 5',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        7,
-        'Mundu',
-        'Umundu ali mundu 6',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-
     return Scaffold(
       body: DefaultTabController(
         length: 2,
@@ -169,8 +123,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             ];
           },
           body: Center(
-            child:
-             Container(
+            child: Container(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,

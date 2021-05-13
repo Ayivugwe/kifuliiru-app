@@ -13,7 +13,23 @@ import 'kifuliiru_ne_kiswahili.dart';
 import 'chat.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+      //   runApp(
+      //   MaterialApp(
+      //     theme: ThemeData.from(
+      //       colorScheme: const ColorScheme.light(),
+      //     ).copyWith(
+      //       pageTransitionsTheme: const PageTransitionsTheme(
+      //         builders: <TargetPlatform, PageTransitionsBuilder>{
+      //           TargetPlatform.android: ZoomPageTransitionsBuilder(),
+      //         },
+      //       ),
+      //     ),
+      //     home: _TransitionsHomePage(),
+      //   ),
+      // );
+
+      MyApp());
 }
 
 class MyApp extends StatelessWidget {
