@@ -17,11 +17,13 @@ class Igambo {
     this.indetoYeSobanuuro = indetoYeSobanuuro;
   }
 
-  factory Igambo.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
+  factory Igambo.fromJson(dynamic json) {
+    return Igambo(
+        json['id'] as int,
+        json['title'] as String,
+        json['sobaanuro'] as String,
+        json['sobaanuroYeKiswahili'] as String,
+        json['sobaanuroYeKifaransa'] as String,
+        json['sobaanuroYeKingereza'] as String);
   }
 }
