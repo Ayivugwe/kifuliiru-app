@@ -13,27 +13,11 @@ import 'kifuliiru_ne_kiswahili.dart';
 import 'chat.dart';
 
 void main() {
-  runApp(
-      //   runApp(
-      //   MaterialApp(
-      //     theme: ThemeData.from(
-      //       colorScheme: const ColorScheme.light(),
-      //     ).copyWith(
-      //       pageTransitionsTheme: const PageTransitionsTheme(
-      //         builders: <TargetPlatform, PageTransitionsBuilder>{
-      //           TargetPlatform.android: ZoomPageTransitionsBuilder(),
-      //         },
-      //       ),
-      //     ),
-      //     home: _TransitionsHomePage(),
-      //   ),
-      // );
-
-      MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final appTitle = 'Sobaanura Kifuliiru';
+  final appTitle = 'SOBAANURA KIFULIIRU';
 
   @override
   Widget build(BuildContext context) {
@@ -58,25 +42,27 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sobaanura - Kifuliiru'),
+        title: Text('MAGAMBO GE KIFULIIRU'),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (BuildContext bc) => [
+              PopupMenuItem(child: Text("New Chat"), value: "/newchat"),
+              PopupMenuItem(
+                  child: Text("New Group Chat"), value: "/new-group-chat"),
+              PopupMenuItem(child: Text("Settings"), value: "/settings"),
+            ],
+            onSelected: (route) {
+              print(route);
+              // Note You must create respective pages for navigation
+              Navigator.pushNamed(context, "/newchat");
+            },
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
           children: [
-            Card(
-                elevation: 10,
-                child: Container(
-                  height: 80,
-                  width: 400,
-                  color: Colors.white,
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tumenye indeto yitu Kifuliiru.',
-                    style: TextStyle(fontSize: 18, color: Colors.black),
-                  ),
-                )),
-            Divider(),
             ListView(
               shrinkWrap: true,
               padding: EdgeInsets.all(10.0),
@@ -125,36 +111,38 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                         Padding(
                             padding: EdgeInsets.all(2.0),
                             child: Card(
+                                color: Colors.deepPurple,
                                 child: Column(
-                              children: [
-                                Container(
-                                  height: 150,
-                                  width: 80,
-                                  child: Image.asset('icons/flags/png/tz.png',
-                                      package: 'country_icons'),
-                                ),
-                                Container(
-                                  height: 20,
-                                  width: 155,
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.purple),
+                                  children: [
+                                    Container(
+                                      height: 150,
+                                      width: 80,
+                                      child: Image.asset(
+                                          'icons/flags/png/tz.png',
+                                          package: 'country_icons'),
                                     ),
-                                    child: Text('Kifuliiru-Kiswahili'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                KifuliiruNeKiswahili()),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ))),
+                                    Container(
+                                      height: 20,
+                                      width: 155,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.purple),
+                                        ),
+                                        child: Text('Kifuliiru-Kiswahili'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKiswahili()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ))),
                       ],
                     ),
                   ),
@@ -168,69 +156,73 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                         Padding(
                             padding: EdgeInsets.all(2.0),
                             child: Card(
+                                color: Colors.deepPurple,
                                 child: Column(
-                              children: [
-                                Container(
-                                  height: 160,
-                                  width: 80,
-                                  child: Image.asset('icons/flags/png/fr.png',
-                                      package: 'country_icons'),
-                                ),
-                                Container(
-                                  height: 20,
-                                  width: 155,
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.purple),
+                                  children: [
+                                    Container(
+                                      height: 160,
+                                      width: 80,
+                                      child: Image.asset(
+                                          'icons/flags/png/fr.png',
+                                          package: 'country_icons'),
                                     ),
-                                    child: Text('Kifuliiru-Kifaransa'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                KifuliiruNeKifaransa()),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ))),
+                                    Container(
+                                      height: 20,
+                                      width: 155,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.purple),
+                                        ),
+                                        child: Text('Kifuliiru-Kifaransa'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKifaransa()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ))),
                         Padding(
                             padding: EdgeInsets.all(2.0),
                             child: Card(
+                                color: Colors.deepPurple,
                                 child: Column(
-                              children: [
-                                Container(
-                                  height: 160,
-                                  width: 80,
-                                  child: Image.asset('icons/flags/png/us.png',
-                                      package: 'country_icons'),
-                                ),
-                                Container(
-                                  height: 20,
-                                  width: 150,
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.purple),
+                                  children: [
+                                    Container(
+                                      height: 160,
+                                      width: 80,
+                                      child: Image.asset(
+                                          'icons/flags/png/us.png',
+                                          package: 'country_icons'),
                                     ),
-                                    child: Text('Kifuliiru-Kingereza'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                KifuliiruNeKingereza()),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ))),
+                                    Container(
+                                      height: 20,
+                                      width: 150,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.purple),
+                                        ),
+                                        child: Text('Kifuliiru-Kingereza'),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KifuliiruNeKingereza()),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ))),
                       ],
                     ),
                   ),

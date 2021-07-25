@@ -11,9 +11,9 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 }
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
-  Future<Igambo> futureAmagambo;
+  late Future<Igambo> futureAmagambo;
   // ignore: deprecated_member_use
-  var _amagambo = List<Igambo>();
+  var _amagambo;
   var igambo;
 
   @override
@@ -108,7 +108,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
           future: futureAmagambo,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data.igamboMuKifuliiru);
+              return Text(snapshot.data!.igamboMuKifuliiru);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }

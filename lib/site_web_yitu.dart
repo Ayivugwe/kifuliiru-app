@@ -4,13 +4,13 @@ class SiteWebYitu extends StatelessWidget {
   @override
   Widget build(BuildContext ctxt) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Site web yitu"),
-        ),
-        body: new Checkbox(
-            value: false,
-            onChanged: (bool newValue) {
-              Navigator.pop(ctxt); // Pop from stack
-            }));
+      appBar: new AppBar(
+        title: new Text('Namuyehulo witu naho'),
+      ),
+      body: Card(
+        borderOnForeground: false,
+        child: Text('Namuyehulo witu naho'),
+      ),
+    );
   }
 }

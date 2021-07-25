@@ -8,7 +8,7 @@ class KifuliiruNeKifaransa extends StatefulWidget {
 }
 
 class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
-  var _amagambo = List<Igambo>();
+  var _amagambo;
   var igambo;
 
   void displayBottomSheet(BuildContext context, int index) {
@@ -84,71 +84,6 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
   Widget build(BuildContext context) {
     _amagambo.clear();
 
-    igambo = new Igambo(
-        0,
-        'Mundu',
-        'Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        1,
-        'Mundu',
-        'Umundu ali mundu 1',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        2,
-        'Mundu',
-        'Umundu ali mundu 2',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        3,
-        'Mundu',
-        'Umundu ali mundu 3',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        4,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        5,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        6,
-        'Mundu',
-        'Umundu ali mundu 5',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        7,
-        'Mundu',
-        'Umundu ali mundu 6',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-
     return Scaffold(
       body: DefaultTabController(
         length: 2,
@@ -161,7 +96,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  title: Text("Loza igambo mu Kifuliiru naho",
+                  title: Text('Kifuliiru - Kifaransa',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
@@ -177,35 +112,6 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
           },
           body: Center(
             child: Container(
-              /*  child: FutureBuilder(
-                    future: dbRef.once(),
-                    builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                      if (snapshot.hasData) {
-                        _amagambo.clear();
-                        Map<dynamic, dynamic> values = snapshot.data.value;
-                        values.forEach((key, values) {
-                          _amagambo.add(values);
-                        });
-                        return new ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: _amagambo.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text("Igambo mu Kifuliiru: " +
-                                        _amagambo[index].igamboMuKifuliiru),
-                                    Text("Sobaanuro: " +
-                                        _amagambo[index].sobanuuroYalyo),
-                                  ],
-                                ),
-                              );
-                            });
-                      }
-                      return CircularProgressIndicator();
-                    }) */
-
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,

@@ -8,7 +8,7 @@ class KifuliiruNeKingereza extends StatefulWidget {
 }
 
 class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
-  var _amagambo = List<Igambo>();
+  var _amagambo;
   var igambo;
 
   void displayBottomSheet(BuildContext context, int index) {
@@ -86,71 +86,6 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   @override
   Widget build(BuildContext context) {
     _amagambo.clear();
-
-    igambo = new Igambo(
-        0,
-        'Mundu',
-        'Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0 Umundu ali mundu 0',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        1,
-        'Mundu',
-        'Umundu ali mundu 1',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        2,
-        'Mundu',
-        'Umundu ali mundu 2',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        3,
-        'Mundu',
-        'Umundu ali mundu 3',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        4,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        5,
-        'Mundu',
-        'Umundu ali mundu 4',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        6,
-        'Mundu',
-        'Umundu ali mundu 5',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
-    igambo = new Igambo(
-        7,
-        'Mundu',
-        'Umundu ali mundu 6',
-        'https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350',
-        '---',
-        '---');
-    _amagambo.add(igambo);
 
     return Scaffold(
       body: DefaultTabController(

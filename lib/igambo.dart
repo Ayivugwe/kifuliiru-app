@@ -1,29 +1,28 @@
 class Igambo {
-  int id;
+  final int id;
 
-  String igamboMuKifuliiru,
-      sobanuuroYalyo,
-      holishaziri,
-      kizunguzaKyalyo,
-      indetoYeSobanuuro;
+  final String igamboMuKifuliiru;
+  final String sobanuuroYalyo;
+  final String holishaziri;
+  final String kizunguzaKyalyo;
+  final String indetoYeSobanuuro;
 
-  Igambo(int id, String igamboMuKifuliiru, String sobanuuroYalyo,
-      String kizunguzaKyalyo, String holishaziri, String indetoYeSobanuuro) {
-    this.id = id;
-    this.igamboMuKifuliiru = igamboMuKifuliiru;
-    this.sobanuuroYalyo = sobanuuroYalyo;
-    this.kizunguzaKyalyo = kizunguzaKyalyo;
-    this.holishaziri = holishaziri;
-    this.indetoYeSobanuuro = indetoYeSobanuuro;
-  }
+  Igambo({
+    required this.id,
+    required this.igamboMuKifuliiru,
+    required this.sobanuuroYalyo,
+    required this.kizunguzaKyalyo,
+    required this.holishaziri,
+    required this.indetoYeSobanuuro,
+  });
 
-  factory Igambo.fromJson(dynamic json) {
+  factory Igambo.fromJson(Map<String, dynamic> json) {
     return Igambo(
-        json['id'] as int,
-        json['title'] as String,
-        json['sobaanuro'] as String,
-        json['sobaanuroYeKiswahili'] as String,
-        json['sobaanuroYeKifaransa'] as String,
-        json['sobaanuroYeKingereza'] as String);
+        id: json['id'] as int,
+        igamboMuKifuliiru: json['title'] as String,
+        sobanuuroYalyo: json['sobaanuro'] as String,
+        kizunguzaKyalyo: json['sobaanuroYeKiswahili'] as String,
+        holishaziri: json['sobaanuroYeKifaransa'] as String,
+        indetoYeSobanuuro: json['sobaanuroYeKingereza'] as String);
   }
 }
