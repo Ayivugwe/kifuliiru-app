@@ -39,8 +39,6 @@ class _RadioIbufuliiruState extends State<RadioIbufuliiru> {
           // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
           actions: <Widget>[],
         ),
-        // We're using a Builder here so we have a context that is below the Scaffold
-        // to allow calling Scaffold.of(context) so we can show a snackbar.
         body: Center(
           child: Text('Radio Ibufuliiru :  Tulonge imyazi mu Kifuliiru.'),
         ));

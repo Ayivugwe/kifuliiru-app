@@ -22,9 +22,8 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   }
 
   Future<Igambo> fetchAmagambo() async {
-    final response = await http.get(Uri.https('jsonplaceholder.typicode.com',
+    final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
-
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
@@ -38,7 +37,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
 
   @override
   Widget build(BuildContext context) {
-    _amagambo.clear();
+    //_amagambo.clear();
 
     return Scaffold(
       body: Center(

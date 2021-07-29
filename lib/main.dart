@@ -42,7 +42,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MAGAMBO GE KIFULIIRU'),
+        title: Text(
+          'MAGAMBO GE KIFULIIRU',
+          style: TextStyle(fontSize: 18),
+        ),
+        backgroundColor: Colors.lightGreen,
         actions: [
           PopupMenuButton(
             itemBuilder: (BuildContext bc) => [
@@ -69,33 +73,36 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               children: [
                 Card(
                   child: Container(
-                    height: 200,
+                    height: 250,
                     width: 400,
                     child: Row(
                       children: [
                         Padding(
                             padding: EdgeInsets.all(1.0),
                             child: Card(
-                                color: Colors.deepPurple,
+                                color: Colors.white,
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 150,
+                                      height: 180,
                                       width: 80,
                                       child: Image.asset(
                                           'icons/flags/png/cd.png',
                                           package: 'country_icons'),
                                     ),
                                     Container(
-                                      height: 20,
+                                      height: 60,
                                       width: 155,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Colors.purple),
+                                                  Colors.lightGreen),
                                         ),
-                                        child: Text('Kifuliiru-Kifuliiru'),
+                                        child: Text(
+                                          'Kifuliiru-Kifuliiru',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
                                         onPressed: () {
                                           Navigator.push(
                                             context,
@@ -109,26 +116,26 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   ],
                                 ))),
                         Padding(
-                            padding: EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(1.0),
                             child: Card(
-                                color: Colors.deepPurple,
+                                color: Colors.white,
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 150,
+                                      height: 180,
                                       width: 80,
                                       child: Image.asset(
                                           'icons/flags/png/tz.png',
                                           package: 'country_icons'),
                                     ),
                                     Container(
-                                      height: 20,
+                                      height: 60,
                                       width: 155,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Colors.purple),
+                                                  Colors.lightGreen),
                                         ),
                                         child: Text('Kifuliiru-Kiswahili'),
                                         onPressed: () {
@@ -149,31 +156,31 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
                 Card(
                   child: Container(
-                    height: 200,
+                    height: 250,
                     width: 400,
                     child: Row(
                       children: [
                         Padding(
-                            padding: EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(1.0),
                             child: Card(
-                                color: Colors.deepPurple,
+                                color: Colors.white,
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 160,
+                                      height: 180,
                                       width: 80,
                                       child: Image.asset(
                                           'icons/flags/png/fr.png',
                                           package: 'country_icons'),
                                     ),
                                     Container(
-                                      height: 20,
+                                      height: 60,
                                       width: 155,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Colors.purple),
+                                                  Colors.lightGreen),
                                         ),
                                         child: Text('Kifuliiru-Kifaransa'),
                                         onPressed: () {
@@ -189,26 +196,26 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   ],
                                 ))),
                         Padding(
-                            padding: EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(1.0),
                             child: Card(
-                                color: Colors.deepPurple,
+                                color: Colors.white,
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 160,
+                                      height: 180,
                                       width: 80,
                                       child: Image.asset(
                                           'icons/flags/png/us.png',
                                           package: 'country_icons'),
                                     ),
                                     Container(
-                                      height: 20,
+                                      height: 60,
                                       width: 150,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Colors.purple),
+                                                  Colors.lightGreen),
                                         ),
                                         child: Text('Kifuliiru-Kingereza'),
                                         onPressed: () {
