@@ -12,7 +12,7 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<Igambo> futureAmagambo;
   // ignore: deprecated_member_use
-  var _amagambo;
+  var amagambo = [];
   var igambo;
 
   @override
@@ -21,40 +21,38 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     futureAmagambo = fetchAmagambo();
   }
 
-  Future<Igambo> fetchAmagambo() async {
+  fetchAmagambo() async {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return Igambo.fromJson(jsonDecode(response.body));
+      setState(() {
+        return amagambo = jsonDecode(response.body);
+      });
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
+      setState(() {
+        amagambo = [];
+      });
       throw Exception('Twayabirwa ukulonga amagambo');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    //_amagambo.clear();
-
     return Scaffold(
       body: Center(
-        child: FutureBuilder<Igambo>(
-          future: futureAmagambo,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data!.igamboMuKifuliiru);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-
-            // By default, show a loading spinner.
-            return CircularProgressIndicator();
-          },
-        ),
-      ),
+          child: ListView.builder(
+        itemCount: amagambo.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(amagambo[index]['title']),
+            subtitle: Text(amagambo[index]['']),
+          );
+        },
+      )),
     );
   }
 }
