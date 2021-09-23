@@ -10,7 +10,6 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 }
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
-  late Future<Igambo> futureAmagambo;
   // ignore: deprecated_member_use
   var amagambo = [];
   var igambo;
@@ -18,15 +17,20 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   @override
   void initState() {
     super.initState();
-    futureAmagambo = fetchAmagambo();
+    fetchAmagambo();
   }
 
   fetchAmagambo() async {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+
+    print(response.statusCode);
+
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
+      print(response.body);
+
       setState(() {
         return amagambo = jsonDecode(response.body);
       });
@@ -49,7 +53,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(amagambo[index]['title']),
-            subtitle: Text(amagambo[index]['']),
+            subtitle: Text(amagambo[index]['sobanuro']),
           );
         },
       )),
