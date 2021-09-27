@@ -52,376 +52,86 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
           children: [
-            Column(
-              children: [
-                ListView(
+            Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Image.asset(
+                'assets/images/ibufuliiru.png',
+                fit: BoxFit.fill,
+              ),
+            ),
+            Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Center(
+                child: GridView(
                   shrinkWrap: true,
-                  //padding: EdgeInsets.all(10.0),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.0,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
+                  ),
                   children: [
-                    Text(
-                      '1. Kifuliiru mu Kifuliiru na mu zindi ndeto',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    //Nahindula byondabisiri hano higulu lyokutola indeto
                     Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 400,
                       decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                        child: GridView(
-                          padding: EdgeInsets.zero,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 1,
-                          ),
-                          scrollDirection: Axis.vertical,
+                      child: Card(
+                        child: Column(
                           children: [
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Color(0xFFF5F5F5),
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
+                            InkWell(
                               child: Column(
-                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              KifuliiruNeKifuliiru(),
-                                        ),
-                                      );
-                                    },
-                                    child: Image.asset(
-                                      'assets/images/RDC.png',
-                                      width: double.infinity,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15, 15, 15, 25),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          KifuliiruNeKifuliiru(),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Text(
-                                                    'Kifuliiru - Kifuliiru',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Poppins',
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    )),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
+                                  Image.asset('assets/images/rdc.png'),
+                                  Text('Kifuliiru - Kifuliiru')
                                 ],
                               ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              onTap: () => KifuliiruNeKifuliiru(),
                             ),
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Color(0xFFF5F5F5),
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              KifuliiruNeKiswahili(),
-                                        ),
-                                      );
-                                    },
-                                    child: Image.asset(
-                                      'assets/images/Tanzania.png',
-                                      width: double.infinity,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15, 15, 15, 25),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          KifuliiruNeKiswahili(),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Text(
-                                                  'Kifuliiru - Kiswahili',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Color(0xFFF5F5F5),
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              KifuliiruNeKifaransa(),
-                                        ),
-                                      );
-                                    },
-                                    child: Image.asset(
-                                      'assets/images/France.png',
-                                      width: double.infinity,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15, 15, 15, 25),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          KifuliiruNeKifaransa(),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Text(
-                                                  'Kifuliiru - Kifaransa',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 0),
-                                          child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Color(0xFFF5F5F5),
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              KifuliiruNeKingereza(),
-                                        ),
-                                      );
-                                    },
-                                    child: Image.asset(
-                                      'assets/images/USA.png',
-                                      width: double.infinity,
-                                      height: 120,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15, 15, 15, 25),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          KifuliiruNeKingereza(),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Text(
-                                                  'Kifuliiru - Kingereza',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 8, 0, 0),
-                                          child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
                           ],
                         ),
                       ),
                     ),
-
-                    ///
                     Card(
-                        child: Column(
-                      children: [
-                        Text('2. Myazi ya zene.'),
-                        PageView(
-                          controller: PageController(
-                            initialPage: 1,
-                          ),
-                          onPageChanged: _onPageViewChange(1),
-                          children: [
-                            Text('Myazi ya zene 1.'),
-                            Text('Myazi ya zene 2.'),
-                            Text('Myazi ya zene 3.'),
-                            Text('Myazi ya zene 4.'),
-                            Text('Myazi ya zene 5.'),
-                            Text('Myazi ya zene 6.'),
-                            Text('Myazi ya zene 7.')
-                          ],
-                        ),
-                      ],
-                    ))
+                      child: Column(
+                        children: [
+                          Image.asset('assets/images/Tanzania.png'),
+                          Text('Kifuliiru - Kiswahili')
+                        ],
+                      ),
+                    ),
+                    Card(
+                      child: Column(
+                        children: [
+                          Image.asset('assets/images/France.png'),
+                          Text('Kifuliiru - Kifaransa')
+                        ],
+                      ),
+                    ),
+                    Card(
+                      child: Column(
+                        children: [
+                          Image.asset('assets/images/USA.png'),
+                          Text('Kifuliiru - Kingereza')
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            )
           ],
         ),
       ),
@@ -431,7 +141,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('NDETO YIITU : KIFULIIRU'),
+              child: Text(''),
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
                 image: DecorationImage(
