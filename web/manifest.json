@@ -1,11 +1,11 @@
 {
-    "name": "sobanura_kifuliiru",
-    "short_name": "sobanura_kifuliiru",
+    "name": "Kifuliiru",
+    "short_name": "Kifuliiru",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Tulonge amagambo ge Kifuliiru.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

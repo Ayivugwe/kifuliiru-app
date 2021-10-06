@@ -1,6 +1,5 @@
 class Igambo {
-  final int id;
-
+  final String id;
   final String igamboMuKifuliiru;
   final String sobanuuroYalyoMuKifuliiru,
       sobanuuroYalyoMuKiswahili,
@@ -18,11 +17,11 @@ class Igambo {
 
   factory Igambo.fromJson(Map<String, dynamic> json) {
     return Igambo(
-        id: json['id'] as int,
-        igamboMuKifuliiru: json['title'] as String,
-        sobanuuroYalyoMuKifuliiru: json['sobaanuro'] as String,
-        sobanuuroYalyoMuKiswahili: json['sobaanuroYeKiswahili'] as String,
-        sobanuuroYalyoMuKifaransa: json['sobaanuroYeKifaransa'] as String,
-        sobanuuroYalyoMuKingereza: json['sobaanuroYeKingereza'] as String);
+        id: json['_id'].toString(),
+        igamboMuKifuliiru: json['title'].toString(),
+        sobanuuroYalyoMuKifuliiru: json['sobaanuro'].toString(),
+        sobanuuroYalyoMuKiswahili: json['sobaanuroYeKiswahili'].toString(),
+        sobanuuroYalyoMuKifaransa: json['sobaanuroYeKifaransa'].toString(),
+        sobanuuroYalyoMuKingereza: json['sobaanuroYeKingereza'].toString());
   }
 }
