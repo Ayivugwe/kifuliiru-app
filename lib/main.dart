@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'myazi.dart';
@@ -52,76 +55,225 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.white,
       body: Center(
-        child: ListView(
-          children: [
-            Card(
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                height: 200,
+        child: ListView(children: [
+          Card(
+            child: Container(
+                height: 100,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: Image.asset(
-                  'assets/images/ibufuliiru.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Divider(),
-            Container(
-              height: 300,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Center(
-                child: GridView(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.0,
-                    crossAxisSpacing: 5.0,
-                    mainAxisSpacing: 5.0,
-                  ),
+                child: Column(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => KifuliiruNeKifuliiru()),
-                        );
-                      },
-                      child: CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage('assets/images/rdc.png'),
+                    Text(
+                      'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: AssetImage('assets/images/tanzania.png'),
-                    ),
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: AssetImage('assets/images/france.png'),
-                    ),
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: AssetImage('assets/images/USA.png'),
+                    Text(
+                      'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
-                ),
-              ),
-            )
-          ],
-        ),
+                )),
+          ),
+          Card(
+            child: Container(
+              height: 300,
+              width: MediaQuery.of(context).size.width,
+              child: Column(children: [
+                Text('Magambo ge\'Kifuliiru'),
+                Column(
+                  children: [
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKifuliiru()),
+                              );
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.blueAccent.shade100,
+                              ),
+                              child: Column(children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: 100,
+                                  child: Image.asset(
+                                    'assets/images/rdc.png',
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.center,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  child: Text('Kifuliiru - Kifuliiru'),
+                                ),
+                              ]),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKiswahili()),
+                              );
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.blueAccent.shade100,
+                              ),
+                              child: Column(children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: 100,
+                                  child: Image.asset(
+                                    'assets/images/tanzania.png',
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.center,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  child: Text('Kifuliiru - Kiswahili'),
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ]),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKifaransa()),
+                              );
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.blueAccent.shade100,
+                              ),
+                              child: Column(children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: 100,
+                                  child: Image.asset(
+                                    'assets/images/france.png',
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.center,
+                                    // height: 190,
+                                    // width: 100,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  child: Text('Kifuliiru - Kifaransa'),
+                                ),
+                              ]),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        KifuliiruNeKingereza()),
+                              );
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.blueAccent,
+                              ),
+                              child: Column(children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: 100,
+                                  child: Image.asset(
+                                    'assets/images/USA.png',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  child: Text('Kifuliiru - Kingereza'),
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ]),
+                  ],
+                )
+              ]),
+            ),
+          ),
+        ]),
       ),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.all(5),
 
           children: <Widget>[
             DrawerHeader(
