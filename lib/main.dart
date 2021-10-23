@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
@@ -62,31 +63,37 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
-                    Text(
-                      'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                    Text(
-                      'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                          'Indeto yiitu twehe twe\'beno yo. \nTugisime, tugimenye, tugimenyeese na\'bandi bandu.',
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.roboto(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          )),
                     ),
                   ],
                 )),
           ),
           Card(
             child: Container(
-              height: 300,
               width: MediaQuery.of(context).size.width,
               child: Column(children: [
                 Text('Magambo ge\'Kifuliiru'),
+                SizedBox(
+                  height: 10,
+                ),
                 Column(
                   children: [
                     Row(
@@ -116,7 +123,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  height: 100,
+                                  height: 170,
                                   child: Image.asset(
                                     'assets/images/rdc.png',
                                     fit: BoxFit.contain,
@@ -156,7 +163,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  height: 100,
+                                  height: 170,
                                   child: Image.asset(
                                     'assets/images/tanzania.png',
                                     fit: BoxFit.contain,
@@ -204,13 +211,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  height: 100,
+                                  height: 170,
                                   child: Image.asset(
                                     'assets/images/france.png',
                                     fit: BoxFit.contain,
                                     alignment: Alignment.center,
-                                    // height: 190,
-                                    // width: 100,
                                   ),
                                 ),
                                 SizedBox(
@@ -246,7 +251,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  height: 100,
+                                  height: 170,
                                   child: Image.asset(
                                     'assets/images/USA.png',
                                     fit: BoxFit.contain,
@@ -268,6 +273,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               ]),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Card(
+            child: Container(
+              child: Text('Gundi mwazi'),
+            ),
+          )
         ]),
       ),
       drawer: Drawer(
@@ -479,6 +492,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               Icons.home,
               color: Colors.black,
             ),
+            activeIcon: new Icon(
+              Icons.home,
+              color: Colors.blue,
+            ),
             label: 'Ndondeezo',
           ),
           BottomNavigationBarItem(
@@ -499,6 +516,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               icon: Icon(
                 Icons.chat,
                 color: Colors.black,
+              ),
+              activeIcon: Icon(
+                Icons.chat,
+                color: Colors.blue,
               ),
               label: 'Tuganuule'),
         ],

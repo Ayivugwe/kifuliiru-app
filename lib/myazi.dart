@@ -9,6 +9,7 @@ class _MyaziState extends State<Myazi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Center(
           child: ListTile(
         leading: Icon(Icons.info_outline),
