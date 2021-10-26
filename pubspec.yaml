@@ -68,8 +68,7 @@ flutter:
     - assets/videos/
     - assets/audios/
     - assets/lottie_animations/
-
-  
+    - assets/database/kifuliiru.db  
 
   # To add assets to your application, add an assets section, like this:
 # assets:
