@@ -32,13 +32,13 @@ class GamboLihyahya extends StatelessWidget {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Gambo lihyahya"),
+        title: new Text("Bika igambo lihyahya"),
       ),
       body: new Center(
         child: Column(children: [
           Card(
             child: Text(
-                'Muyegerere! Mugweti igambo lihyahya kwandi li isobaanuro? Mutumenyeese hano ku namuyeeholo witu.'),
+                'Muyegerere! Mugweti igambo lihyahya kwandi li\'sobaanuro? Mutumenyeese hano.'),
           ),
           SizedBox(
             height: 10,
