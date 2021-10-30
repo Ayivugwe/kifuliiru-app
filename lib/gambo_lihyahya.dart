@@ -47,45 +47,52 @@ class GamboLihyahya extends StatelessWidget {
             child: Column(
               children: [
                 TextField(
+                  keyboardType: TextInputType.text,
+                  minLines: 1,
+                  maxLines: 5,
                   controller: txtControllerKifuliiru,
                 ),
                 TextField(
+                  keyboardType: TextInputType.text,
+                  minLines: 1,
+                  maxLines: 5,
                   autocorrect: false,
                   expands: true,
-                  maxLines: 5,
                   showCursor: true,
                   textAlign: TextAlign.left,
                   textDirection: TextDirection.ltr,
-                  minLines: 1,
                   controller: txtControllerKifuliiruKifuliiru,
                 ),
                 TextField(
+                  keyboardType: TextInputType.text,
+                  minLines: 1,
+                  maxLines: 5,
                   autocorrect: false,
                   expands: true,
-                  maxLines: 5,
                   showCursor: true,
                   textAlign: TextAlign.left,
                   textDirection: TextDirection.ltr,
-                  minLines: 1,
                   controller: txtControllerKifuliiruKiswahili,
                 ),
                 TextField(
+                    keyboardType: TextInputType.text,
+                    minLines: 1,
+                    maxLines: 5,
                     autocorrect: false,
                     expands: true,
-                    maxLines: 5,
                     showCursor: true,
                     textAlign: TextAlign.left,
                     textDirection: TextDirection.ltr,
-                    minLines: 1,
                     controller: txtControllerKifuliiruKifaransa),
                 TextField(
+                    keyboardType: TextInputType.text,
+                    minLines: 1,
+                    maxLines: 5,
                     autocorrect: false,
                     expands: true,
-                    maxLines: 5,
                     showCursor: true,
                     textAlign: TextAlign.left,
                     textDirection: TextDirection.ltr,
-                    minLines: 1,
                     controller: txtControllerKifuliiruKingereza),
                 SizedBox(
                   height: 20,
@@ -100,7 +107,7 @@ class GamboLihyahya extends StatelessWidget {
                       // Get a location using getDatabasesPath
                       var databasesPath = await getDatabasesPath();
                       String path =
-                          join(databasesPath, 'assets/database/demo.db');
+                          join(databasesPath, 'assets/database/kifuliiru.db');
 
                       // Delete the database
                       await deleteDatabase(path);

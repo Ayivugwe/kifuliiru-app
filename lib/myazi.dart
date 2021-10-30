@@ -9,10 +9,12 @@ class _MyaziState extends State<Myazi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text('Myazi'),
+      ),
       body: Center(
           child: ListTile(
-        leading: Icon(Icons.info_outline),
+        leading: Icon(Icons.circle_sharp),
         trailing: Icon(Icons.details),
         title: Text('Itwe lyo\' mwazi'),
         subtitle: Text('Umwazi munini'),

@@ -316,8 +316,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(builder: (context) => GamboLihyahya()),
                   );
-
-                  Navigator.pop(context);
                 },
               ),
             ),
@@ -341,8 +339,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (context) => KifuliiruNeKifuliiru()),
                   );
-
-                  Navigator.pop(context);
                 },
               ),
             ),
@@ -365,8 +361,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (context) => KifuliiruNeKiswahili()),
                   );
-
-                  Navigator.pop(context);
                 },
               ),
             ),
@@ -390,8 +384,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (context) => KifuliiruNeKifaransa()),
                   );
-
-                  Navigator.pop(context);
                 },
               ),
             ),
@@ -411,8 +403,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (context) => KifuliiruNeKingereza()),
                   );
-
-                  Navigator.pop(context);
                 },
               ),
             ),
