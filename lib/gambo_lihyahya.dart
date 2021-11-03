@@ -197,7 +197,7 @@ class GamboLihyahya extends StatelessWidget {
 
   countValue() async {
 // Count the records
-    int count = Sqflite.firstIntValue(
+    int? count = Sqflite.firstIntValue(
         await database.rawQuery('SELECT COUNT(*) FROM Magambo_ge_Kifuliiru'));
     assert(count == 2);
   }

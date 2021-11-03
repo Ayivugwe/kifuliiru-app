@@ -59,7 +59,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         child: ListView(children: [
           Card(
             child: Container(
-                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade100,
+                ),
+                height: 200,
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
@@ -117,27 +120,24 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     BorderRadius.all(Radius.circular(10)),
                                 color: Colors.blueAccent.shade100,
                               ),
-                              child: Column(children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  height: 170,
-                                  child: Image.asset(
-                                    'assets/images/rdc.png',
-                                    fit: BoxFit.contain,
-                                    alignment: Alignment.center,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 20,
-                                  child: Text('Kifuliiru - Kifuliiru'),
-                                ),
-                              ]),
+                              child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Positioned(
+                                      top: 40,
+                                      height: 100,
+                                      width: 100,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.blue,
+                                        backgroundImage: AssetImage(
+                                          'assets/images/rdc.png',
+                                        ),
+                                      )),
+                                  Positioned(
+                                      bottom: 20,
+                                      child: Text('Kifuliiru-Kifuliiru'))
+                                ],
+                              ),
                             ),
                           ),
                           InkWell(
@@ -157,27 +157,22 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     BorderRadius.all(Radius.circular(10)),
                                 color: Colors.blueAccent.shade100,
                               ),
-                              child: Column(children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  height: 170,
-                                  child: Image.asset(
-                                    'assets/images/tanzania.png',
-                                    fit: BoxFit.contain,
-                                    alignment: Alignment.center,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 20,
-                                  child: Text('Kifuliiru - Kiswahili'),
-                                ),
-                              ]),
+                              child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Positioned(
+                                      top: 20,
+                                      height: 100,
+                                      width: 100,
+                                      child: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/images/Tanzania.png'),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        bottom: 20,
+                                        child: Text('KIfuliiru-Kiswahili'))
+                                  ]),
                             ),
                           ),
                         ]),
@@ -205,27 +200,23 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     BorderRadius.all(Radius.circular(10)),
                                 color: Colors.blueAccent.shade100,
                               ),
-                              child: Column(children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  height: 170,
-                                  child: Image.asset(
-                                    'assets/images/france.png',
-                                    fit: BoxFit.contain,
-                                    alignment: Alignment.center,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 20,
-                                  child: Text('Kifuliiru - Kifaransa'),
-                                ),
-                              ]),
+                              child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Positioned(
+                                      top: 20,
+                                      height: 100,
+                                      width: 100,
+                                      child: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/images/france.png'),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: 20,
+                                      child: Text('Kifuliiru - Kifaransa'),
+                                    ),
+                                  ]),
                             ),
                           ),
                           InkWell(
@@ -245,26 +236,23 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     BorderRadius.all(Radius.circular(10)),
                                 color: Colors.blueAccent,
                               ),
-                              child: Column(children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  height: 170,
-                                  child: Image.asset(
-                                    'assets/images/USA.png',
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  height: 20,
-                                  child: Text('Kifuliiru - Kingereza'),
-                                ),
-                              ]),
+                              child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Positioned(
+                                      top: 20,
+                                      height: 100,
+                                      width: 100,
+                                      child: CircleAvatar(
+                                        backgroundImage:
+                                            AssetImage('assets/images/USA.png'),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: 20,
+                                      child: Text('Kifuliiru - Kingereza'),
+                                    ),
+                                  ]),
                             ),
                           ),
                         ]),
@@ -278,9 +266,50 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           ),
           Card(
             child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
               child: Text('Gundi mwazi'),
             ),
-          )
+          ),
+          Card(
+            child: Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              child: PageView(
+                children: [
+                  Container(
+                    child: Stack(
+                      alignment: AlignmentDirectional.center,
+                      children: [
+                        Positioned(
+                          top: 20,
+                          height: 70,
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.asset('assets/images/kifuliiru.png'),
+                        ),
+                        Positioned(
+                          bottom: 40,
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                              'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                        ),
+                        Positioned(
+                            bottom: 20,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.favorite),
+                                Icon(Icons.share),
+                              ],
+                            ))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ]),
       ),
       drawer: Drawer(
