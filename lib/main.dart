@@ -79,7 +79,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     Padding(
                       padding: EdgeInsets.all(5),
                       child: Text(
-                          'Indeto yiitu twehe twe\'beno yo. \nTugisime, tugimenye, tugimenyeese na\'bandi bandu.',
+                          'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
                           textAlign: TextAlign.left,
                           style: GoogleFonts.roboto(
                             fontSize: 14,
@@ -124,7 +124,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                 alignment: AlignmentDirectional.center,
                                 children: [
                                   Positioned(
-                                      top: 40,
+                                      top: 20,
                                       height: 100,
                                       width: 100,
                                       child: CircleAvatar(
@@ -273,8 +273,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           ),
           Card(
             child: Container(
+              padding: EdgeInsets.all(5),
               height: 200,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width / 2,
               child: PageView(
                 children: [
                   Container(
