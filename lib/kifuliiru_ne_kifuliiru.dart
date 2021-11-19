@@ -19,6 +19,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   // ignore: deprecated_member_use
 
   late Future<Igambo> amagambo;
+
   var igambo;
 
   @override
@@ -33,6 +34,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
 
+    print(response.statusCode);
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.

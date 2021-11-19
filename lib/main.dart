@@ -329,197 +329,177 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               ),
             ),
             Divider(),
-            Card(
-              child: ListTile(
-                title: Text('Yongera igambo lihyahya'),
-                leading: Icon(
-                  Icons.add,
-                  size: 30,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GamboLihyahya()),
-                  );
-                },
+            ListTile(
+              title: Text('Yongera igambo lihyahya'),
+              leading: Icon(
+                Icons.add,
+                size: 30,
               ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GamboLihyahya()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(
-                  Icons.flag,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                tileColor: Colors.white,
-                title: Text('Kifuliiru-Kifuliiru'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => KifuliiruNeKifuliiru()),
-                  );
-                },
+            ListTile(
+              leading: Icon(
+                Icons.flag,
+                color: Colors.blue,
+                size: 30,
               ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
+              ),
+              tileColor: Colors.white,
+              title: Text('Kifuliiru-Kifuliiru'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KifuliiruNeKifuliiru()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(
-                  Icons.flag,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Kifuliiru-Kiswahili'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => KifuliiruNeKiswahili()),
-                  );
-                },
+            ListTile(
+              leading: Icon(
+                Icons.flag,
+                color: Colors.blue,
+                size: 30,
               ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
+              ),
+              title: Text('Kifuliiru-Kiswahili'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KifuliiruNeKiswahili()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(
-                  Icons.flag,
-                  color: Colors.blue,
-                  size: 30,
-                ),
-                tileColor: Colors.white,
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Kifuliiru-Kifaransa'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => KifuliiruNeKifaransa()),
-                  );
-                },
+            ListTile(
+              leading: Icon(
+                Icons.flag,
+                color: Colors.blue,
+                size: 30,
               ),
+              tileColor: Colors.white,
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
+              ),
+              title: Text('Kifuliiru-Kifaransa'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KifuliiruNeKifaransa()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.flag, color: Colors.blue),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Kifuliiru-Kingereza'),
-                hoverColor: Colors.greenAccent.shade700,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => KifuliiruNeKingereza()),
-                  );
-                },
+            ListTile(
+              leading: Icon(Icons.flag, color: Colors.blue),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
               ),
+              title: Text('Kifuliiru-Kingereza'),
+              hoverColor: Colors.greenAccent.shade700,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => KifuliiruNeKingereza()),
+                );
+              },
             ),
             Divider(),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.list_rounded, color: Colors.blue),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Imyazi'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Myazi()),
-                  );
-                },
+            ListTile(
+              leading: Icon(Icons.list_rounded, color: Colors.blue),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
               ),
+              title: Text('Imyazi'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Myazi()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.question_answer, color: Colors.blue),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Twehe'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyaziYitu()),
-                  );
-                },
+            ListTile(
+              leading: Icon(Icons.question_answer, color: Colors.blue),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
               ),
+              title: Text('Twehe'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyaziYitu()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.web_rounded, color: Colors.blue),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Namuyehuulo witu'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiteWebYitu()),
-                  );
-                },
+            ListTile(
+              leading: Icon(Icons.web_rounded, color: Colors.blue),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
               ),
+              title: Text('Namuyehuulo witu'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SiteWebYitu()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.radio, color: Colors.blue),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                title: Text('Radio Ibufuliiru'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RadioIbufuliiru()),
-                  );
-                },
+            ListTile(
+              leading: Icon(Icons.radio, color: Colors.blue),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
               ),
+              title: Text('Radio Ibufuliiru'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RadioIbufuliiru()),
+                );
+              },
             ),
-            Card(
-              child: ListTile(
-                leading: Icon(Icons.settings, color: Colors.blue),
-                trailing: Icon(Icons.dark_mode),
-                title: Text('Hindula'),
-              ),
+            ListTile(
+              leading: Icon(Icons.settings, color: Colors.blue),
+              trailing: Icon(Icons.dark_mode),
+              title: Text('Hindula'),
             ),
           ],
         ),
