@@ -19,15 +19,14 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   // ignore: deprecated_member_use
 
   late Future<Igambo> amagambo;
-
+  List<Igambo> listeAmagambo = [];
   var igambo;
 
   @override
   void initState() {
     super.initState();
     amagambo = fetchAmagambo();
-
-    print(amagambo);
+    amagambo.print(amagambo);
   }
 
   Future<Igambo> fetchAmagambo() async {
