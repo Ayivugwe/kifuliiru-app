@@ -48,47 +48,50 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text(
           'KIFULIIRU NDETO YIITU',
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 18, color: Colors.black),
         ),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.greenAccent.shade400,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       backgroundColor: Colors.white,
       body: Center(
         child: ListView(children: [
-          Card(
-            child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.amber.shade100,
-                ),
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.roboto(
-                          fontSize: 20,
-                        ),
+          Container(
+              decoration: BoxDecoration(
+                  color: Colors.greenAccent.shade400,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(5),
+                      bottomRight: Radius.circular(70))),
+              height: 130,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
+                      textAlign: TextAlign.left,
+                      style: GoogleFonts.roboto(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Text(
-                          'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ],
-                )),
-          ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                        'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ],
+              )),
           Card(
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -113,8 +116,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               );
                             },
                             child: Container(
-                              width: 200,
-                              height: 200,
+                              width: 150,
+                              height: 170,
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -133,6 +136,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                           'assets/images/rdc.png',
                                         ),
                                       )),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                   Positioned(
                                       bottom: 20,
                                       child: Text('Kifuliiru-Kifuliiru'))
@@ -150,8 +156,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               );
                             },
                             child: Container(
-                              width: 200,
-                              height: 200,
+                              width: 150,
+                              height: 170,
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -166,8 +172,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                       width: 100,
                                       child: CircleAvatar(
                                         backgroundImage: AssetImage(
-                                            'assets/images/Tanzania.png'),
+                                            'assets/images/tanzania.png'),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     Positioned(
                                         bottom: 20,
@@ -193,8 +202,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               );
                             },
                             child: Container(
-                              width: 200,
-                              height: 200,
+                              width: 150,
+                              height: 170,
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -211,6 +220,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                         backgroundImage: AssetImage(
                                             'assets/images/france.png'),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     Positioned(
                                       bottom: 20,
@@ -229,12 +241,12 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               );
                             },
                             child: Container(
-                              width: 200,
-                              height: 200,
+                              width: 150,
+                              height: 170,
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Colors.blueAccent,
+                                color: Colors.blueAccent.shade100,
                               ),
                               child: Stack(
                                   alignment: AlignmentDirectional.center,
@@ -248,6 +260,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                             AssetImage('assets/images/USA.png'),
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     Positioned(
                                       bottom: 20,
                                       child: Text('Kifuliiru - Kingereza'),
@@ -257,19 +272,23 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                         ]),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ]),
             ),
           ),
           SizedBox(
             height: 10,
           ),
-          Card(
-            child: Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              child: Text('Gundi mwazi'),
-            ),
+          Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            child: Text('Gundi mwazi'),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
           ),
           Card(
             child: Container(
@@ -279,6 +298,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               child: PageView(
                 children: [
                   Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5),
+                            bottomRight: Radius.circular(5))),
                     child: Stack(
                       alignment: AlignmentDirectional.center,
                       children: [

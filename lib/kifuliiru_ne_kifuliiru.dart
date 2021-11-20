@@ -26,7 +26,6 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   void initState() {
     super.initState();
     amagambo = fetchAmagambo();
-    amagambo.print(amagambo);
   }
 
   Future<Igambo> fetchAmagambo() async {
