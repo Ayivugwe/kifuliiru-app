@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
@@ -53,7 +54,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           'KIFULIIRU NDETO YIITU',
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
-        backgroundColor: Colors.greenAccent.shade400,
+        //backgroundColor: HexColor('#f2d7d5'),
+        backgroundColor: Colors.greenAccent.shade700,
         iconTheme: IconThemeData(color: Colors.black),
       ),
       backgroundColor: Colors.white,
@@ -62,6 +64,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           Container(
               decoration: BoxDecoration(
                   color: Colors.greenAccent.shade100,
+                  // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))),
