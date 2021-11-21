@@ -34,127 +34,220 @@ class GamboLihyahya extends StatelessWidget {
       appBar: new AppBar(
         title: new Text("Bika igambo lihyahya"),
       ),
-      body: new Center(
-        child: Column(children: [
-          Card(
-            child: Text(
-                'Muyegerere! Mugweti igambo lihyahya kwandi li\'sobaanuro? Mutumenyeese hano.'),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Card(
-            child: Column(
-              children: [
-                TextField(
-                  keyboardType: TextInputType.text,
-                  minLines: 1,
-                  maxLines: 5,
-                  controller: txtControllerKifuliiru,
+      body: new Padding(
+        padding: EdgeInsets.all(10),
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+                  'Yandika ngisi gambo lyo\'yiji mu ndeto ngisi kwo zikulirikirini'),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                minLines: 1,
+                maxLines: 5,
+                controller: txtControllerKifuliiru,
+                decoration: InputDecoration(
+                  labelText: 'Igambo mu Kifuliiru*',
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.black87,
+                      width: 1.0,
+                    ),
+                  ),
                 ),
-                TextField(
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                minLines: 1,
+                maxLines: 5,
+                autocorrect: false,
+                //expands: true,
+                showCursor: true,
+                decoration: InputDecoration(
+                  labelText: 'Mu Kifuliiru *',
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.black87,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                controller: txtControllerKifuliiruKifuliiru,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                minLines: 1,
+                maxLines: 5,
+                autocorrect: false,
+                //expands: true,
+                decoration: InputDecoration(
+                  labelText: 'Mu Kiswahili',
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.black87,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                showCursor: true,
+
+                controller: txtControllerKifuliiruKiswahili,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextField(
                   keyboardType: TextInputType.text,
                   minLines: 1,
                   maxLines: 5,
                   autocorrect: false,
-                  expands: true,
+                  //expands: true,
                   showCursor: true,
-                  textAlign: TextAlign.left,
-                  textDirection: TextDirection.ltr,
-                  controller: txtControllerKifuliiruKifuliiru,
-                ),
-                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Mu Kifaransa',
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Colors.black87,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  controller: txtControllerKifuliiruKifaransa),
+              SizedBox(
+                height: 15,
+              ),
+              TextField(
                   keyboardType: TextInputType.text,
                   minLines: 1,
                   maxLines: 5,
                   autocorrect: false,
-                  expands: true,
+                  //expands: true,
                   showCursor: true,
-                  textAlign: TextAlign.left,
-                  textDirection: TextDirection.ltr,
-                  controller: txtControllerKifuliiruKiswahili,
-                ),
-                TextField(
-                    keyboardType: TextInputType.text,
-                    minLines: 1,
-                    maxLines: 5,
-                    autocorrect: false,
-                    expands: true,
-                    showCursor: true,
-                    textAlign: TextAlign.left,
-                    textDirection: TextDirection.ltr,
-                    controller: txtControllerKifuliiruKifaransa),
-                TextField(
-                    keyboardType: TextInputType.text,
-                    minLines: 1,
-                    maxLines: 5,
-                    autocorrect: false,
-                    expands: true,
-                    showCursor: true,
-                    textAlign: TextAlign.left,
-                    textDirection: TextDirection.ltr,
-                    controller: txtControllerKifuliiruKingereza),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () async {
-                      /* var db =
+                  decoration: InputDecoration(
+                    labelText: 'Mu Kingereza',
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Colors.black87,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  controller: txtControllerKifuliiruKingereza),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    /* var db =
                           await openDatabase('assets/database/kifuliiru.db');
 
                       await db.close(); */
 
-                      // Get a location using getDatabasesPath
-                      var databasesPath = await getDatabasesPath();
-                      String path =
-                          join(databasesPath, 'assets/database/kifuliiru.db');
+                    // Get a location using getDatabasesPath
+                    var databasesPath = await getDatabasesPath();
+                    String path =
+                        join(databasesPath, 'assets/database/kifuliiru.db');
 
-                      // Delete the database
-                      await deleteDatabase(path);
+                    // Delete the database
+                    // await deleteDatabase(path);
 
-                      // open the database
-                      database = await openDatabase(path, version: 1,
-                          onCreate: (Database db, int version) async {
-                        // When creating the db, create the table
-                        await db.execute(
-                            'CREATE TABLE Magambo_ge_Kifuliiru (id INTEGER PRIMARY KEY, kifuliiru TEXT, kifuliiru_kifuliiru TEXT, kifuliiru_kiswahili TEXT, kifuliiru_kifaransa TEXT, kifuliiru_kingereza TEXT)');
-                      });
+                    // open the database
+                    database = await openDatabase(path, version: 1,
+                        onCreate: (Database db, int version) async {
+                      // When creating the db, create the table
+                      await db.execute(
+                          'CREATE TABLE Magambo_ge_Kifuliiru (id INTEGER PRIMARY KEY, kifuliiru TEXT, kifuliiru_kifuliiru TEXT, kifuliiru_kiswahili TEXT, kifuliiru_kifaransa TEXT, kifuliiru_kingereza TEXT)');
+                    });
 
-                      gamboMuKifuliiru = txtControllerKifuliiru.text;
-                      gamboKifuliiruKifuliiru =
-                          txtControllerKifuliiruKifuliiru.text;
-                      gamboKifuliiruKiswahili =
-                          txtControllerKifuliiruKiswahili.text;
-                      gamboKifuliiruKifaransa =
-                          txtControllerKifuliiruKifaransa.text;
-                      gamboKifuliiruKingereza =
-                          txtControllerKifuliiruKingereza.text;
+                    gamboMuKifuliiru = txtControllerKifuliiru.text;
+                    gamboKifuliiruKifuliiru =
+                        txtControllerKifuliiruKifuliiru.text;
+                    gamboKifuliiruKiswahili =
+                        txtControllerKifuliiruKiswahili.text;
+                    gamboKifuliiruKifaransa =
+                        txtControllerKifuliiruKifaransa.text;
+                    gamboKifuliiruKingereza =
+                        txtControllerKifuliiruKingereza.text;
 
-                      igambo = new Igambo(
-                          id: 1.toString(),
-                          igamboMuKifuliiru: gamboMuKifuliiru,
-                          sobanuuroYalyoMuKifuliiru: gamboKifuliiruKifuliiru,
-                          sobanuuroYalyoMuKiswahili: gamboKifuliiruKiswahili,
-                          sobanuuroYalyoMuKifaransa: gamboKifuliiruKifaransa,
-                          sobanuuroYalyoMuKingereza: gamboKifuliiruKingereza);
+                    igambo = new Igambo(
+                        id: 1.toString(),
+                        igamboMuKifuliiru: gamboMuKifuliiru,
+                        sobanuuroYalyoMuKifuliiru: gamboKifuliiruKifuliiru,
+                        sobanuuroYalyoMuKiswahili: gamboKifuliiruKiswahili,
+                        sobanuuroYalyoMuKifaransa: gamboKifuliiruKifaransa,
+                        sobanuuroYalyoMuKingereza: gamboKifuliiruKingereza);
 
-                      insertData(
-                          gamboMuKifuliiru,
-                          gamboKifuliiruKifuliiru,
-                          gamboKifuliiruKiswahili,
-                          gamboKifuliiruKifaransa,
-                          gamboKifuliiruKingereza);
+                    insertData(
+                        gamboMuKifuliiru,
+                        gamboKifuliiruKifuliiru,
+                        gamboKifuliiruKiswahili,
+                        gamboKifuliiruKifaransa,
+                        gamboKifuliiruKingereza);
 
-                      listeMagmbo.add(igambo);
+                    listeMagmbo.add(igambo);
 
-                      // Close the database
-                      await database.close();
-                    },
-                    child: Text('Bika'))
-              ],
-            ),
-          )
-        ]),
+                    // Close the database
+                    await database.close();
+                  },
+                  child: Text('Bika'))
+            ],
+          ),
+        ),
       ),
     );
   }

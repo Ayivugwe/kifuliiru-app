@@ -61,16 +61,16 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         child: ListView(children: [
           Container(
               decoration: BoxDecoration(
-                  color: Colors.greenAccent.shade400,
+                  color: Colors.greenAccent.shade100,
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      bottomRight: Radius.circular(70))),
-              height: 130,
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20))),
+              height: 140,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(15),
                     child: Text(
                       'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
                       textAlign: TextAlign.left,
@@ -81,9 +81,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(15),
                     child: Text(
-                        'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu.',
+                        'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu',
                         textAlign: TextAlign.left,
                         style: GoogleFonts.roboto(
                           fontSize: 14,
@@ -141,7 +141,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   ),
                                   Positioned(
                                       bottom: 20,
-                                      child: Text('Kifuliiru-Kifuliiru'))
+                                      child: Text(
+                                        'Kifuliiru-Kifuliiru',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ))
                                 ],
                               ),
                             ),
@@ -180,7 +186,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     ),
                                     Positioned(
                                         bottom: 20,
-                                        child: Text('KIfuliiru-Kiswahili'))
+                                        child: Text(
+                                          'Kifuliiru-Kiswahili',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ))
                                   ]),
                             ),
                           ),
@@ -226,7 +238,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     ),
                                     Positioned(
                                       bottom: 20,
-                                      child: Text('Kifuliiru - Kifaransa'),
+                                      child: Text(
+                                        'Kifuliiru - Kifaransa',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ]),
                             ),
@@ -265,7 +283,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                     ),
                                     Positioned(
                                       bottom: 20,
-                                      child: Text('Kifuliiru - Kingereza'),
+                                      child: Text(
+                                        'Kifuliiru - Kingereza',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ]),
                             ),
@@ -281,58 +305,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           ),
           SizedBox(
             height: 10,
-          ),
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            child: Text('Gundi mwazi'),
-            decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(5),
-              height: 200,
-              width: MediaQuery.of(context).size.width / 2,
-              child: PageView(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(5),
-                            bottomRight: Radius.circular(5))),
-                    child: Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        Positioned(
-                          top: 20,
-                          height: 70,
-                          width: MediaQuery.of(context).size.width,
-                          child: Image.asset('assets/images/kifuliiru.png'),
-                        ),
-                        Positioned(
-                          bottom: 40,
-                          height: 60,
-                          width: MediaQuery.of(context).size.width,
-                          child: Text(
-                              'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                        ),
-                        Positioned(
-                            bottom: 20,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.favorite),
-                                Icon(Icons.share),
-                              ],
-                            ))
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
         ]),
       ),
