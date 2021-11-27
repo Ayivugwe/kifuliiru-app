@@ -55,7 +55,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
         //backgroundColor: HexColor('#f2d7d5'),
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
       ),
       backgroundColor: Colors.white,
@@ -63,7 +63,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         child: ListView(children: [
           Container(
               decoration: BoxDecoration(
-                  color: Colors.greenAccent.shade100,
+                  color: Colors.white,
                   // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
@@ -97,6 +97,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               )),
           Card(
             child: Container(
+              
               width: MediaQuery.of(context).size.width,
               child: Column(children: [
                 Text('Magambo ge\'Kifuliiru'),
