@@ -58,257 +58,448 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.red[100],
       body: Center(
         child: ListView(children: [
           Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.white70,
                   // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20))),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30))),
               height: 140,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(30),
                     child: Text(
                       'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
                       textAlign: TextAlign.left,
                       style: GoogleFonts.roboto(
-                        fontSize: 20,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Text(
-                        'Indeto yiitu twehe twe\'beno yo. Tugisime, tugimenye, tugimenyeese na\'bandi bandu',
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.roboto(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
                 ],
               )),
-          Card(
-            child: Container(
-              
-              width: MediaQuery.of(context).size.width,
-              child: Column(children: [
-                Text('Magambo ge\'Kifuliiru'),
-                SizedBox(
-                  height: 10,
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.red[100],
+            ),
+            width: MediaQuery.of(context).size.width,
+            child: Column(children: [
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Magambo ge\'Kifuliiru',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                Column(
-                  children: [
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKifuliiru()),
-                              );
-                            },
-                            child: Container(
-                              width: 150,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Colors.blueAccent.shade100,
-                              ),
-                              child: Stack(
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                children: [
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KifuliiruNeKifuliiru()),
+                            );
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 170,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white54,
+                            ),
+                            child: Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                Positioned(
+                                    top: 20,
+                                    height: 100,
+                                    width: 100,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.blue,
+                                      backgroundImage: AssetImage(
+                                        'assets/images/rdc.png',
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Positioned(
+                                    bottom: 20,
+                                    child: Text(
+                                      'Kifuliiru-Kifuliiru',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KifuliiruNeKiswahili()),
+                            );
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 170,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white54,
+                            ),
+                            child: Stack(
                                 alignment: AlignmentDirectional.center,
                                 children: [
                                   Positioned(
-                                      top: 20,
-                                      height: 100,
-                                      width: 100,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.blue,
-                                        backgroundImage: AssetImage(
-                                          'assets/images/rdc.png',
-                                        ),
-                                      )),
+                                    top: 20,
+                                    height: 100,
+                                    width: 100,
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          'assets/images/tanzania.png'),
+                                    ),
+                                  ),
                                   SizedBox(
                                     height: 10,
                                   ),
                                   Positioned(
                                       bottom: 20,
                                       child: Text(
-                                        'Kifuliiru-Kifuliiru',
+                                        'Kifuliiru-Kiswahili',
                                         style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ))
-                                ],
-                              ),
-                            ),
+                                ]),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKiswahili()),
-                              );
-                            },
-                            child: Container(
-                              width: 150,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Colors.blueAccent.shade100,
-                              ),
-                              child: Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: [
-                                    Positioned(
-                                      top: 20,
-                                      height: 100,
-                                      width: 100,
-                                      child: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/images/tanzania.png'),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Positioned(
-                                        bottom: 20,
-                                        child: Text(
-                                          'Kifuliiru-Kiswahili',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ))
-                                  ]),
+                        ),
+                      ]),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KifuliiruNeKifaransa()),
+                            );
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 170,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white54,
                             ),
+                            child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Positioned(
+                                    top: 20,
+                                    height: 100,
+                                    width: 100,
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          'assets/images/france.png'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Positioned(
+                                    bottom: 20,
+                                    child: Text(
+                                      'Kifuliiru - Kifaransa',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ]),
                           ),
-                        ]),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKifaransa()),
-                              );
-                            },
-                            child: Container(
-                              width: 150,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Colors.blueAccent.shade100,
-                              ),
-                              child: Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: [
-                                    Positioned(
-                                      top: 20,
-                                      height: 100,
-                                      width: 100,
-                                      child: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/images/france.png'),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Positioned(
-                                      bottom: 20,
-                                      child: Text(
-                                        'Kifuliiru - Kifaransa',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ]),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KifuliiruNeKingereza()),
+                            );
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 170,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white54,
                             ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        KifuliiruNeKingereza()),
-                              );
-                            },
-                            child: Container(
-                              width: 150,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Colors.blueAccent.shade100,
-                              ),
-                              child: Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: [
-                                    Positioned(
-                                      top: 20,
-                                      height: 100,
-                                      width: 100,
-                                      child: CircleAvatar(
-                                        backgroundImage:
-                                            AssetImage('assets/images/USA.png'),
+                            child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Positioned(
+                                    top: 20,
+                                    height: 100,
+                                    width: 100,
+                                    child: CircleAvatar(
+                                      backgroundImage:
+                                          AssetImage('assets/images/USA.png'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Positioned(
+                                    bottom: 20,
+                                    child: Text(
+                                      'Kifuliiru - Kingereza',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Positioned(
-                                      bottom: 20,
-                                      child: Text(
-                                        'Kifuliiru - Kingereza',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ]),
-                            ),
+                                  ),
+                                ]),
                           ),
-                        ]),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ]),
-            ),
+                        ),
+                      ]),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ]),
           ),
           SizedBox(
             height: 10,
+          ),
+          Container(
+            height: 300,
+            decoration: BoxDecoration(
+                color: Colors.white70,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                )),
+            child: PageView(children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        top: 20,
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset('assets/images/kifuliiru.png'),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                      ),
+                      Positioned(
+                          bottom: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        top: 20,
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset('assets/images/kifuliiru.png'),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                      ),
+                      Positioned(
+                          bottom: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        top: 20,
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset('assets/images/kifuliiru.png'),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                      ),
+                      Positioned(
+                          bottom: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        top: 20,
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset('assets/images/kifuliiru.png'),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                      ),
+                      Positioned(
+                          bottom: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        top: 20,
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset('assets/images/kifuliiru.png'),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                      ),
+                      Positioned(
+                          bottom: 20,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+            ]),
           ),
         ]),
       ),

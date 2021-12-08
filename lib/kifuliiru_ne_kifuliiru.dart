@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'igambo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -21,6 +22,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<Igambo> amagambo;
   List<Igambo> listeAmagambo = [];
   var igambo;
+  TextEditingController _searchController = new TextEditingController();
 
   @override
   void initState() {
@@ -55,10 +57,20 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
       body: Center(
         child: Column(
           children: [
-            Text('Tulonge abagambo ge Kifuliiru mu Kifuliiru'),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: _searchController,
+              ),
+            ),
             FutureBuilder<Igambo>(
               future: amagambo,
               builder: (context, snapshot) {
+                print(snapshot.data);
+
                 if (snapshot.hasData) {
                   return ExpansionTile(
                     leading: CircleAvatar(
