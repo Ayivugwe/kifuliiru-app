@@ -17,11 +17,11 @@ class Igambo {
 
   factory Igambo.fromJson(Map<String, dynamic> json) {
     return Igambo(
-        id: json['_id'] ?? "",
-        igamboMuKifuliiru: json['title'] ?? "",
-        sobanuuroYalyoMuKifuliiru: json['sobaanuro'] ?? "",
-        sobanuuroYalyoMuKiswahili: json['sobaanuroYeKiswahili'] ?? "",
-        sobanuuroYalyoMuKifaransa: json['sobaanuroYeKifaransa'] ?? "",
-        sobanuuroYalyoMuKingereza: json['sobaanuroYeKingereza'] ?? "");
+        id: json['_id'],
+        igamboMuKifuliiru: json['title'],
+        sobanuuroYalyoMuKifuliiru: json['sobaanuro'],
+        sobanuuroYalyoMuKiswahili: json['sobaanuroYeKiswahili'],
+        sobanuuroYalyoMuKifaransa: json['sobaanuroYeKifaransa'],
+        sobanuuroYalyoMuKingereza: json['sobaanuroYeKingereza']);
   }
 }
