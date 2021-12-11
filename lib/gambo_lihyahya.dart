@@ -225,12 +225,11 @@ class GamboLihyahya extends StatelessWidget {
                         txtControllerKifuliiruKingereza.text;
 
                     igambo = new Igambo(
-                        id: 1.toString(),
-                        igamboMuKifuliiru: gamboMuKifuliiru,
-                        sobanuuroYalyoMuKifuliiru: gamboKifuliiruKifuliiru,
-                        sobanuuroYalyoMuKiswahili: gamboKifuliiruKiswahili,
-                        sobanuuroYalyoMuKifaransa: gamboKifuliiruKifaransa,
-                        sobanuuroYalyoMuKingereza: gamboKifuliiruKingereza);
+                        igambo: gamboMuKifuliiru,
+                        kifuliiru: gamboKifuliiruKifuliiru,
+                        kiswahili: gamboKifuliiruKiswahili,
+                        kifaransa: gamboKifuliiruKifaransa,
+                        kingereza: gamboKifuliiruKingereza);
 
                     insertData(
                         gamboMuKifuliiru,

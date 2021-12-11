@@ -50,24 +50,95 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
         child: Column(
           children: [
             Text('Tulonge abagambo ge Kifuliiru mu Kingereza'),
-            FutureBuilder<Igambo>(
-              future: amagambo,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ExpansionTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.greenAccent,
-                    ),
-                    title: Text(snapshot.data!.igamboMuKifuliiru),
-                    subtitle: Text(snapshot.data!.sobanuuroYalyoMuKifuliiru),
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-
-                // By default, show a loading spinner.
-                return const CircularProgressIndicator();
-              },
+            Card(
+              child: FutureBuilder(
+                future: amagambo,
+                builder: (context, data) {
+                  if (data.hasError) {
+                    //in case if error found
+                    return Center(child: Text("${data.error}"));
+                  } else if (data.hasData) {
+                    //once data is ready this else block will execute
+                    // items will hold all the data of DataModel
+                    //items[index].name can be used to fetch name of product as done below
+                    var items = data.data as List<Igambo>;
+                    return ListView.builder(
+                        // ignore: unnecessary_null_comparison
+                        itemCount: items == null ? 0 : items.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            elevation: 5,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 6),
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Text(
+                                      items[index].igambo.toString(),
+                                    ),
+                                  ),
+                                  Expanded(
+                                      child: Container(
+                                    padding: const EdgeInsets.only(bottom: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: Text(
+                                            items[index].kifuliiru.toString(),
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: Text(items[index]
+                                              .kiswahili
+                                              .toString()),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: Text(items[index]
+                                              .kifaransa
+                                              .toString()),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: Text(items[index]
+                                              .kingereza
+                                              .toString()),
+                                        )
+                                      ],
+                                    ),
+                                  ))
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  } else {
+                    // show circular progress while data is getting fetched from json file
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
             )
           ],
         ),

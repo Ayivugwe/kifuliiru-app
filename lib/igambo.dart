@@ -1,27 +1,24 @@
 class Igambo {
-  final String id;
-  late final String igamboMuKifuliiru;
-  final String sobanuuroYalyoMuKifuliiru,
-      sobanuuroYalyoMuKiswahili,
-      sobanuuroYalyoMuKifaransa,
-      sobanuuroYalyoMuKingereza;
+  String? igambo;
+  String? kifuliiru, kiswahili, kifaransa, kingereza, kishushanyo, holidesirwi;
 
-  Igambo({
-    required this.id,
-    required this.igamboMuKifuliiru,
-    required this.sobanuuroYalyoMuKifuliiru,
-    required this.sobanuuroYalyoMuKiswahili,
-    required this.sobanuuroYalyoMuKifaransa,
-    required this.sobanuuroYalyoMuKingereza,
-  });
+  Igambo(
+      {this.igambo,
+      this.kifuliiru,
+      this.kiswahili,
+      this.kifaransa,
+      this.kingereza,
+      this.kishushanyo,
+      this.holidesirwi});
 
   factory Igambo.fromJson(Map<String, dynamic> json) {
     return Igambo(
-        id: json['_id'],
-        igamboMuKifuliiru: json['title'],
-        sobanuuroYalyoMuKifuliiru: json['sobaanuro'],
-        sobanuuroYalyoMuKiswahili: json['sobaanuroYeKiswahili'],
-        sobanuuroYalyoMuKifaransa: json['sobaanuroYeKifaransa'],
-        sobanuuroYalyoMuKingereza: json['sobaanuroYeKingereza']);
+        igambo: json['Igambo'] ?? "",
+        kifuliiru: json['Kifuliiru'] ?? "",
+        kiswahili: json['Kiswahili'] ?? "",
+        kifaransa: json['Kifaransa'] ?? "",
+        kingereza: json['Kingereza'] ?? "",
+        kishushanyo: json['Kishushanyo'] ?? "",
+        holidesirwi: json['Holidesirwi'] ?? "");
   }
 }
