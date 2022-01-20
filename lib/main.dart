@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kifuliiru/kifuliiru.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'myazi.dart';
@@ -66,20 +67,20 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   color: Colors.white70,
                   // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30))),
-              height: 140,
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15))),
+              height: 220,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      'Muyegerere Tumenye Indeto Yiitu : Kifuliiru',
-                      textAlign: TextAlign.left,
-                      style: GoogleFonts.roboto(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                    padding: EdgeInsets.all(5),
+                    child: Container(
+                      child: Image.asset(
+                        'assets/images/imageHome.png',
+                        fit: BoxFit.fill,
+                        width: MediaQuery.of(context).size.width - 10,
+                        height: 210,
                       ),
                     ),
                   ),
@@ -295,10 +296,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                         ),
                       ]),
+                  SizedBox(
+                    height: 10,
+                  ),
                 ],
-              ),
-              SizedBox(
-                height: 10,
               ),
             ]),
           ),
@@ -306,12 +307,77 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             height: 10,
           ),
           Container(
-            height: 300,
+              decoration: BoxDecoration(
+                  color: Colors.white70,
+                  // color: HexColor('#f2d7d5'),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10))),
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(children: [
+                        Text(
+                          'Kifuliiru ndeto yiitu',
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            'Kifuliiru ndeto yiitu. Ngisi Mufuliiru amusima indeto yage, yo na ndeto yiitu : Kifuliiru.',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.roboto(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Kifuliiru()),
+                                    );
+                                  },
+                                  icon: Icon(Icons.book)),
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              GamboLihyahya()),
+                                    );
+                                  },
+                                  icon: Icon(Icons.read_more))
+                            ],
+                          ),
+                        ),
+                      ])),
+                ],
+              )),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 350,
             decoration: BoxDecoration(
                 color: Colors.white70,
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30),
-                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
                 )),
             child: PageView(children: [
               Padding(
@@ -320,33 +386,46 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   decoration: BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(5))),
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
-                      Positioned(
-                        top: 20,
-                        height: 70,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset('assets/images/kifuliiru.png'),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                      ),
-                      Positioned(
-                          bottom: 20,
-                          child: Row(
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              ),
+                              child: Image.asset(
+                                'assets/images/kifuliiru.png',
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
-                          ))
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -355,35 +434,42 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white54,
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(5))),
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
-                      Positioned(
-                        top: 20,
-                        height: 70,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset('assets/images/kifuliiru.png'),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                      ),
-                      Positioned(
-                          bottom: 20,
-                          child: Row(
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
-                          ))
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -392,35 +478,42 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white54,
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(5))),
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
-                      Positioned(
-                        top: 20,
-                        height: 70,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset('assets/images/kifuliiru.png'),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                      ),
-                      Positioned(
-                          bottom: 20,
-                          child: Row(
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
-                          ))
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -429,35 +522,42 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white54,
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(5))),
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
-                      Positioned(
-                        top: 20,
-                        height: 70,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset('assets/images/kifuliiru.png'),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                      ),
-                      Positioned(
-                          bottom: 20,
-                          child: Row(
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
-                          ))
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -466,35 +566,130 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white54,
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(5))),
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
-                      Positioned(
-                        top: 20,
-                        height: 70,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset('assets/images/kifuliiru.png'),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                            'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                      ),
-                      Positioned(
-                          bottom: 20,
-                          child: Row(
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
-                          ))
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(3),
+                          bottomRight: Radius.circular(3))),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/kifuliiru.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.favorite),
+                              Icon(Icons.share),
+                            ],
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -523,13 +718,12 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               title: Text('Yongera igambo lihyahya'),
               leading: Icon(
                 Icons.add,
-                size: 30,
               ),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               onTap: () {
                 Navigator.push(
                   context,
@@ -539,15 +733,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(
-                Icons.flag,
+                Icons.book_rounded,
                 color: Colors.blue,
-                size: 30,
               ),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               tileColor: Colors.white,
               title: Text('Kifuliiru-Kifuliiru'),
               onTap: () {
@@ -560,15 +753,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(
-                Icons.flag,
+                Icons.book_rounded,
                 color: Colors.blue,
-                size: 30,
               ),
-              trailing: Icon(
+              /*  trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Kifuliiru-Kiswahili'),
               onTap: () {
                 Navigator.push(
@@ -580,16 +772,15 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(
-                Icons.flag,
+                Icons.book_rounded,
                 color: Colors.blue,
-                size: 30,
               ),
               tileColor: Colors.white,
-              trailing: Icon(
+              /*  trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Kifuliiru-Kifaransa'),
               onTap: () {
                 Navigator.push(
@@ -600,12 +791,12 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.flag, color: Colors.blue),
-              trailing: Icon(
+              leading: Icon(Icons.book_rounded, color: Colors.blue),
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Kifuliiru-Kingereza'),
               hoverColor: Colors.greenAccent.shade700,
               onTap: () {
@@ -619,11 +810,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             Divider(),
             ListTile(
               leading: Icon(Icons.list_rounded, color: Colors.blue),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Imyazi'),
               onTap: () {
                 // Update the state of the app
@@ -637,11 +828,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.question_answer, color: Colors.blue),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Twehe'),
               onTap: () {
                 Navigator.push(
@@ -652,11 +843,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.web_rounded, color: Colors.blue),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Namuyehuulo witu'),
               onTap: () {
                 // Update the state of the app
@@ -670,11 +861,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.radio, color: Colors.blue),
-              trailing: Icon(
+              /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
-              ),
+              ), */
               title: Text('Radio Ibufuliiru'),
               onTap: () {
                 // Update the state of the app

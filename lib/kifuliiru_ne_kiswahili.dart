@@ -62,6 +62,10 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                     // items will hold all the data of DataModel
                     //items[index].name can be used to fetch name of product as done below
                     var items = data.data as List<Igambo>;
+                    print('items length ' +
+                        items.length.toString() +
+                        ' elements ' +
+                        items.toString());
                     return ListView.builder(
                         // ignore: unnecessary_null_comparison
                         itemCount: items == null ? 0 : items.length,

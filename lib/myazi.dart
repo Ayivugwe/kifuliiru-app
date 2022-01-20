@@ -10,7 +10,7 @@ class _MyaziState extends State<Myazi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Myazi'),
+        title: Text('Myazi mu Kifuliiru'),
       ),
       body: Center(
           child: Column(
