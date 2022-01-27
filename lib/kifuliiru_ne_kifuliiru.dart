@@ -82,8 +82,8 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return ListTile(
-                            title: Text(snapshot.data!.igambo.toString()),
-                            subtitle: Text(snapshot.data!.kifuliiru.toString()),
+                            title: Text(snapshot.data!.title.toString()),
+                            subtitle: Text(snapshot.data!.sobaanuro.toString()),
                           );
                         } else if (snapshot.hasError) {
                           return Text('${snapshot.error}');

@@ -84,7 +84,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                     width: 50,
                                     height: 50,
                                     child: Text(
-                                      items[index].igambo.toString(),
+                                      items[index].title.toString(),
                                     ),
                                   ),
                                   Expanded(
@@ -100,7 +100,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                           padding: const EdgeInsets.only(
                                               left: 8, right: 8),
                                           child: Text(
-                                            items[index].kifuliiru.toString(),
+                                            items[index].sobaanuro.toString(),
                                             style: const TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold),
@@ -110,21 +110,21 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                           padding: const EdgeInsets.only(
                                               left: 8, right: 8),
                                           child: Text(items[index]
-                                              .kiswahili
+                                              .sobaanuroYeKiswahili
                                               .toString()),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               left: 8, right: 8),
                                           child: Text(items[index]
-                                              .kifaransa
+                                              .sobaanuroYeKifaransa
                                               .toString()),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               left: 8, right: 8),
                                           child: Text(items[index]
-                                              .kingereza
+                                              .sobaanuroYeKingereza
                                               .toString()),
                                         )
                                       ],
