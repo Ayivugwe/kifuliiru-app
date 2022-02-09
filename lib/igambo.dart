@@ -51,7 +51,7 @@ class Igambo {
     sobaanuroYeKingereza = json['Sobaanuro ye Kingereza'];
     ndetoSobanuuro = json['Ndeto_sobanuuro'];
     kishushanyo = json['Kishushanyo'];
-    holidesirwi = json['Holidesirwi'].cast<String>();
+    //holidesirwi = json['Holidesirwi'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
