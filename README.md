@@ -11,6 +11,9 @@ Guno guliri mukolwa tugweti tugakola i application igatugwasa ukuyegerera bwenen
 
 
 <<<<<<< HEAD
+
+Tukole mu Kifuliiru. Tukolere indeto yiitu.
+
 Zatira namuhuulo wiitu hano : https://ibufuliiru.editorx.io/ibufuliiru
 =======
 # Kifuliiru Ndeto Yitu
