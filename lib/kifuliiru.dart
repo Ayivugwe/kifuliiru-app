@@ -21,7 +21,7 @@ class Kifuliiru extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Container(
-        margin: EdgeInsets.all(5),
+        margin: EdgeInsets.all(10),
         child: Column(
           children: [
             Container(
