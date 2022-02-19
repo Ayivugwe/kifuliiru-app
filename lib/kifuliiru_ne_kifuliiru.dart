@@ -1,19 +1,15 @@
-import 'dart:io';
-
-import 'dart:convert' as convert;
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'igambo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:path/path.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:sqflite/sqflite.dart';
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
+  const KifuliiruNeKifuliiru({Key? key}) : super(key: key);
+
   @override
   _KifuliiruNeKifuliiruState createState() => _KifuliiruNeKifuliiruState();
 }
@@ -23,8 +19,9 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
 
   late Future<Igambo> amagambo;
   List<Igambo> listeAmagambo = [];
+  // ignore: prefer_typing_uninitialized_variables
   var igambo;
-  TextEditingController _searchController = new TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -49,22 +46,22 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kifuliiru mu Kifuliiru'),
+        title: const Text('Kifuliiru mu Kifuliiru'),
         backgroundColor: Colors.lightGreen,
       ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: TextField(
                 controller: _searchController,
               ),
             ),
-            Container(
+            SizedBox(
               height: 500,
               child: FutureBuilder(
                 future: amagambo,

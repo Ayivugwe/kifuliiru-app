@@ -1,13 +1,7 @@
-import 'dart:ui';
+// ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:kifuliiru/kifuliiru.dart';
+import 'kifuliiru.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'myazi.dart';
@@ -18,26 +12,31 @@ import 'kifuliiru_ne_kifaransa.dart';
 import 'kifuliiru_ne_kingereza.dart';
 import 'kifuliiru_ne_kiswahili.dart';
 import 'chat.dart';
+
 //import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   final appTitle = 'KIFULIIRU NDETO YIITU';
+
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageWidgetState createState() => _MyHomePageWidgetState();
   final String title = '';
@@ -57,13 +56,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         ),
         //backgroundColor: HexColor('#f2d7d5'),
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       backgroundColor: Colors.red[100],
       body: Center(
         child: ListView(children: [
           Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white70,
                   // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
@@ -74,14 +73,12 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Container(
-                      child: Image.asset(
-                        'assets/images/imageHome.png',
-                        fit: BoxFit.fill,
-                        width: MediaQuery.of(context).size.width - 10,
-                        height: 210,
-                      ),
+                    padding: const EdgeInsets.all(5),
+                    child: Image.asset(
+                      'assets/images/imageHome.png',
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width - 10,
+                      height: 210,
                     ),
                   ),
                 ],
@@ -92,17 +89,17 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             width: MediaQuery.of(context).size.width,
             child: Column(children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 'Magambo ge\'Kifuliiru',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Column(
@@ -116,20 +113,21 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKifuliiru()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKifuliiru()),
                             );
                           },
                           child: Container(
                             width: 150,
                             height: 170,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
                             child: Stack(
                               alignment: AlignmentDirectional.center,
-                              children: [
+                              children: const [
                                 Positioned(
                                     top: 20,
                                     height: 100,
@@ -167,14 +165,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           child: Container(
                             width: 150,
                             height: 170,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
                             child: Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: [
+                                children: const [
                                   Positioned(
                                     top: 20,
                                     height: 100,
@@ -200,7 +198,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                         ),
                       ]),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -218,14 +216,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           child: Container(
                             width: 150,
                             height: 170,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
                             child: Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: [
+                                children: const [
                                   Positioned(
                                     top: 20,
                                     height: 100,
@@ -262,14 +260,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           child: Container(
                             width: 150,
                             height: 170,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
                             child: Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: [
+                                children: const [
                                   Positioned(
                                     top: 20,
                                     height: 100,
@@ -296,18 +294,18 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                         ),
                       ]),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                 ],
               ),
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white70,
                   // color: HexColor('#f2d7d5'),
                   borderRadius: BorderRadius.only(
@@ -318,29 +316,29 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               child: Column(
                 children: [
                   Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(children: [
-                        Text(
+                        const Text(
                           'Kifuliiru ndeto yiitu',
                           textAlign: TextAlign.left,
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(
                             'Kifuliiru ndeto yiitu. Ngisi Mufuliiru amusima indeto yage, yo na ndeto yiitu : Kifuliiru.',
                             textAlign: TextAlign.left,
-                            style: GoogleFonts.roboto(
+                            style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Row(
                             children: [
                               IconButton(
@@ -351,29 +349,29 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                           builder: (context) => Kifuliiru()),
                                     );
                                   },
-                                  icon: Icon(Icons.book)),
+                                  icon: const Icon(Icons.book)),
                               IconButton(
                                   onPressed: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              GamboLihyahya()),
+                                              const GamboLihyahya()),
                                     );
                                   },
-                                  icon: Icon(Icons.read_more))
+                                  icon: const Icon(Icons.read_more))
                             ],
                           ),
                         ),
                       ])),
                 ],
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
             height: 350,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.white70,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
@@ -381,9 +379,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 )),
             child: PageView(children: [
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -393,11 +391,11 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 topRight: Radius.circular(10),
                               ),
@@ -407,10 +405,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
@@ -419,7 +417,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -443,7 +441,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -463,7 +461,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -487,7 +485,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -507,7 +505,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -531,7 +529,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -551,7 +549,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -575,7 +573,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -595,7 +593,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -619,7 +617,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -639,7 +637,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -663,7 +661,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
@@ -683,7 +681,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Icon(Icons.favorite),
                               Icon(Icons.share),
                             ],
@@ -900,14 +898,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             label: 'Ndondeezo',
           ),
           BottomNavigationBarItem(
-            icon: new Icon(
+            icon: Icon(
               Icons.radio,
               color: Colors.black,
             ),
             label: 'Radio Ibufuliiru',
           ),
           BottomNavigationBarItem(
-            icon: new Icon(
+            icon: Icon(
               Icons.list_alt,
               color: Colors.black,
             ),
