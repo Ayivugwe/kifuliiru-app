@@ -16,7 +16,7 @@ class Kifuliiru extends StatelessWidget {
         actions: const  [
            Text('Ibufuliiru'),
            Text('Kifuliiru'),
-           Text('Bafuliiru'),
+           
         ],
         backgroundColor: Colors.white,
       ),
@@ -80,8 +80,50 @@ class Kifuliiru extends StatelessWidget {
               ),
             ),
             const Text( 'I Kifuliiru iliiri  ndeto nga zindi ndeto zoshi. Kili kinovu kubabutirwa bayo na kubalya abatuziiri Ibufuliiru kili bangaba batali Bafuliiru na kubalya abatuziiri kuguma na Bafuliiru kandi li hofi lye Bufuliiru. Mubalya abamuganula i Kifuliiru yo na ndeto iliiri hofi bwnene ne Kifuliiru bali bene witu bamuhamagalya Banyindu. Bamuganula indeto imuhamgalwa Kinyindu. Bano bali hofi litu bwnene ne  ndeto yabo iliri nga yo yimwitu naho Kifuliiru, haliko yizi ndeto zibiri zisigini hanini.'),
+           
             const SizedBox(height: 20,),
-            
+            const Align(
+             alignment: Alignment.centerLeft,
+            child:
+            Text('Tukole mu Kifuliiru',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+                ),
+              ),
+             ),
+            const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
+            const SizedBox(height: 20,),
+            const SizedBox(height: 20,),
+            const Align(
+             alignment: Alignment.centerLeft,
+            child:
+            Text('Tukole mu Kifuliiru',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+                ),
+              ),
+             ),
+            const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
+            const SizedBox(height: 20,),
+            const SizedBox(height: 20,),
+            const Align(
+             alignment: Alignment.centerLeft,
+            child:
+            Text('Tukole mu Kifuliiru',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+                ),
+              ),
+             ),
+            const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
+            const SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             const Align(
              alignment: Alignment.centerLeft,
             child:
