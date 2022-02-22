@@ -49,6 +49,25 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions : [
+          IcontButton(
+            icon: Icon(Icons.add_alert),
+            color:Colors.red,
+            tooltip: 'Imyazi',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Longa imyazi mu Kifuliiru')));
+            },
+          ),
+          IcontButton(
+            icon: Icon(Icons.settings),
+            tooltip: 'Paramètres',
+            onPressed: () {
+              Navigator.MaterialPageRoute(builder: (context) => Settings());
+            },
+          ),
+          
+        ],
         elevation: 0,
         title: const Text(
           'KIFULIIRU NDETO YIITU',
@@ -57,6 +76,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         //backgroundColor: HexColor('#f2d7d5'),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
+        
       ),
       backgroundColor: Colors.red[100],
       body: Center(
