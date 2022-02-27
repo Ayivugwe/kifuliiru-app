@@ -68,18 +68,26 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15))),
-              height: 220,
+              height: 150,
               width: MediaQuery.of(context).size.width,
               child: Column(
-                children: [
+                children: const [
                   Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Image.asset(
+                    padding: EdgeInsets.fromLTRB(20, 40, 20, 40),
+                    child: Text(
+                      "Muyegerere tumenye indeto yitu Kifuliiru",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    /* Image.asset(
                       'assets/images/imageHome.png',
                       fit: BoxFit.fill,
                       width: MediaQuery.of(context).size.width - 10,
                       height: 210,
-                    ),
+                    ), */
                   ),
                 ],
               )),
@@ -95,7 +103,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               const Text(
                 'Magambo ge\'Kifuliiru',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -304,78 +312,109 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           const SizedBox(
             height: 10,
           ),
-          Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white70,
-                  // color: HexColor('#f2d7d5'),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(children: [
-                        const Text(
-                          'Kifuliiru ndeto yiitu',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text(
-                            'Kifuliiru ndeto yiitu. Ngisi Mufuliiru amusima indeto yage, yo na ndeto yiitu : Kifuliiru.',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white70,
+                    // color: HexColor('#f2d7d5'),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                height: 250,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: const Text(
+                              'Bingi ku Kifuliiru',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Kifuliiru()),
-                                    );
-                                  },
-                                  icon: const Icon(Icons.book)),
-                              IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const GamboLihyahya()),
-                                    );
-                                  },
-                                  icon: const Icon(Icons.read_more))
-                            ],
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                      ])),
-                ],
-              )),
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Kifuliiru ndeto yitu. Ngisi Mufuliiru amusima indeto yage, yo na ndeto yitu : Kifuliiru. Tukabika kino kibaja hano higulu tugwase abandu tumenye bingi ku ndeto yitu.',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Kifuliiru()),
+                                      );
+                                    },
+                                    child: Text('Menya bingi hano'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Kifuliiru()),
+                                      );
+                                    },
+                                    child: Text('Yuvwiriza i Kifuliiru'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ])),
+                  ],
+                )),
+          ),
           const SizedBox(
             height: 10,
           ),
           Container(
+              color: Colors.white70,
+              height: 80,
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  'Longa imyazi mu Kifuliiru',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )),
+          Container(
             height: 350,
             decoration: const BoxDecoration(
-                color: Colors.white70,
+                color: Colors.white54,
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10),
-                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(0),
+                  topLeft: Radius.circular(0),
                 )),
             child: PageView(children: [
               Padding(
@@ -693,6 +732,21 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
             ]),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Myazi()),
+                  );
+                },
+                icon: Icon(Icons.more_sharp),
+                label: Text('Longa imyazi mingi')),
+          ),
+          SizedBox(
+            height: 20,
           ),
         ]),
       ),

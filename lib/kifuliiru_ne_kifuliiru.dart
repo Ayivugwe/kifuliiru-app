@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:http/http.dart' as http;
@@ -30,9 +32,18 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   }
 
   Future<Igambo> fetchAmagambo() async {
-    final response = await http.get(Uri.parse(
-        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+    final response = await http.get(
+      Uri.parse(
+          'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'),
+      // Send authorization headers to the backend.
+      headers: {
+        HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
+      },
+    );
 
+    /* final response = await http.get(Uri.parse(
+        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+ */
     if (response.statusCode == 200) {
       return Igambo.fromJson(jsonDecode(response.body));
     } else {

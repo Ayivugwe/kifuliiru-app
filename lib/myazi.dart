@@ -1,6 +1,10 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
 class Myazi extends StatefulWidget {
+  const Myazi({Key? key}) : super(key: key);
+
   @override
   _MyaziState createState() => _MyaziState();
 }
@@ -10,261 +14,58 @@ class _MyaziState extends State<Myazi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Myazi mu Kifuliiru'),
+        title: const Text('Myazi mu Kifuliiru'),
       ),
-      body: Center(
-          child: Column(
-        children: [
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(5),
-              height: 300,
-              width: MediaQuery.of(context).size.width / 2,
-              child: PageView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
+      body: Container(
+        padding: const EdgeInsets.all(
+          10,
+        ),
+        child: ListView(
+          children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: InkWell(
+                onTap: () => {},
+                child: SizedBox(
+                  height: 360,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: 200,
+                        child: Image.asset(
+                          'assets/images/rdc.png',
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
+                      const SizedBox(
+                        height: 50,
+                        child: Text(
+                          'Itwe lyo\'mwazi Umwazi mu Kifuliiru ndeto yitu',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
+                      const SizedBox(
+                        height: 100,
+                        child: Text(
+                            'Tulonge imyazi yo\'buhinga buhyahya, imitukari, ne\'gindi yooshi mu Kifuliiru. Tumenye\'myazi ye\'Bufuliiru : tumenye byoshi bye\'mwitu. Ibufuliiru. Radio Ibufuliiru ikabutwa kushaga mu mukolwa Ibufuliiru kandi li Tumenye Ibufuliiru mukuloza ukugwasa abandu basime bwnene Kifuliiru na bagenderere ukukizi kiyuvwa mu magambo go bulyo bwingi. Guno mukolwa gukashaga mu nzaliro zo mwana we Bufuliiru na Mugfuliiru :  Ayivugwe Kabemba Mukome.'),
                       ),
-                    ),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5))),
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: [
-                          Positioned(
-                            top: 20,
-                            height: 70,
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.asset('assets/images/kifuliiru.png'),
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
-                          ),
-                          Positioned(
-                              bottom: 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.favorite),
-                                  Icon(Icons.share),
-                                ],
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.circle_sharp),
-            trailing: Icon(Icons.details),
-            title: Text('Itwe lyo\' mwazi'),
-            subtitle: Text('Umwazi munini'),
-            dense: true,
-            onLongPress: () {},
-            onTap: () {},
-          )
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
