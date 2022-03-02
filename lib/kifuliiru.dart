@@ -137,6 +137,8 @@ class Kifuliiru extends StatelessWidget {
              ),
             const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
             const SizedBox(height: 20,),
+            const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
+            const SizedBox(height: 20,),
           ],
         ),
       ),
