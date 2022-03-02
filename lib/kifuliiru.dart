@@ -57,7 +57,7 @@ class Kifuliiru extends StatelessWidget {
             Text(
               'Abamuganula i Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
@@ -73,7 +73,7 @@ class Kifuliiru extends StatelessWidget {
             child:
              Text('Ndeto izishushini ne Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
                  ),
@@ -87,7 +87,7 @@ class Kifuliiru extends StatelessWidget {
             child:
             Text('Tukole mu Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 ),
@@ -101,7 +101,7 @@ class Kifuliiru extends StatelessWidget {
             child:
             Text('Tukole mu Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 ),
@@ -115,12 +115,13 @@ class Kifuliiru extends StatelessWidget {
             child:
             Text('Tukole mu Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 ),
               ),
              ),
+
             const Text('Ukukola kuliri kuhamu bwenene. Ukudeta kwo ahandu hagendere kandi li abandu bagenderere, babanini ukukola. Nitu higulu lye\'mwitu Ibufuliiru, higulu lya\'abandu biitu Abafuliiru na higulu lye\'ndeto yiitu Kifuliiru; tubanini ukukola bwenene no kubika imisi yiitu yooshi. Ibija byooshi twangahikira bitagashaga mu kubwatala naho kandi li mu miganulo ya kwokwokwo, haliko tubanini tukole.'),
             const SizedBox(height: 20,),
             const SizedBox(height: 20,),
@@ -129,7 +130,7 @@ class Kifuliiru extends StatelessWidget {
             child:
             Text('Tukole mu Kifuliiru',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 20,
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 ),
