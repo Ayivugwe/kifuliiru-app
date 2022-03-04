@@ -74,7 +74,7 @@ class _IntroScreen extends State<IntroScreen>{
             //add more screen here
           ],
 
-          onDone: () => goHomepage(context), //go to home page on done
+          onDone: () => goHomepage(context), //go to home page on done. When you finish visiting the introduction screen
           onSkip: () => goHomepage(context), // You can override on skip 
           showSkipButton: true,
           skipFlex: 0,
