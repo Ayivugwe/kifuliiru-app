@@ -17,14 +17,14 @@ class _IntroScreen extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     //this is a page decoration for intro screen
-    PageDecoration pageDecoration = PageDecoration(
+    PageDecoration pageDecoration = const PageDecoration(
       titleTextStyle: TextStyle(
           fontSize: 28.0,
           fontWeight: FontWeight.w700,
           color: Colors.white), //tile font size, weight and color
       bodyTextStyle: TextStyle(fontSize: 19.0, color: Colors.white),
       //body text size and color
-      descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       //decription padding
       imagePadding: EdgeInsets.all(20), //image padding
       boxDecoration: BoxDecoration(
@@ -79,17 +79,17 @@ class _IntroScreen extends State<IntroScreen> {
           context), //go to home page on done. When you finish visiting the introduction screen
       onSkip: () => goHomepage(context), // You can override on skip
       showSkipButton: true,
-      skipFlex: 0,
+      dotsFlex: 0,
       nextFlex: 0,
-      skip: Text(
+      skip: const Text(
         'Simba',
         style: TextStyle(color: Colors.white),
       ),
-      next: Icon(
+      next: const Icon(
         Icons.arrow_forward,
         color: Colors.white,
       ),
-      done: Text(
+      done: const Text(
         'Tondera',
         style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
@@ -109,7 +109,7 @@ class _IntroScreen extends State<IntroScreen> {
   void goHomepage(context) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) {
-      return Home();
+      return const Home();
     }), (Route<dynamic> route) => false);
     //Navigate to home page and remove the intro screen history
     //so that "Back" button wont work.
@@ -118,7 +118,7 @@ class _IntroScreen extends State<IntroScreen> {
   Widget introImage(String assetName) {
     //widget to show intro image
     return Align(
-      child: Image.asset('$assetName', width: 350.0),
+      child: Image.asset(assetName, width: 350.0),
       alignment: Alignment.bottomCenter,
     );
   }
