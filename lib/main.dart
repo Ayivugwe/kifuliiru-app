@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-          home: IntroScreen(), //load intro screen
+      
+          home: IntroScreen(), //load intro screen 
     );
   }
 }
