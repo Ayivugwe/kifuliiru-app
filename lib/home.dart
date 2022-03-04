@@ -1,7 +1,7 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/settings.dart';
 import 'kifuliiru.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
@@ -46,24 +46,26 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions : [
-          IcontButton(
+        actions: [
+          IconButton(
             icon: Icon(Icons.add_alert),
-            color:Colors.red,
+            color: Colors.red,
             tooltip: 'Imyazi',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Longa imyazi mu Kifuliiru')));
             },
           ),
-          IcontButton(
+          IconButton(
             icon: Icon(Icons.settings),
             tooltip: 'Paramètres',
             onPressed: () {
-              Navigator.MaterialPageRoute(builder: (context) => Settings());
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Settings()));
+
+              //Navigator.MaterialPageRoute(builder: (context) => Settings());
             },
           ),
-          
         ],
         elevation: 0,
         title: const Text(
@@ -73,7 +75,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         //backgroundColor: HexColor('#f2d7d5'),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
-        
       ),
       backgroundColor: Colors.red[100],
       body: Center(
@@ -977,6 +978,4 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   }
 }
 
-class Imyazi {
-    
-}
+class Imyazi {}

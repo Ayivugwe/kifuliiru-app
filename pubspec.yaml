@@ -38,6 +38,7 @@ dependencies:
   sqflite: ^2.0.2
   hexcolor: ^2.0.6
   google_fonts: ^2.3.1
+  introduction_screen: ^3.0.0
 
 dev_dependencies:
   flutter_test:
