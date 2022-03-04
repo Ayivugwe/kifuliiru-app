@@ -47,20 +47,26 @@ class _IntroScreen extends State<IntroScreen>{
           //main background of screen
           pages: [ //set your page view here
             PageViewModel(
-              title: "Fractional shares",
-              body: "Instead of having to buy an entire share, invest any amount you want.",
+              title: "Muyegerere",
+              body: "Muyegerere, tumenye indeto yitu Kifuliiru.",
+              image: introImage('assets/images/img1.png'),
+              decoration: pageDecoration,
+            ),
+             PageViewModel(
+              title: "Ibufuliiru",
+              body: "Muyegerere, tumenye indeto imwitu Ibufuliiru.",
               image: introImage('assets/images/img1.png'),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Fractional shares",
-              body: "Instead of having to buy an entire share, invest any amount you want.",
+              title: "Kifuliiru",
+              body: "Muyegerere, tumenye imwitu Ibufuliiru.",
               image: introImage('assets/images/img2.png'),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Fractional shares",
-              body: "Instead of having to buy an entire share, invest any amount you want.",
+              title: "Bafuliiru",
+              body: "Muyegerere, tumenye abandu bitu Bafuliiru.",
               image: introImage('assets/images/img3.png'),
               decoration: pageDecoration,
             ),
