@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'Umwazi.dart';
+
 class Myazi extends StatefulWidget {
   const Myazi({Key? key}) : super(key: key);
 
@@ -27,7 +29,15 @@ class _MyaziState extends State<Myazi> {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: InkWell(
-                onTap: () => {},
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Umwazi(
+                              title: 'Guno guliri mwazi mu Kifuliiru',
+                            )),
+                  )
+                },
                 child: SizedBox(
                   height: 360,
                   child: Column(
