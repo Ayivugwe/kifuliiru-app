@@ -55,19 +55,19 @@ class _IntroScreen extends State<IntroScreen>{
              PageViewModel(
               title: "Ibufuliiru",
               body: "Muyegerere, tumenye indeto imwitu Ibufuliiru.",
-              image: introImage('assets/images/img1.png'),
+              image: introImage('assets/images/img2.png'),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: "Kifuliiru",
               body: "Muyegerere, tumenye imwitu Ibufuliiru.",
-              image: introImage('assets/images/img2.png'),
+              image: introImage('assets/images/img3.png'),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: "Bafuliiru",
               body: "Muyegerere, tumenye abandu bitu Bafuliiru.",
-              image: introImage('assets/images/img3.png'),
+              image: introImage('assets/images/img4.png'),
               decoration: pageDecoration,
             ),
 
@@ -79,9 +79,9 @@ class _IntroScreen extends State<IntroScreen>{
           showSkipButton: true,
           skipFlex: 0,
           nextFlex: 0,
-          skip: Text('Skip', style: TextStyle(color: Colors.white),),
+          skip: Text('Simba', style: TextStyle(color: Colors.white),),
           next: Icon(Icons.arrow_forward, color: Colors.white,),
-          done: Text('Getting Stated', style: TextStyle(
+          done: Text('Tondera', style: TextStyle(
                fontWeight: FontWeight.w600, color:Colors.white
               ),),
           dotsDecorator: const DotsDecorator(
