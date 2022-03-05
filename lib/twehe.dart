@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
 class MyaziYitu extends StatelessWidget {
@@ -10,45 +12,45 @@ class MyaziYitu extends StatelessWidget {
         appBar: AppBar(
           title: Title(
             color: Colors.green,
-            child: Text('Myazi yitu hano'),
+            child: const Text('Myazi yitu hano'),
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Expanded(
               child: Column(
-            children: [
-              SizedBox(
+            children: const [
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                 style: TextStyle(
                   fontSize: 18,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                 style: TextStyle(
                   fontSize: 18,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                 style: TextStyle(
                   fontSize: 18,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                 style: TextStyle(
                   fontSize: 18,

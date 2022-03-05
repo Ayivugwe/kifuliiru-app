@@ -24,7 +24,6 @@ class _UmwaziState extends State<Umwazi> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-
       body: Builder(builder: (BuildContext context) {
         return WebView(
           initialUrl: 'https://ibufuliiru.editorx.io/ibufuliiru/myazi',
