@@ -31,7 +31,13 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
 
   Future<Igambo> fetchAmagambo() async {
     final response = await http.get(Uri.parse(
-        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru',
+        
+        headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+      )
+    );
 
     if (response.statusCode == 200) {
       return Igambo.fromJson(jsonDecode(response.body));
