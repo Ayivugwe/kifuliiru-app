@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Myazi extends StatefulWidget {
+  const Myazi({Key? key}) : super(key: key);
+
   @override
   _MyaziState createState() => _MyaziState();
 }
@@ -10,22 +12,22 @@ class _MyaziState extends State<Myazi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Myazi mu Kifuliiru'),
+        title: const Text('Myazi mu Kifuliiru'),
       ),
       body: Center(
           child: Column(
         children: [
           Card(
             child: Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               height: 300,
               width: MediaQuery.of(context).size.width / 2,
               child: PageView(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(5),
