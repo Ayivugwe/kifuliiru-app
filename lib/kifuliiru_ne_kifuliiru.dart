@@ -3,6 +3,7 @@ import 'igambo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:sqflite/sqflite.dart';
@@ -30,13 +31,14 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   }
 
   Future<Igambo> fetchAmagambo() async {
-    final response = await http.get(Uri.parse(
+    final response = await http.get(
+      Uri.parse(
+        //'https://retoolapi.dev/bibawy/data'
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru',
-        
-        headers: {
+      ),
+      headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },
-      )
     );
 
     if (response.statusCode == 200) {

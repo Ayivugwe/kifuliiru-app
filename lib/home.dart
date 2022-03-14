@@ -86,17 +86,18 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15))),
-              height: 220,
+              height: 150,
               width: MediaQuery.of(context).size.width,
               child: Column(
-                children: [
+                children: const [
                   Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Image.asset(
-                      'assets/images/imageHome.png',
-                      fit: BoxFit.fill,
-                      width: MediaQuery.of(context).size.width - 10,
-                      height: 210,
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'Muyerere. Guno mukolwa guli hano higulu lye\'Kifuliiru ndeto yitu.',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

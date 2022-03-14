@@ -15,49 +15,49 @@ class MyaziYitu extends StatelessWidget {
             child: const Text('Myazi yitu hano'),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Expanded(
+        body: SafeArea(
+          child: Padding(
+              padding: const EdgeInsets.all(20),
               child: Column(
-            children: const [
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          )),
+                children: const [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              )),
         ));
   }
 }

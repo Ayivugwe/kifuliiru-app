@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'home.dart';
 //import on board me dependency
@@ -33,10 +32,10 @@ class _IntroScreen extends State<IntroScreen> {
           end: Alignment.bottomLeft,
           stops: [0.1, 0.5, 0.7, 0.9],
           colors: [
-            Colors.orange,
-            Colors.deepOrangeAccent,
-            Colors.red,
-            Colors.redAccent,
+            Colors.blue,
+            Colors.blueAccent,
+            Colors.blue,
+            Colors.blueAccent,
           ],
         ),
       ), //show linear gradient background of page
