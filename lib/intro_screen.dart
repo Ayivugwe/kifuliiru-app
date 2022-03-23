@@ -17,10 +17,11 @@ class _IntroScreen extends State<IntroScreen> {
   Widget build(BuildContext context) {
     //this is a page decoration for intro screen
     PageDecoration pageDecoration = const PageDecoration(
+      
       titleTextStyle: TextStyle(
           fontSize: 28.0,
           fontWeight: FontWeight.w700,
-          color: Colors.black), //tile font size, weight and color
+          color: Colors.black,), //tile font size, weight and color
       bodyTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
       //body text size and color
       bodyPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
