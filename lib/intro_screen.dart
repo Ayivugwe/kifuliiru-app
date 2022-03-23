@@ -20,24 +20,14 @@ class _IntroScreen extends State<IntroScreen> {
       titleTextStyle: TextStyle(
           fontSize: 28.0,
           fontWeight: FontWeight.w700,
-          color: Colors.white), //tile font size, weight and color
-      bodyTextStyle: TextStyle(fontSize: 19.0, color: Colors.white),
+          color: Colors.black), //tile font size, weight and color
+      bodyTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
       //body text size and color
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      bodyPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
       //decription padding
-      imagePadding: EdgeInsets.all(20), //image padding
+      imagePadding: EdgeInsets.all(10), //image padding
       boxDecoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          stops: [0.1, 0.5, 0.7, 0.9],
-          colors: [
-            Colors.blue,
-            Colors.blueAccent,
-            Colors.blue,
-            Colors.blueAccent,
-          ],
-        ),
+        color: Colors.white,
       ), //show linear gradient background of page
     );
 
@@ -74,8 +64,7 @@ class _IntroScreen extends State<IntroScreen> {
         //add more screen here
       ],
 
-      onDone: () => goHomepage(
-          context), //go to home page on done. When you finish visiting the introduction screen
+      onDone: () => goHomepage(context), //go to home page on done. When you finish visiting the introduction screen
       onSkip: () => goHomepage(context), // You can override on skip
       showSkipButton: true,
       dotsFlex: 0,
@@ -88,8 +77,7 @@ class _IntroScreen extends State<IntroScreen> {
         Icons.arrow_forward,
         color: Colors.white,
       ),
-      done: const Text(
-        'Tondera',
+      done: const Text('Tondera',
         style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
       dotsDecorator: const DotsDecorator(
@@ -99,7 +87,7 @@ class _IntroScreen extends State<IntroScreen> {
         //activeColor: Colors.white, //color of active dot
         activeShape: RoundedRectangleBorder(
           //shave of active dot
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
     );
