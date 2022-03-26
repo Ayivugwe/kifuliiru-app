@@ -64,6 +64,7 @@ class _IntroScreen extends State<IntroScreen> {
           image: introImage('assets/images/img3.png'),
           decoration: pageDecoration,
         ),
+
         PageViewModel(
           title: "Bafuliiru",
           body: "Muyegerere, tumenye abandu bitu Bafuliiru.",
