@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:http/http.dart' as http;
@@ -6,17 +5,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:sqflite/sqflite.dart';
-
-class KifuliiruNeKifaransa extends StatefulWidget {
-  const KifuliiruNeKifaransa({Key? key}) : super(key: key);
+class KifuliiruNeKiswahili extends StatefulWidget {
+  const KifuliiruNeKiswahili({Key? key}) : super(key: key);
 
   @override
-  _KifuliiruNeKifaransaState createState() => _KifuliiruNeKifaransaState();
+  _KifuliiruNeKiswahiliState createState() => _KifuliiruNeKiswahiliState();
 }
 
-class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
+class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
   // ignore: deprecated_member_use
 
   late Future<Igambo> amagambo;
@@ -113,5 +109,3 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
     );
   }
 }
-
-
