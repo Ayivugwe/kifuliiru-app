@@ -3,8 +3,14 @@ import 'igambo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:sqflite/sqflite.dart';
 
 class KifuliiruNeKingereza extends StatefulWidget {
+  const KifuliiruNeKingereza({Key? key}) : super(key: key);
+
   @override
   _KifuliiruNeKingerezaState createState() => _KifuliiruNeKingerezaState();
 }
@@ -13,24 +19,29 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   // ignore: deprecated_member_use
 
   late Future<Igambo> amagambo;
+  List<Igambo> listeAmagambo = [];
+  // ignore: prefer_typing_uninitialized_variables
   var igambo;
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     amagambo = fetchAmagambo();
-
-    print(amagambo);
   }
 
   Future<Igambo> fetchAmagambo() async {
-    final response = await http.get(Uri.parse(
-        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
+    final response = await http.get(
+      Uri.parse(
+        //'https://retoolapi.dev/bibawy/data'
+        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru',
+      ),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      print(response.body);
       return Igambo.fromJson(jsonDecode(response.body));
     } else {
       // If the server did not return a 200 OK response,
@@ -43,94 +54,49 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kifuliiru mu Kingereza'),
+        title: const Text('Kifuliiru mu Kingereza'),
         backgroundColor: Colors.lightGreen,
       ),
       body: Center(
         child: Column(
           children: [
-            Text('Tulonge abagambo ge Kifuliiru mu Kingereza'),
-            Card(
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: TextField(
+                controller: _searchController,
+              ),
+            ),
+            SizedBox(
+              height: 500,
               child: FutureBuilder(
                 future: amagambo,
-                builder: (context, data) {
-                  if (data.hasError) {
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
                     //in case if error found
-                    return Center(child: Text("${data.error}"));
-                  } else if (data.hasData) {
+                    return Center(child: Text("${snapshot.error}"));
+                  } else if (snapshot.hasData) {
                     //once data is ready this else block will execute
                     // items will hold all the data of DataModel
                     //items[index].name can be used to fetch name of product as done below
-                    var items = data.data as List<Igambo>;
-                    return ListView.builder(
-                        // ignore: unnecessary_null_comparison
-                        itemCount: items == null ? 0 : items.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            elevation: 5,
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 6),
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: Text(
-                                      items[index].title.toString(),
-                                    ),
-                                  ),
-                                  Expanded(
-                                      child: Container(
-                                    padding: const EdgeInsets.only(bottom: 8),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: Text(
-                                            items[index].sobaanuro.toString(),
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: Text(items[index]
-                                              .sobaanuroYeKiswahili
-                                              .toString()),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: Text(items[index]
-                                              .sobaanuroYeKifaransa
-                                              .toString()),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: Text(items[index]
-                                              .sobaanuroYeKingereza
-                                              .toString()),
-                                        )
-                                      ],
-                                    ),
-                                  ))
-                                ],
-                              ),
-                            ),
+
+                    return FutureBuilder<Igambo>(
+                      future: amagambo,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return ListTile(
+                            title: Text(snapshot.data!.title.toString()),
+                            subtitle: Text(snapshot.data!.sobaanuro.toString()),
                           );
-                        });
+                        } else if (snapshot.hasError) {
+                          return Text('${snapshot.error}');
+                        }
+                        // By default, show a loading spinner.
+                        return const CircularProgressIndicator();
+                      },
+                    );
                   } else {
                     // show circular progress while data is getting fetched from json file
                     return const Center(
@@ -146,3 +112,4 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
     );
   }
 }
+
