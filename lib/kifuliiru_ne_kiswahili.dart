@@ -51,8 +51,9 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text('Kifuliiru mu Kiswahili'),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.white,
       ),
       body: Center(
         child: Column(

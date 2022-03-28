@@ -93,7 +93,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: Text(
-                      'Muyerere. Guno mukolwa guli hano higulu lye\'Kifuliiru ndeto yitu.',
+                      'Muyerere. Kifuliiru Ndeto Yitu.',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -330,19 +330,22 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10))),
-              height: 200,
+              height: 250,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(children: [
-                        const Text(
-                          'Kifuliiru ndeto yiitu',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                        const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            'Kifuliiru ndeto yiitu',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const Padding(

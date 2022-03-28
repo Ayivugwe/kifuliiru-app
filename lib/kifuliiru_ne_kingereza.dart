@@ -5,9 +5,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:sqflite/sqflite.dart';
-
 class KifuliiruNeKingereza extends StatefulWidget {
   const KifuliiruNeKingereza({Key? key}) : super(key: key);
 
@@ -54,8 +51,9 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text('Kifuliiru mu Kingereza'),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.white,
       ),
       body: Center(
         child: Column(
@@ -112,4 +110,3 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
     );
   }
 }
-

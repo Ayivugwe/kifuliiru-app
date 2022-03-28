@@ -29,7 +29,14 @@ class GamboLihyahya extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bika igambo lihyahya"),
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Bika igambo lihyahya",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),

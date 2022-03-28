@@ -17,11 +17,11 @@ class _IntroScreen extends State<IntroScreen> {
   Widget build(BuildContext context) {
     //this is a page decoration for intro screen
     PageDecoration pageDecoration = const PageDecoration(
-      
       titleTextStyle: TextStyle(
-          fontSize: 28.0,
-          fontWeight: FontWeight.w700,
-          color: Colors.black,), //tile font size, weight and color
+        fontSize: 28.0,
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      ), //tile font size, weight and color
       bodyTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
       //body text size and color
       bodyPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
@@ -39,7 +39,8 @@ class _IntroScreen extends State<IntroScreen> {
         //set your page view here
         PageViewModel(
           title: "Muyegerere",
-          body: "Muyegerere, tumenye indeto yitu Kifuliiru.",
+          body:
+              "Muyegerere, tumenye indeto yitu Kifuliiru.  Guno mukolwa guli hano higulu lye'Kifuliiru ndeto yitu.",
           image: introImage('assets/images/img1.png'),
           decoration: pageDecoration,
         ),
@@ -66,7 +67,8 @@ class _IntroScreen extends State<IntroScreen> {
         //add more screen here
       ],
 
-      onDone: () => goHomepage(context), //go to home page on done. When you finish visiting the introduction screen
+      onDone: () => goHomepage(
+          context), //go to home page on done. When you finish visiting the introduction screen
       onSkip: () => goHomepage(context), // You can override on skip
       showSkipButton: true,
       dotsFlex: 0,
@@ -79,7 +81,8 @@ class _IntroScreen extends State<IntroScreen> {
         Icons.arrow_forward,
         color: Colors.white,
       ),
-      done: const Text('Tondera',
+      done: const Text(
+        'Tondera',
         style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
       dotsDecorator: const DotsDecorator(
@@ -89,7 +92,7 @@ class _IntroScreen extends State<IntroScreen> {
         //activeColor: Colors.white, //color of active dot
         activeShape: RoundedRectangleBorder(
           //shave of active dot
-        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+          borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
     );

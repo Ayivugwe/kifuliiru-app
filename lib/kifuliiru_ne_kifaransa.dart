@@ -1,13 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'igambo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:sqflite/sqflite.dart';
 
 class KifuliiruNeKifaransa extends StatefulWidget {
   const KifuliiruNeKifaransa({Key? key}) : super(key: key);
@@ -55,8 +51,9 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text('Kifuliiru mu Kifaransa'),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.white,
       ),
       body: Center(
         child: Column(
@@ -113,5 +110,3 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
     );
   }
 }
-
-
