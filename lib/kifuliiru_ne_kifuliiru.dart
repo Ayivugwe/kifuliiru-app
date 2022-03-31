@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
+import 'package:http/http.dart' as http;
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   const KifuliiruNeKifuliiru({Key? key}) : super(key: key);
@@ -11,6 +14,24 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<List<Igambo>> futureIgambo;
+
+  //get data from local json file
+  Future<List<Igambo>> fetchIgambo() async {
+    final response = await http.get(Uri.parse('assets/database/magambo.json'));
+
+    if (response.statusCode == 200) {
+      return parseIgambo(response.body);
+    } else {
+      throw Exception('Failed to load igambo');
+    }
+  }
+
+  //pass json file to the list
+  List<Igambo> parseIgambo(String responseBody) {
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+    return parsed.map<Igambo>((json) => Igambo.fromJson(json)).toList();
+  }
 
   @override
   void initState() {
