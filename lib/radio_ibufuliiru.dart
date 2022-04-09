@@ -4,8 +4,6 @@
 
 // ignore_for_file: public_member_api_docs
 
-import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 
 const String kNavigationExamplePage = '''
@@ -21,6 +19,8 @@ Muyegerere. Tuyuvwirize imyazi ye mwitu mu Kifuliiru
 ''';
 
 class RadioIbufuliiru extends StatefulWidget {
+  const RadioIbufuliiru({Key? key}) : super(key: key);
+
   @override
   _RadioIbufuliiruState createState() => _RadioIbufuliiruState();
 }
@@ -37,9 +37,9 @@ class _RadioIbufuliiruState extends State<RadioIbufuliiru> {
         appBar: AppBar(
           title: const Text('Radio Ibufuliiru'),
           // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
-          actions: <Widget>[],
+          actions: const <Widget>[],
         ),
-        body: Center(
+        body: const Center(
           child: Text('Radio Ibufuliiru :  Tulonge imyazi mu Kifuliiru.'),
         ));
   }

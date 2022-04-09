@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'igambo.dart';
-import 'package:path/path.dart';
 import 'package:collection/collection.dart';
 
 class GamboLihyahya extends StatelessWidget {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
+  const Settings({Key? key}) : super(key: key);
+
   @override
   _SettingsState createState() => _SettingsState();
 }
@@ -20,7 +22,7 @@ class _SettingsState extends State<Settings> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Myazi yitu",
+                    title: const Text("Myazi yitu",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
@@ -32,7 +34,7 @@ class _SettingsState extends State<Settings> {
               ),
               SliverPersistentHeader(
                 delegate: _SliverAppBarDelegate(
-                  TabBar(
+                  const TabBar(
                     labelColor: Colors.black87,
                     unselectedLabelColor: Colors.grey,
                     tabs: [
@@ -45,7 +47,7 @@ class _SettingsState extends State<Settings> {
               ),
             ];
           },
-          body: Center(
+          body: const Center(
             child: Text("Sample text"),
           ),
         ),
@@ -67,7 +69,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new Container(
+    return Container(
       child: _tabBar,
     );
   }

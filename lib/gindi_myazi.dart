@@ -1,8 +1,9 @@
 //import 'package:crypto_font_icons/crypto_font_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GindiMyazi extends StatefulWidget {
+  const GindiMyazi({Key? key}) : super(key: key);
+
   @override
   _GindiMyaziState createState() => _GindiMyaziState();
 }
@@ -22,7 +23,7 @@ class _GindiMyaziState extends State<GindiMyazi> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Myazi yitu",
+                    title: const Text("Myazi yitu",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
@@ -34,7 +35,7 @@ class _GindiMyaziState extends State<GindiMyazi> {
               ),
               SliverPersistentHeader(
                 delegate: _SliverAppBarDelegate(
-                  TabBar(
+                  const TabBar(
                     labelColor: Colors.black87,
                     unselectedLabelColor: Colors.grey,
                     tabs: [
@@ -47,7 +48,7 @@ class _GindiMyaziState extends State<GindiMyazi> {
               ),
             ];
           },
-          body: Center(
+          body: const Center(
             child: Text("Sample text"),
           ),
         ),
@@ -69,7 +70,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new Container(
+    return Container(
       child: _tabBar,
     );
   }

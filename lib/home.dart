@@ -907,13 +907,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: new Icon(
+            icon: Icon(
               Icons.home,
               color: Colors.black,
             ),
-            activeIcon: new Icon(
+            activeIcon: Icon(
               Icons.home,
               color: Colors.blue,
             ),
@@ -969,16 +969,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         },
       ),
     );
-  }
-
-  _onPageViewChange(int page) {
-    print("Current Page: " + page.toString());
-    int previousPage = page;
-    if (page != 0)
-      previousPage--;
-    else
-      previousPage = 2;
-    print("Previous page: $previousPage");
   }
 }
 
