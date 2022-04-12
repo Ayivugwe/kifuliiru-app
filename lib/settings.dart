@@ -22,7 +22,7 @@ class _SettingsState extends State<Settings> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: const Text("Myazi yitu",
+                    title: const Text("Bindu byawe",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
@@ -38,8 +38,8 @@ class _SettingsState extends State<Settings> {
                     labelColor: Colors.black87,
                     unselectedLabelColor: Colors.grey,
                     tabs: [
-                      Tab(icon: Icon(Icons.info), text: "Tab 1"),
-                      Tab(icon: Icon(Icons.lightbulb_outline), text: "Tab 2"),
+                      Tab(icon: Icon(Icons.info), text: "Myazi yawe"),
+                      Tab(icon: Icon(Icons.lightbulb_outline), text: "Byo'musima"),
                     ],
                   ),
                 ),
@@ -48,7 +48,7 @@ class _SettingsState extends State<Settings> {
             ];
           },
           body: const Center(
-            child: Text("Sample text"),
+            child: Text("Muyegerere"),
           ),
         ),
       ),
