@@ -124,7 +124,7 @@ class Igambo {
     title = json['title'];
     sobaanuroYeKingereza = json['sobaanuroYeKingereza'];
     sobaanuroYeKifaransa = json['sobaanuroYeKifaransa'];
-    holidesirwi = json['holidesirwi'].cast<String>();
+    holidesirwi = json['holidesirwi']?.cast<String>();
   }
 
   Map<String, dynamic> toJson() {

@@ -7,7 +7,7 @@ import 'dart:convert';
 class MagamboList {
   late Future<List<Igambo>> futureIgambo;
 
-  //pass json file to the list
+  /* //pass json file to the list
   List<Igambo> parseIgambo(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
 
@@ -23,8 +23,9 @@ class MagamboList {
     } else {
       throw Exception('Failed to load igambo');
     }
-  }
-/* 
+  } 
+*/
+
   Future<List<Igambo>> fetchIgambo() async {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'
@@ -40,5 +41,5 @@ class MagamboList {
     } else {
       throw Exception('Twayabirwa ukuleta amagambo.');
     }
-  } */
+  } //fetchIgambo
 }
