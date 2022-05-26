@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'igambo.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
+import 'package:kifuliiru_app/igambo.dart';
+import 'package:kifuliiru_app/list_magambo.dart';
 
 class KifuliiruNeKiswahili extends StatefulWidget {
   const KifuliiruNeKiswahili({Key? key}) : super(key: key);
@@ -13,100 +10,55 @@ class KifuliiruNeKiswahili extends StatefulWidget {
 }
 
 class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
-  // ignore: deprecated_member_use
-
-  late Future<Igambo> amagambo;
-  List<Igambo> listeAmagambo = [];
-  // ignore: prefer_typing_uninitialized_variables
-  var igambo;
-  final TextEditingController _searchController = TextEditingController();
+  late Future<List<Igambo>> futureIgambo;
 
   @override
   void initState() {
+    MagamboList magamboList = MagamboList();
     super.initState();
-    amagambo = fetchAmagambo();
-  }
-
-  Future<Igambo> fetchAmagambo() async {
-    final response = await http.get(
-      Uri.parse(
-        //'https://retoolapi.dev/bibawy/data'
-        'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru',
-      ),
-      headers: {
-        HttpHeaders.contentTypeHeader: "application/json",
-      },
-    );
-
-    if (response.statusCode == 200) {
-      return Igambo.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Twayabirwa ukulonga amagambo');
-    }
+    futureIgambo = magamboList.fetchIgambo();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text('Kifuliiru mu Kiswahili'),
-        backgroundColor: Colors.white,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                controller: _searchController,
-              ),
-            ),
-            SizedBox(
-              height: 500,
-              child: FutureBuilder(
-                future: amagambo,
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Kifuliiru - Kiswahili',
+        theme: ThemeData(
+          primaryColor: Colors.white,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.black),
+            title: const Text('Magambo ge\'Kifuliiru mu Kiswahili'),
+          ),
+          body: Center(
+            child: FutureBuilder<List<Igambo>>(
+                future: futureIgambo,
                 builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    //in case if error found
-                    return Center(child: Text("${snapshot.error}"));
-                  } else if (snapshot.hasData) {
-                    //once data is ready this else block will execute
-                    // items will hold all the data of DataModel
-                    //items[index].name can be used to fetch name of product as done below
-
-                    return FutureBuilder<Igambo>(
-                      future: amagambo,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return ListTile(
-                            title: Text(snapshot.data!.title.toString()),
-                            subtitle: Text(snapshot.data!.sobaanuro.toString()),
-                          );
-                        } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
-                        }
-                        // By default, show a loading spinner.
-                        return const CircularProgressIndicator();
-                      },
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) => ListTile(
+                        title: Text(snapshot.data![index].title.toString(),
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        subtitle: Text(
+                            snapshot.data![index].sobaanuroYeKiswahili
+                                .toString(),
+                            style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                      ),
                     );
                   } else {
-                    // show circular progress while data is getting fetched from json file
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const Center(child: CircularProgressIndicator());
                   }
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+                }),
+          ),
+        ));
   }
 }
