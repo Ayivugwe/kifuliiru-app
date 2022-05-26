@@ -5,7 +5,7 @@ import 'package:kifuliiru_app/settings.dart';
 import 'kifuliiru.dart';
 import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
-import 'myazi.dart';
+import 'imyazi.dart';
 import 'site_web_yitu.dart';
 import 'twehe.dart';
 import 'kifuliiru_ne_kifuliiru.dart';
