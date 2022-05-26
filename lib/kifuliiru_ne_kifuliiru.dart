@@ -51,7 +51,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
-            title: const Text('Kifuliiru - Kifuliiru'),
+            title: const Text('Magambo ge\'Kifuliiru mu Kifuliiru'),
           ),
           body: Center(
             child: FutureBuilder<List<Igambo>>(
@@ -61,9 +61,17 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index) => ListTile(
-                        title: Text(snapshot.data![index].title.toString()),
-                        subtitle:
-                            Text(snapshot.data![index].sobaanuro.toString()),
+                        title: Text(snapshot.data![index].title.toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        subtitle: Text(
+                            snapshot.data![index].sobaanuro.toString(),
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
                       ),
                     );
                   } else {
