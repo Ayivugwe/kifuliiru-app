@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
-import 'package:http/http.dart' as http;
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   const KifuliiruNeKifuliiru({Key? key}) : super(key: key);
@@ -15,7 +12,7 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<List<Igambo>> futureIgambo;
 
-  //get data from local json file
+  /* //get data from local json file
   Future<List<Igambo>> fetchIgambo() async {
     final response = await http.get(Uri.parse('assets/database/magambo.json'));
 
@@ -24,14 +21,14 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     } else {
       throw Exception('Failed to load igambo');
     }
-  }
-
+  } */
+/* 
   //pass json file to the list
   List<Igambo> parseIgambo(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
 
     return parsed.map<Igambo>((json) => Igambo.fromJson(json)).toList();
-  }
+  } */
 
   @override
   void initState() {
@@ -62,13 +59,13 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index) => ListTile(
                         title: Text(snapshot.data![index].title.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black)),
                         subtitle: Text(
                             snapshot.data![index].sobaanuro.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black)),
