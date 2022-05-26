@@ -62,6 +62,10 @@ class _MyaziState extends State<Myazi> {
             color: Colors.black,
           ),
         ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context, false),
+        ),
       ),
       body: Center(
         child: ListView.builder(

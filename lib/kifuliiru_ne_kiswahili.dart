@@ -31,6 +31,10 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
             title: const Text('Magambo ge\'Kifuliiru mu Kiswahili'),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context, false),
+            ),
           ),
           body: Center(
             child: FutureBuilder<List<Igambo>>(
