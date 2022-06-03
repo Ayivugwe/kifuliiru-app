@@ -10,8 +10,8 @@ class Myazi extends StatefulWidget {
   _MyaziState createState() => _MyaziState();
 }
 
-//List<Umwazi> items = [];
-List items = getImyazi();
+List<Umwazi> items = [];
+//List items = getImyazi();
 
 List getImyazi() {
   Umwazi umwazi = Umwazi(

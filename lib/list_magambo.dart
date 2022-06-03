@@ -30,7 +30,7 @@ class MagamboList {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'
         //'https://retoolapi.dev/bibawy/data'
-
+        //
         ));
     if (response.statusCode == 200) {
       List<Igambo> parsed = (json.decode(response.body)['items'] as List)
