@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/settings.dart';
 import 'radio_ibufuliiru.dart';
@@ -57,8 +55,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             icon: const Icon(Icons.settings),
             tooltip: 'Paramètres',
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Settings()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Settings()));
 
               //Navigator.MaterialPageRoute(builder: (context) => Settings());
             },
@@ -284,7 +282,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKifaransa()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKifaransa()),
                             );
                           },
                           child: Container(
@@ -328,7 +327,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKingereza()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKingereza()),
                             );
                           },
                           child: Container(
@@ -425,7 +425,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             height: 10,
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white10,
             ),
             width: MediaQuery.of(context).size.width,
@@ -500,7 +500,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKiswahili()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKiswahili()),
                             );
                           },
                           child: Container(
@@ -597,7 +598,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKifaransa()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKifaransa()),
                             );
                           },
                           child: Container(
@@ -641,7 +643,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KifuliiruNeKingereza()),
+                                  builder: (context) =>
+                                      const KifuliiruNeKingereza()),
                             );
                           },
                           child: Container(
@@ -783,7 +786,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -800,9 +803,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -820,14 +823,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -844,9 +847,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -864,14 +867,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -888,9 +891,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -908,14 +911,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -932,9 +935,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -952,14 +955,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -976,9 +979,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -996,14 +999,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -1020,9 +1023,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(3),
@@ -1040,14 +1043,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                               fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Flexible(
+                          const Flexible(
                             child: Text(
                                 'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru.'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -1070,10 +1073,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
 
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               child: Text(''),
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
@@ -1082,10 +1085,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     fit: BoxFit.cover),
               ),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text('Yongera igambo lihyahya'),
-              leading: Icon(
+              title: const Text('Yongera igambo lihyahya'),
+              leading: const Icon(
                 Icons.add,
               ),
               /* trailing: Icon(
@@ -1096,12 +1099,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => GamboLihyahya()),
+                  MaterialPageRoute(
+                      builder: (context) => const GamboLihyahya()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
@@ -1111,17 +1115,17 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 color: Colors.black,
               ), */
               tileColor: Colors.white,
-              title: Text('Kifuliiru-Kifuliiru'),
+              title: const Text('Kifuliiru-Kifuliiru'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => KifuliiruNeKifuliiru()),
+                      builder: (context) => const KifuliiruNeKifuliiru()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
@@ -1130,17 +1134,17 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Kifuliiru-Kiswahili'),
+              title: const Text('Kifuliiru-Kiswahili'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => KifuliiruNeKiswahili()),
+                      builder: (context) => const KifuliiruNeKiswahili()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
@@ -1150,103 +1154,104 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Kifuliiru-Kifaransa'),
+              title: const Text('Kifuliiru-Kifaransa'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => KifuliiruNeKifaransa()),
+                      builder: (context) => const KifuliiruNeKifaransa()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.book_rounded, color: Colors.blue),
+              leading: const Icon(Icons.book_rounded, color: Colors.blue),
               /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Kifuliiru-Kingereza'),
+              title: const Text('Kifuliiru-Kingereza'),
               hoverColor: Colors.greenAccent.shade700,
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => KifuliiruNeKingereza()),
+                      builder: (context) => const KifuliiruNeKingereza()),
                 );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.list_rounded, color: Colors.blue),
+              leading: const Icon(Icons.list_rounded, color: Colors.blue),
               /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Imyazi'),
+              title: const Text('Imyazi'),
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Myazi()),
+                  MaterialPageRoute(builder: (context) => const Myazi()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.question_answer, color: Colors.blue),
+              leading: const Icon(Icons.question_answer, color: Colors.blue),
               /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Twehe'),
+              title: const Text('Twehe'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyaziYitu()),
+                  MaterialPageRoute(builder: (context) => const MyaziYitu()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.web_rounded, color: Colors.blue),
+              leading: const Icon(Icons.web_rounded, color: Colors.blue),
               /* trailing: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
                 color: Colors.black,
               ), */
-              title: Text('Namuyehuulo witu'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SiteWebYitu()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.radio, color: Colors.blue),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
-              title: Text('Radio Ibufuliiru'),
+              title: const Text('Namuyehuulo witu'),
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RadioIbufuliiru()),
+                  MaterialPageRoute(builder: (context) => const SiteWebYitu()),
                 );
               },
             ),
             ListTile(
+              leading: const Icon(Icons.radio, color: Colors.blue),
+              /* trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.black,
+              ), */
+              title: const Text('Radio Ibufuliiru'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RadioIbufuliiru()),
+                );
+              },
+            ),
+            const ListTile(
               leading: Icon(Icons.settings, color: Colors.blue),
               trailing: Icon(Icons.dark_mode),
               title: Text('Hindula'),
@@ -1298,20 +1303,24 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             navigationIndex = index;
             switch (navigationIndex) {
               case 0:
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage()));
                 break;
               case 1:
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RadioIbufuliiru()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RadioIbufuliiru()));
                 break;
               case 2:
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Myazi()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Myazi()));
                 break;
               case 3:
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Chat()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Chat()));
                 break;
             }
           });
