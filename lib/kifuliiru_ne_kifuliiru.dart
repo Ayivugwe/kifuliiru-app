@@ -44,21 +44,36 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (_, index) => ListTile(
-                        title: Text(snapshot.data![index].title.toString(),
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black)),
-                        subtitle: Text(
-                            snapshot.data![index].sobaanuro.toString(),
-                            style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black)),
-                      ),
-                    );
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (_, index) => Card(
+                              child: ListTile(
+                                hoverColor: Colors.blue,
+                                leading: const CircleAvatar(
+                                  radius: 37,
+                                  backgroundColor: Colors.blue,
+                                  child: CircleAvatar(
+                                    radius: 33,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(
+                                      Icons.abc,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                    snapshot.data![index].title.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                subtitle: Text(
+                                    snapshot.data![index].sobaanuro.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black54)),
+                              ),
+                            ));
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }
