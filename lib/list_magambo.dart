@@ -37,6 +37,8 @@ class MagamboList {
           .map((data) => Igambo.fromJson(data))
           .toList();
 
+      print(parsed.length);
+
       return parsed;
     } else {
       throw Exception('Twayabirwa ukuleta amagambo.');
