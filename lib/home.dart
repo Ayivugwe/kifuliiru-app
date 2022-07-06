@@ -176,7 +176,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     bottomRight: Radius.circular(15.0),
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0))),
-            height: 150,
+            height: 200,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.only(
@@ -184,7 +184,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               child: Column(
                 children: const [
                   Text(
-                    'Muyegerere. Tumenie bingi ku Ndeto Yiitu : Kifuliiru.',
+                    'Muyegerere. Tumenye bingi ku Ndeto Yiitu : Kifuliiru.',
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 22,
@@ -1319,8 +1319,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: const Text('Carousel with indicator controller demo')),
+      appBar: AppBar(title: const Text('Myazi ye\'mwitu')),
       body: Column(children: [
         Expanded(
           child: CarouselSlider(
