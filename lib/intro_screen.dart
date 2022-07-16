@@ -33,7 +33,7 @@ class _IntroScreen extends State<IntroScreen> {
     );
 
     return IntroductionScreen(
-      globalBackgroundColor: Colors.deepOrangeAccent,
+      globalBackgroundColor: const Color.fromARGB(255, 123, 31, 3),
       //main background of screen
       pages: [
         //set your page view here
@@ -74,7 +74,7 @@ class _IntroScreen extends State<IntroScreen> {
       dotsFlex: 0,
       nextFlex: 0,
       skip: const Text(
-        'Simba',
+        'Gwajika',
         style: TextStyle(color: Colors.white),
       ),
       next: const Icon(
@@ -82,7 +82,7 @@ class _IntroScreen extends State<IntroScreen> {
         color: Colors.white,
       ),
       done: const Text(
-        'Tondera',
+        'Gwajika',
         style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
       dotsDecorator: const DotsDecorator(
