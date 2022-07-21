@@ -88,6 +88,58 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (_, index) => Card(
                                     child: ListTile(
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            isScrollControlled: true,
+                                            isDismissible: true,
+                                            shape: const RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.vertical(
+                                                      top: Radius.circular(
+                                                          20.0)),
+                                            ),
+                                            builder: (context) {
+                                              return Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
+                                                  child: FractionallySizedBox(
+                                                      heightFactor: 0.5,
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        //Pour aligner les éléments de la colonne de haut vers le bas
+                                                        /*  mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center, */
+
+                                                        //Pour aligner les elements de la colonne de droir vers la gauche
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+
+                                                        children: [
+                                                          const SizedBox(
+                                                              height: 20),
+                                                          Text(
+                                                            snapshot
+                                                                .data![index]
+                                                                .title
+                                                                .toString(),
+                                                            style: const TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          Text(snapshot
+                                                              .data![index]
+                                                              .sobaanuro
+                                                              .toString()),
+                                                        ],
+                                                      )));
+                                            });
+                                      },
                                       hoverColor: Colors.blue,
                                       leading: const CircleAvatar(
                                         radius: 37,
@@ -96,7 +148,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                           radius: 33,
                                           backgroundColor: Colors.white,
                                           child: Icon(
-                                            Icons.abc,
+                                            Icons.book,
                                             color: Colors.blue,
                                           ),
                                         ),
