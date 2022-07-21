@@ -10,21 +10,20 @@ class Myazi extends StatefulWidget {
   _MyaziState createState() => _MyaziState();
 }
 
-List<Umwazi> items = [];
-//List items = getImyazi();
+List<Umwazi> items = getImyazi();
 
-List getImyazi() {
+getImyazi() {
   Umwazi umwazi = Umwazi(
       id: 1,
       title: 'Umwazi 1',
-      kishushanyo: 'Kishushanyo 1',
+      kishushanyo: 'assets/images/kifuliiru.png',
       magamboMingi: 'Magambo 1');
 
   items.add(umwazi);
   Umwazi umwazi2 = Umwazi(
       id: 2,
       title: 'Umwazi 2',
-      kishushanyo: 'Kishushanyo 2',
+      kishushanyo: 'assets/images/kifuliiru.png',
       magamboMingi: 'Magambo 2');
 
   items.add(umwazi2);
@@ -32,14 +31,14 @@ List getImyazi() {
   Umwazi umwazi3 = Umwazi(
       id: 3,
       title: 'Umwazi 3',
-      kishushanyo: 'Kishushanyo 3',
+      kishushanyo: 'assets/images/kifuliiru.png',
       magamboMingi: 'Magambo 3');
 
   items.add(umwazi3);
   Umwazi umwazi4 = Umwazi(
       id: 4,
       title: 'Umwazi 4',
-      kishushanyo: 'Kishushanyo 4',
+      kishushanyo: 'assets/images/kifuliiru.png',
       magamboMingi: 'Magambo 4');
 
   items.add(umwazi4);
@@ -71,9 +70,16 @@ class _MyaziState extends State<Myazi> {
         child: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(items[index].title),
-              subtitle: Text(items[index].magamboMingi),
+            return Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(items[index].kishushanyo),
+                  Text(items[index].title),
+                  Text(items[index].magamboMingi),
+                ],
+              ),
             );
           },
         ),

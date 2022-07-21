@@ -19,6 +19,32 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     futureIgambo = magamboList.fetchIgambo();
   }
 
+  // This function is called whenever the text field changes
+  void _looza(String igamboUmulooza) {
+    List<Map<String, dynamic>> results = [];
+    if (igamboUmulooza.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = futureIgambo as List<Map<String, dynamic>>;
+    } else {
+      results = futureIgambo as List<Map<String, dynamic>>;
+      results = results
+          .where((igambo) =>
+              igambo["igambo"]
+                  .toLowerCase()
+                  .contains(igamboUmulooza.toLowerCase()) ||
+              igambo["sobaanuro"]
+                  .toLowerCase()
+                  .contains(igamboUmulooza.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      //maga = results;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +56,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(
-              color: Colors.black,
+              color: Colors.white,
             ),
             title: const Text('Magambo ge\'Kifuliiru mu Kifuliiru'),
             leading: IconButton(
@@ -39,45 +65,66 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             ),
           ),
           body: Center(
-            child: FutureBuilder<List<Igambo>>(
-                future: futureIgambo,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (_, index) => Card(
-                              child: ListTile(
-                                hoverColor: Colors.blue,
-                                leading: const CircleAvatar(
-                                  radius: 37,
-                                  backgroundColor: Colors.blue,
-                                  child: CircleAvatar(
-                                    radius: 33,
-                                    backgroundColor: Colors.white,
-                                    child: Icon(
-                                      Icons.abc,
-                                      color: Colors.blue,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  onChanged: (value) => _looza(value),
+                  decoration: const InputDecoration(
+                      labelText: 'Looza hano ... ',
+                      suffixIcon: Icon(Icons.search)),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: FutureBuilder<List<Igambo>>(
+                      future: futureIgambo,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return ListView.builder(
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (_, index) => Card(
+                                    child: ListTile(
+                                      hoverColor: Colors.blue,
+                                      leading: const CircleAvatar(
+                                        radius: 37,
+                                        backgroundColor: Colors.blue,
+                                        child: CircleAvatar(
+                                          radius: 33,
+                                          backgroundColor: Colors.white,
+                                          child: Icon(
+                                            Icons.abc,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ),
+                                      title: Text(
+                                          snapshot.data![index].title
+                                              .toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)),
+                                      subtitle: Text(
+                                          snapshot.data![index].sobaanuro
+                                              .toString(),
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.normal,
+                                              color: Colors.black54)),
                                     ),
-                                  ),
-                                ),
-                                title: Text(
-                                    snapshot.data![index].title.toString(),
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black)),
-                                subtitle: Text(
-                                    snapshot.data![index].sobaanuro.toString(),
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black54)),
-                              ),
-                            ));
-                  } else {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                }),
+                                  ));
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      }),
+                ),
+              ],
+            ),
           ),
         ));
   }
