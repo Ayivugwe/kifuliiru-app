@@ -70,11 +70,14 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  onChanged: (value) => _looza(value),
-                  decoration: const InputDecoration(
-                      labelText: 'Looza hano ... ',
-                      suffixIcon: Icon(Icons.search)),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextField(
+                    onChanged: (value) => _looza(value),
+                    decoration: const InputDecoration(
+                        labelText: 'Looza hano ... ',
+                        suffixIcon: Icon(Icons.search)),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
