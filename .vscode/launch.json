@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "sobanura_kifuliiru",
+            "name": "Kifuliiru App",
             "request": "launch",
             "type": "dart"
         }
