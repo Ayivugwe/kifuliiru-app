@@ -65,7 +65,7 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class Home extends StatelessWidget {
-  final appTitle = 'KIFULIIRU NDETO YIITU';
+  final appTitle = 'KIFULIIRU NDETO YITU';
 
   const Home({Key? key}) : super(key: key);
 
@@ -118,7 +118,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
         ],
         elevation: 0,
         title: const Text(
-          'KIFULIIRU NDETO YIITU',
+          'KIFULIIRU NDETO YITU',
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
         //backgroundColor: HexColor('#f2d7d5'),
@@ -687,27 +687,17 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                       Text('Fuliiru App iliri Application ye\' Kifuliiru tukakola higulu itugwase 
                       twehe na ngisi Mufuliiru yeshi na ngisi yeshi uwangasima ukumenya indeto yitu.'),
                       Text('Guno mukolwa gukagwajikwa na Ayivugwe Kabemba Mukome.'),
-                      
+                      Text('Kongwa.')
+
                     ]
-
                   ),
-
-                  //MaterialPageRoute(builder: (context) => const MyaziYitu()),
                 );
               },
             ),
             ListTile(
               leading: const Icon(Icons.web_rounded, color: Colors.blue),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
               title: const Text('Namuyehuulo witu'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const SiteWebYitu()),
