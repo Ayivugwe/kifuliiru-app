@@ -15,8 +15,11 @@ class MagamboList {
   }
 
   //get data from local json file
+  //final response = await http.get(Uri.parse('assets/database/magambo.json'));
+
+//Fetch data from an API (link or endpoint)
   Future<List<Igambo>> fetchIgambo() async {
-    // final response = await http.get(Uri.parse('assets/database/magambo.json'));
+    
 
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
