@@ -109,16 +109,9 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
-                                                        //Pour aligner les éléments de la colonne de haut vers le bas
-                                                        /*  mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center, */
-
-                                                        //Pour aligner les elements de la colonne de droir vers la gauche
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
                                                                 .start,
-
                                                         children: [
                                                           const SizedBox(
                                                               height: 20),
