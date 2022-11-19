@@ -674,24 +674,24 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               ), */
               title: const Text('Twehe'),
               onTap: () {
-                Navigator.push(
-                  
-                  showDialog(
-                    context=context,
-                    builder: (context) => const AboutDialog(),
-                    applicationIcon: FluutterLogo(),
-                    applicationLegalise: 'Legalise',
-                    applicationName: 'Kifuliiru App',
-                    applicationVersion: 'version 1.0.10',
-                    children: [
-                      Text('Fuliiru App iliri Application ye\' Kifuliiru tukakola higulu itugwase 
-                      twehe na ngisi Mufuliiru yeshi na ngisi yeshi uwangasima ukumenya indeto yitu.'),
-                      Text('Guno mukolwa gukagwajikwa na Ayivugwe Kabemba Mukome.'),
-                      Text('Kongwa.')
+                //   Navigator.push(
+                //     context,
+                //     showDialog(
+                //       context:context,
+                //       builder: (context) => const AboutDialog(),
+                //       applicationIcon: FluutterLogo(),
+                //       applicationLegalise: 'Legalise',
+                //       applicationName: 'Kifuliiru App',
+                //       applicationVersion: 'version 1.0.10',
+                //       children: [
+                //         Text('Fuliiru App iliri Application ye\' Kifuliiru tukakola higulu itugwase
+                //         twehe na ngisi Mufuliiru yeshi na ngisi yeshi uwangasima ukumenya indeto yitu.'),
+                //         Text('Guno mukolwa gukagwajikwa na Ayivugwe Kabemba Mukome.'),
+                //         Text('Kongwa.')
 
-                    ]
-                  ),
-                );
+                //       ]
+                //     ),
+                //   );
               },
             ),
             ListTile(
