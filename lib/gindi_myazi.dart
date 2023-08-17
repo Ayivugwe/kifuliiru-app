@@ -1,4 +1,3 @@
-//import 'package:crypto_font_icons/crypto_font_icons.dart';
 import 'package:flutter/material.dart';
 
 class GindiMyazi extends StatefulWidget {
