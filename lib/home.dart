@@ -557,11 +557,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               leading: const Icon(
                 Icons.add,
               ),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
               onTap: () {
                 Navigator.push(
                   context,
@@ -575,11 +570,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
+              
               tileColor: Colors.white,
               title: const Text('Kifuliiru-Kifuliiru'),
               onTap: () {
@@ -595,11 +586,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
-              /*  trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
+             
               title: const Text('Kifuliiru-Kiswahili'),
               onTap: () {
                 Navigator.push(
@@ -631,11 +618,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.book_rounded, color: Colors.blue),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
+             
               title: const Text('Kifuliiru-Kingereza'),
               hoverColor: Colors.greenAccent.shade700,
               onTap: () {
@@ -667,31 +650,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.question_answer, color: Colors.blue),
-              /* trailing: Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
-                color: Colors.black,
-              ), */
+              
               title: const Text('Twehe'),
               onTap: () {
-                //   Navigator.push(
-                //     context,
-                //     showDialog(
-                //       context:context,
-                //       builder: (context) => const AboutDialog(),
-                //       applicationIcon: FluutterLogo(),
-                //       applicationLegalise: 'Legalise',
-                //       applicationName: 'Kifuliiru App',
-                //       applicationVersion: 'version 1.0.10',
-                //       children: [
-                //         Text('Fuliiru App iliri Application ye\' Kifuliiru tukakola higulu itugwase
-                //         twehe na ngisi Mufuliiru yeshi na ngisi yeshi uwangasima ukumenya indeto yitu.'),
-                //         Text('Guno mukolwa gukagwajikwa na Ayivugwe Kabemba Mukome.'),
-                //         Text('Kongwa.')
-
-                //       ]
-                //     ),
-                //   );
+               
               },
             ),
             ListTile(
