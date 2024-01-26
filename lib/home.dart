@@ -7,7 +7,6 @@ import 'radio_ibufuliiru.dart';
 import 'gambo_lihyahya.dart';
 import 'imyazi.dart';
 import 'site_web_yitu.dart';
-import 'twehe.dart';
 import 'kifuliiru_ne_kifuliiru.dart';
 import 'kifuliiru_ne_kifaransa.dart';
 import 'kifuliiru_ne_kingereza.dart';
@@ -176,9 +175,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                               alignment: AlignmentDirectional.center,
-                              children: const [
+                              children: [
                                 Positioned(
                                     top: 20,
                                     height: 100,
@@ -222,9 +221,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                               alignment: AlignmentDirectional.center,
-                              children: const [
+                              children: [
                                 Positioned(
                                     top: 20,
                                     height: 100,
@@ -274,10 +273,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.white54,
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
                             'Ibiyandike mu Kifuliiru',
                             style: TextStyle(
@@ -349,9 +348,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                               alignment: AlignmentDirectional.center,
-                              children: const [
+                              children: [
                                 Positioned(
                                     top: 20,
                                     height: 100,
@@ -395,9 +394,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: const [
+                                children: [
                                   Positioned(
                                     top: 20,
                                     height: 100,
@@ -447,9 +446,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: const [
+                                children: [
                                   Positioned(
                                     top: 20,
                                     height: 100,
@@ -492,9 +491,9 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Colors.white54,
                             ),
-                            child: Stack(
+                            child: const Stack(
                                 alignment: AlignmentDirectional.center,
-                                children: const [
+                                children: [
                                   Positioned(
                                     top: 20,
                                     height: 100,

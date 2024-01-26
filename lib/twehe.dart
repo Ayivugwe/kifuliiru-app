@@ -15,13 +15,13 @@ class MyaziYitu extends StatelessWidget {
           child: const Text('Myazi yitu hano'),
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Text(
+            Text(
               'Menya bingi higulu lya guno mukolwa',
               style: TextStyle(
                 fontSize: 20,
@@ -30,40 +30,40 @@ class MyaziYitu extends StatelessWidget {
               textAlign: TextAlign.start,
             ),
             Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 child: Column(
-                  children: const [
-                    const SizedBox(
+                  children: [
+                    SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                       style: TextStyle(
                         fontSize: 18,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                       style: TextStyle(
                         fontSize: 18,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                       style: TextStyle(
                         fontSize: 18,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Tumenye Ibufuliiru imwa Bafuliiru ne Kifuliiru. Ibufuliiru yo\'mwiitu, bo bugale bwiitu. Tumenye na\'handi hoshi. Tumenyeese na\'bandi boshi hoshi bangaba baliri higulu lye\'Bufuliiru. Guno mukolwa guliri hano higulu lyo\'kudeta kwo tumenenye bwija imwitu, abandu biitu ne\' ndeto yiitu Kifuliiru. Tubanini tumenye na\'handi hoshi.',
                       style: TextStyle(
                         fontSize: 18,

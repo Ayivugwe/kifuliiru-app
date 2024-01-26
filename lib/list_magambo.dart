@@ -30,10 +30,10 @@ class MagamboList {
 
   List<Map<String, dynamic>> convertToMap({required List myList}) {
     List<Map<String, dynamic>> list = [];
-    for (var element in myList) {
-      Map gam = element.toMap();
-      //list.add(gam);
-    }
+    // for (var element in myList) {
+    //   //Map gam = element.toMap();
+    //   //list.add(gam);
+    // }
     return list;
   }
 }
