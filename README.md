@@ -1,6 +1,6 @@
-# kifuliiru_app
+# Kifuliiru App
 
-Kifuliiru App is an application for the Fuliiru language. Kufliiru language is one the languages spoken in the Democratic Republic of the Congo.
+Kifuliiru App is an application for the Kifuliiru language. This language is one the languages spoken in the Democratic Republic of the Congo, in the South Kivu province, in Uvira terriotry. It's spoken by the Bafuliiru.
 
 Ino iliri application igakola ku nabwisirongo(telephone). Igatugwasa bweneene tukizilonga imyazi ye'mwitu, no kumenya ibindu bingi ku ndeto yiitu Kifuliiru.
 
