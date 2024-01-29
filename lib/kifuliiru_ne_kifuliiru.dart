@@ -58,7 +58,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
             iconTheme: const IconThemeData(
               color: Colors.white,
             ),
-            title: const Text('Magambo ge\'Kifuliiru mu Kifuliiru'),
+            title: const Text('Kifuliiru - Kifuliiru'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context, false),

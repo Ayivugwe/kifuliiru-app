@@ -6,6 +6,7 @@ class KifuliiruNeKingereza extends StatefulWidget {
   const KifuliiruNeKingereza({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _KifuliiruNeKingerezaState createState() => _KifuliiruNeKingerezaState();
 }
 
@@ -56,7 +57,7 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
-            title: const Text('Magambo ge\'Kifuliiru mu Kingereza'),
+            title: const Text('Kifuliiru - Kingereza'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context, false),
@@ -155,7 +156,7 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].sobaanuro
+                                          snapshot.data![index].sobaanuroYeKingereza
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,
