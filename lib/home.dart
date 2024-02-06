@@ -542,13 +542,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
 
           children: <Widget>[
             const DrawerHeader(
-              child: Text(''),
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
                 image: DecorationImage(
                     image: AssetImage("assets/images/rdc.png"),
                     fit: BoxFit.cover),
               ),
+              child: Text(''),
             ),
             const Divider(),
             ListTile(
@@ -824,7 +824,7 @@ class CarouselImyazi extends StatelessWidget {
         return MaterialApp(
           initialRoute: '/indicator',
           darkTheme: ThemeData.dark(),
-          themeMode: ThemeMode.values.toList()[value as int],
+          themeMode: ThemeMode.values.toList()[value],
           debugShowCheckedModeBanner: false,
           routes: {
             '/indicator': (ctx) => const CarouselWithIndicatorImyazi(),

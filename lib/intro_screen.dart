@@ -110,8 +110,8 @@ class _IntroScreen extends State<IntroScreen> {
   Widget introImage(String assetName) {
     //widget to show intro image
     return Align(
-      child: Image.asset(assetName, width: 350.0),
       alignment: Alignment.bottomCenter,
+      child: Image.asset(assetName, width: 350.0),
     );
   }
 }
