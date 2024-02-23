@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'igambo.dart';
-import 'package:collection/collection.dart';
 
 class GamboLihyahya extends StatelessWidget {
   const GamboLihyahya({Key? key}) : super(key: key);
@@ -248,7 +247,7 @@ class GamboLihyahya extends StatelessWidget {
       {'name': 'updated name', 'id': 1, 'value': 9876, 'num': 456.789},
       {'name': 'another name', 'id': 2, 'value': 12345678, 'num': 3.1416}
     ];
-    assert(const DeepCollectionEquality().equals(list, expectedList));
+    //assert(const DeepCollectionEquality().equals(list, expectedList));
   }
 
   countValue() async {

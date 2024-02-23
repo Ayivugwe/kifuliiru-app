@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/imigani.dart';
 import 'package:kifuliiru_app/kifuliiru.dart';
+import 'package:kifuliiru_app/news_screen.dart';
 import 'package:kifuliiru_app/settings.dart';
 import 'ibiyandike_mu_kifuliiru.dart';
 import 'migeeza_ye_kifuliiru.dart';
@@ -17,10 +19,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
   'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80'
 ];
 
 final List<Widget> imageSliders = imgList
@@ -49,7 +48,7 @@ final List<Widget> imageSliders = imgList
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 20.0),
                       child: Text(
-                        'No. ${imgList.indexOf(item)} image',
+                        'Umwazi ugugira ${imgList.indexOf(item)}',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -82,6 +81,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageWidgetState createState() => _MyHomePageWidgetState();
   final String title = '';
 }
@@ -102,6 +102,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Longa imyazi mu Kifuliiru')));
+                  Navigator.push(context, MaterialPageRoute(builder:  (context) => const NewsScreen()));
             },
           ),
           IconButton(
@@ -250,7 +251,60 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             ),
                           ),
                         ),
+                        
                       ]),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const Imigani()),
+                            );
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 170,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white54,
+                            ),
+                            child: const Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                Positioned(
+                                    top: 20,
+                                    height: 100,
+                                    width: 100,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.blue,
+                                      backgroundImage: AssetImage(
+                                        'assets/images/kifuliiru.png',
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Positioned(
+                                    bottom: 20,
+                                    child: Text(
+                                      'Migani ye\'Kifuliiru',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ),
+                        ],
+                      ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -643,7 +697,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 // Then close the drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Myazi()),
+                  MaterialPageRoute(builder: (context) => const Imyazi()),
                 );
               },
             ),
@@ -741,7 +795,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 break;
               case 2:
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Myazi()));
+                    MaterialPageRoute(builder: (context) => const Imyazi()));
                 break;
               case 3:
                 Navigator.push(context,

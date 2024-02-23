@@ -1,87 +1,82 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:kifuliiru_app/umwazi.dart';
 
-class Myazi extends StatefulWidget {
-  const Myazi({Key? key}) : super(key: key);
+void main() {
+  runApp(const Imyazi());
+}
+
+class Imyazi extends StatelessWidget {
+  const Imyazi({super.key});
 
   @override
-  _MyaziState createState() => _MyaziState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Imyazi mu Kifuliiru',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        hintColor: Colors.orangeAccent,
+        fontFamily: 'Roboto', // Customize your font family here
+      ),
+      home: const BeautifulScreen(),
+    );
+  }
 }
 
-List<Umwazi> items = getImyazi();
+class BeautifulScreen extends StatelessWidget {
+  const BeautifulScreen({super.key});
 
-getImyazi() {
-  Umwazi umwazi = Umwazi(
-      id: 1,
-      title: 'Umwazi 1',
-      kishushanyo: 'assets/images/kifuliiru.png',
-      magamboMingi: 'Magambo 1');
-
-  items.add(umwazi);
-  Umwazi umwazi2 = Umwazi(
-      id: 2,
-      title: 'Umwazi 2',
-      kishushanyo: 'assets/images/kifuliiru.png',
-      magamboMingi: 'Magambo 2');
-
-  items.add(umwazi2);
-
-  Umwazi umwazi3 = Umwazi(
-      id: 3,
-      title: 'Umwazi 3',
-      kishushanyo: 'assets/images/kifuliiru.png',
-      magamboMingi: 'Magambo 3');
-
-  items.add(umwazi3);
-  Umwazi umwazi4 = Umwazi(
-      id: 4,
-      title: 'Umwazi 4',
-      kishushanyo: 'assets/images/kifuliiru.png',
-      magamboMingi: 'Magambo 4');
-
-  items.add(umwazi4);
-
-  print("items: $items.length");
-
-  return items;
-}
-
-class _MyaziState extends State<Myazi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text(
-          'Myazi mu Kifuliiru',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context, false),
-        ),
+        title: const Text('Beautiful Screen'),
+        centerTitle: true,
       ),
       body: Center(
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(items[index].kishushanyo),
-                  Text(items[index].title),
-                  Text(items[index].magamboMingi),
-                ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CircleAvatar(
+              radius: 80,
+              backgroundImage: AssetImage('assets/profile_pic.jpg'),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'John Doe',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-            );
-          },
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Flutter Developer',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Add onPressed functionality here
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: const Text(
+                'Contact Me',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

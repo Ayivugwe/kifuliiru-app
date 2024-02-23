@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
@@ -56,7 +58,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(
-              color: Colors.white,
+              color: Colors.black,
             ),
             title: const Text('Kifuliiru - Kifuliiru'),
             leading: IconButton(

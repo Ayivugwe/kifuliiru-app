@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'dart:core';
 
 class Umwazi {
@@ -6,6 +5,8 @@ class Umwazi {
   late String title;
   late String kishushanyo;
   late String magamboMingi;
+
+  
 
   Umwazi(
       {required this.id,
