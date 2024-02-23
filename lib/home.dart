@@ -3,6 +3,7 @@ import 'package:kifuliiru_app/imigani.dart';
 import 'package:kifuliiru_app/kifuliiru.dart';
 import 'package:kifuliiru_app/news_screen.dart';
 import 'package:kifuliiru_app/settings.dart';
+import 'package:kifuliiru_app/twehe.dart';
 import 'ibiyandike_mu_kifuliiru.dart';
 import 'migeeza_ye_kifuliiru.dart';
 import 'radio_ibufuliiru.dart';
@@ -14,53 +15,8 @@ import 'kifuliiru_ne_kifaransa.dart';
 import 'kifuliiru_ne_kingereza.dart';
 import 'kifuliiru_ne_kiswahili.dart';
 import 'chat.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
-final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80'
-];
 
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Stack(
-                children: <Widget>[
-                  Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                  Positioned(
-                    bottom: 0.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(200, 0, 0, 0),
-                            Color.fromARGB(0, 0, 0, 0)
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      child: Text(
-                        'Umwazi ugugira ${imgList.indexOf(item)}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )),
-        ))
-    .toList();
 
 class Home extends StatelessWidget {
   final appTitle = 'KIFULIIRU NDETO YITU';
@@ -102,7 +58,8 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Longa imyazi mu Kifuliiru')));
-                  Navigator.push(context, MaterialPageRoute(builder:  (context) => const NewsScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const NewsScreen()));
             },
           ),
           IconButton(
@@ -128,13 +85,13 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
       backgroundColor: Colors.red[100],
       body: Center(
         child: ListView(children: [
-          const SizedBox(
-            height: 400.0,
-            child: CarouselImyazi(),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          // const SizedBox(
+          //   height: 400.0,
+          //   child: CarouselImyazi(),
+          // ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
           Container(
             decoration: BoxDecoration(
               color: Colors.red[100],
@@ -145,7 +102,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 height: 30,
               ),
               const Text(
-                'Kifuliiru',
+                'Muyegerere tumenye bingi ku Kifuliiru mu Kifuliiru',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -251,60 +208,589 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        
                       ]),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const Imigani()),
-                            );
-                          },
-                          child: Container(
-                            width: 150,
-                            height: 170,
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Colors.white54,
-                            ),
-                            child: const Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: [
-                                Positioned(
-                                    top: 20,
-                                    height: 100,
-                                    width: 100,
-                                    child: CircleAvatar(
-                                      backgroundColor: Colors.blue,
-                                      backgroundImage: AssetImage(
-                                        'assets/images/kifuliiru.png',
-                                      ),
-                                    )),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Positioned(
-                                    bottom: 20,
-                                    child: Text(
-                                      'Migani ye\'Kifuliiru',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ))
-                              ],
-                            ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
                           ),
                         ),
-                        ],
                       ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Imigani()),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 170,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white54,
+                          ),
+                          child: const Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Positioned(
+                                  top: 20,
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: AssetImage(
+                                      'assets/images/kifuliiru.png',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Positioned(
+                                  bottom: 20,
+                                  child: Text(
+                                    'Migani ye\'Kifuliiru',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -623,7 +1109,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
-              
               tileColor: Colors.white,
               title: const Text('Kifuliiru-Kifuliiru'),
               onTap: () {
@@ -639,7 +1124,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 Icons.book_rounded,
                 color: Colors.blue,
               ),
-             
               title: const Text('Kifuliiru-Kiswahili'),
               onTap: () {
                 Navigator.push(
@@ -671,7 +1155,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.book_rounded, color: Colors.blue),
-             
               title: const Text('Kifuliiru-Kingereza'),
               hoverColor: Colors.greenAccent.shade700,
               onTap: () {
@@ -703,10 +1186,10 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.question_answer, color: Colors.blue),
-              
               title: const Text('Twehe'),
               onTap: () {
-               
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Twehe()));
               },
             ),
             ListTile(
@@ -805,87 +1288,6 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           });
         },
       ),
-    );
-  }
-}
-
-class CarouselWithIndicatorImyazi extends StatefulWidget {
-  const CarouselWithIndicatorImyazi({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return _CarouselWithIndicatorState();
-  }
-}
-
-class _CarouselWithIndicatorState extends State<CarouselWithIndicatorImyazi> {
-  int _current = 0;
-  final CarouselController _controller = CarouselController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        Expanded(
-          child: CarouselSlider(
-            items: imageSliders,
-            carouselController: _controller,
-            options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 2.0,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                }),
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: imgList.asMap().entries.map((entry) {
-            return GestureDetector(
-              onTap: () => _controller.animateToPage(entry.key),
-              child: Container(
-                width: 12.0,
-                height: 12.0,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
-                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-              ),
-            );
-          }).toList(),
-        ),
-      ]),
-    );
-  }
-}
-
-final themeMode = ValueNotifier(2);
-
-class CarouselImyazi extends StatelessWidget {
-  const CarouselImyazi({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      builder: (context, value, g) {
-        return MaterialApp(
-          initialRoute: '/indicator',
-          darkTheme: ThemeData.dark(),
-          themeMode: ThemeMode.values.toList()[value],
-          debugShowCheckedModeBanner: false,
-          routes: {
-            '/indicator': (ctx) => const CarouselWithIndicatorImyazi(),
-          },
-        );
-      },
-      valueListenable: themeMode,
     );
   }
 }

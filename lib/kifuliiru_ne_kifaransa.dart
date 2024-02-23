@@ -57,7 +57,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(
-              color: Colors.white,
+              color: Colors.black,
             ),
             title: const Text('Kifuliiru - Kifaransa'),
             leading: IconButton(

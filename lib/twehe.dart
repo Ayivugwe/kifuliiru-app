@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class MyaziYitu extends StatelessWidget {
-  const MyaziYitu({Key? key}) : super(key: key);
+class Twehe extends StatelessWidget {
+  const Twehe({Key? key}) : super(key: key);
   final title = "";
 
   @override
