@@ -14,9 +14,6 @@ import 'kifuliiru_ne_kifuliiru.dart';
 import 'kifuliiru_ne_kifaransa.dart';
 import 'kifuliiru_ne_kingereza.dart';
 import 'kifuliiru_ne_kiswahili.dart';
-import 'chat.dart';
-
-
 
 class Home extends StatelessWidget {
   final appTitle = 'KIFULIIRU NDETO YITU';
@@ -1251,14 +1248,14 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.chat,
+                Icons.info_outlined,
                 color: Colors.black,
               ),
               activeIcon: Icon(
-                Icons.chat,
+                Icons.info_outlined,
                 color: Colors.blue,
               ),
-              label: 'Tuganuule'),
+              label: 'Twehe'),
         ],
         onTap: (int index) {
           setState(() {
@@ -1282,7 +1279,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                 break;
               case 3:
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Chat()));
+                    MaterialPageRoute(builder: (context) => const Twehe()));
                 break;
             }
           });
