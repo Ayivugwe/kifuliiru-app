@@ -94,21 +94,23 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               color: Colors.red[100],
             ),
             width: MediaQuery.of(context).size.width,
-            child: Column(children: [
-              const SizedBox(
+            child: const Column(children: [
+              SizedBox(
                 height: 30,
               ),
-              const Text(
+              Text(
                 'Muyegerere tumenye bingi ku Kifuliiru mu Kifuliiru',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 30,
               ),
               Column(
+                  /* 
                 children: [
                   Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -791,6 +793,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                   const SizedBox(
                     height: 10,
                   ),
+
                   const SizedBox(
                     height: 10,
                   ),
@@ -837,9 +840,57 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
                     height: 10,
                   ),
                 ],
-              ),
+                */
+                  ),
             ]),
           ),
+
+          const SizedBox(
+                    height: 10,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const IbiyandikeMuKifuliiru()),
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width - 40,
+                      height: 300,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.white54,
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Ibiyandike mu Kifuliiru',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Image(
+                              image: AssetImage('assets/images/kifuliiru.png'),
+                              height: 257,
+                              width: 400,
+                              fit: BoxFit.fill),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  
           const SizedBox(
             height: 10,
           ),
