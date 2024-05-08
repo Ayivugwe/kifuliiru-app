@@ -122,7 +122,7 @@ class _ImyaziState extends State<Imyazi> {
                                                           Text(
                                                             snapshot
                                                                 .data![index]
-                                                                .title
+                                                                .igambo
                                                                 .toString(),
                                                             style: const TextStyle(
                                                                 fontSize: 20,
@@ -132,7 +132,7 @@ class _ImyaziState extends State<Imyazi> {
                                                           ),
                                                           Text(snapshot
                                                               .data![index]
-                                                              .sobaanuro
+                                                              .kifuliiru
                                                               .toString()),
                                                         ],
                                                       )));
@@ -152,14 +152,14 @@ class _ImyaziState extends State<Imyazi> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].title
+                                          snapshot.data![index].igambo
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].sobaanuro
+                                          snapshot.data![index].kifuliiru
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,

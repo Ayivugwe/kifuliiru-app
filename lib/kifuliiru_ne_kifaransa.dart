@@ -122,7 +122,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                                           Text(
                                                             snapshot
                                                                 .data![index]
-                                                                .title
+                                                                .igambo
                                                                 .toString(),
                                                             style: const TextStyle(
                                                                 fontSize: 20,
@@ -132,7 +132,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                                           ),
                                                           Text(snapshot
                                                               .data![index]
-                                                              .sobaanuro
+                                                              .kifaransa
                                                               .toString()),
                                                         ],
                                                       )));
@@ -152,14 +152,14 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].title
+                                          snapshot.data![index].igambo
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].sobaanuro
+                                          snapshot.data![index].kifaransa
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,

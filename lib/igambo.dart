@@ -26,11 +26,11 @@ class Igambo {
   String? sOwner;
   String? sCreatedDate;
   String? sUpdatedDate;
-  String? sobaanuroYeKiswahili;
-  String? sobaanuro;
-  String? title;
-  String? sobaanuroYeKingereza;
-  String? sobaanuroYeKifaransa;
+   String? igambo;
+  String? kiswahili;
+  String? kifuliiru;
+  String? kingereza;
+  String? kifaransa;
   List<String>? holidesirwi;
 
   Igambo(
@@ -38,11 +38,11 @@ class Igambo {
       this.sOwner,
       this.sCreatedDate,
       this.sUpdatedDate,
-      this.sobaanuroYeKiswahili,
-      this.sobaanuro,
-      this.title,
-      this.sobaanuroYeKingereza,
-      this.sobaanuroYeKifaransa,
+      this.kiswahili,
+      this.kifuliiru,
+      this.igambo,
+      this.kingereza,
+      this.kifaransa,
       this.holidesirwi});
 
   Igambo.fromJson(Map<String, dynamic> json) {
@@ -50,11 +50,11 @@ class Igambo {
     sOwner = json['_owner'];
     sCreatedDate = json['_createdDate'];
     sUpdatedDate = json['_updatedDate'];
-    sobaanuroYeKiswahili = json['sobaanuroYeKiswahili'];
-    sobaanuro = json['sobaanuro'];
-    title = json['title'];
-    sobaanuroYeKingereza = json['sobaanuroYeKingereza'];
-    sobaanuroYeKifaransa = json['sobaanuroYeKifaransa'];
+    kiswahili = json['sobaanuroYeKiswahili'];
+    kifuliiru = json['sobaanuro'];
+    igambo = json['title'];
+    kingereza = json['sobaanuroYeKingereza'];
+    kifaransa = json['sobaanuroYeKifaransa'];
     holidesirwi = json['holidesirwi']?.cast<String>();
   }
 
@@ -64,31 +64,12 @@ class Igambo {
     data['_owner'] = sOwner;
     data['_createdDate'] = sCreatedDate;
     data['_updatedDate'] = sUpdatedDate;
-    data['sobaanuroYeKiswahili'] = sobaanuroYeKiswahili;
-    data['sobaanuro'] = sobaanuro;
-    data['title'] = title;
-    data['sobaanuroYeKingereza'] = sobaanuroYeKingereza;
-    data['sobaanuroYeKifaransa'] = sobaanuroYeKifaransa;
+    data['sobaanuroYeKiswahili'] = kiswahili;
+    data['sobaanuro'] = kifuliiru;
+    data['title'] = igambo;
+    data['sobaanuroYeKingereza'] = kingereza;
+    data['sobaanuroYeKifaransa'] = kifaransa;
     data['holidesirwi'] = holidesirwi;
     return data;
   }
 }
-
-Igambo ig1 = Igambo(
-  title: "Umundu",
-  sobaanuro: "Umundu aliri mundu",
-  holidesirwi: null,
-  sobaanuroYeKifaransa: "",
-  sobaanuroYeKingereza: "",
-  sobaanuroYeKiswahili: "",
-);
-Igambo ig2 = Igambo(
-  title: "Umundu",
-  sobaanuro: "Umundu aliri mundu",
-  holidesirwi: null,
-  sobaanuroYeKifaransa: "",
-  sobaanuroYeKingereza: "",
-  sobaanuroYeKiswahili: "",
-);
-
-List<Igambo> listAmagambo = [ig1, ig2];
