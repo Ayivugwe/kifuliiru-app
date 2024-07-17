@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+//import 'package:supabase_flutter/supabase_flutter.dart';
 import 'igambo.dart';
 
 class GamboLihyahya extends StatelessWidget {
@@ -207,10 +207,10 @@ class GamboLihyahya extends StatelessWidget {
                             kifaransa: gamboKifuliiruKifaransa,
                             kingereza: gamboKifuliiruKingereza);
 
-                        await Supabase.instance.client
+                       /*  await Supabase.instance.client
                             .from('magambo')
                             .insert(gaambo);
-                        //listeMagambo.add(gaambo);
+                        //listeMagambo.add(gaambo); */
                       },
                       child: const Text('Bika bino wayandika'))
                 ],
@@ -219,26 +219,4 @@ class GamboLihyahya extends StatelessWidget {
           ),
         )));
   }
-
-/* 
-  updateData(int id, String kifuliiru, String kifKif, String kifKiswah,
-      String kifKifar, String kifKinge) async {}
-  getRecords() async {
-// Get the records
-    List<Map> list =
-        await database.rawQuery('SELECT * FROM Magambo_ge_Kifuliiru');
-    List<Map> expectedList = [
-      {'name': 'updated name', 'id': 1, 'value': 9876, 'num': 456.789},
-      {'name': 'another name', 'id': 2, 'value': 12345678, 'num': 3.1416}
-    ];
-    //assert(const DeepCollectionEquality().equals(list, expectedList));
-  }
-
-  countValue() async {
-    // Count the records
-  }
-
-  deleteData() async {
-// Delete a record
-  } */
 }
