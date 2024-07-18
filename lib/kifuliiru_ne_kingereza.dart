@@ -12,12 +12,10 @@ class KifuliiruNeKingereza extends StatefulWidget {
 
 class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   late Future<List<Igambo>> futureIgambo;
-
-  // This function is called whenever the text field changes
   void _looza(String igamboUmulooza) {
     List<Map<String, dynamic>> results = [];
     if (igamboUmulooza.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
+    
       results = futureIgambo as List<Map<String, dynamic>>;
     } else {
       results = futureIgambo as List<Map<String, dynamic>>;

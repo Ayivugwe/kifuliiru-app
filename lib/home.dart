@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/kifuliiru.dart';
 import 'package:kifuliiru_app/news_screen.dart';
 import 'package:kifuliiru_app/settings.dart';
 import 'package:kifuliiru_app/twehe.dart';
@@ -91,6 +92,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
               ),
               Text(
                 'Muyegerere tumenye bingi ku Kifuliiru mu Kifuliiru',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -105,54 +107,236 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
           const SizedBox(
             height: 10,
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const IbiyandikeMuKifuliiru()),
-              );
-            },
-            child: Container(
-              width: MediaQuery.of(context).size.width - 40,
-              height: 300,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.white54,
-              ),
-              child: const Column(
+          Container(
+            margin: const EdgeInsets.all(8.0),
+            width: MediaQuery.of(context).size.width - 40,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.white54,
+            ),
+            child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Ibiyandike mu Kifuliiru',
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'Menya Bingi ku Kifuliiru',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
+                  const SizedBox(
+                    height: 20,
                   ),
-                  Image(
-                      image: AssetImage('assets/images/kifuliiru.png'),
-                      height: 257,
-                      width: 400,
-                      fit: BoxFit.fill),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
+                  Column(
+                    children: [
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Kifuliiru()),
+                                );
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 170,
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Colors.white54,
+                                ),
+                                child: const Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Positioned(
+                                        top: 20,
+                                        height: 100,
+                                        width: 100,
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.blue,
+                                          backgroundImage: AssetImage(
+                                            'assets/images/kifuliiru.png',
+                                          ),
+                                        )),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Positioned(
+                                        bottom: 20,
+                                        child: Text(
+                                          'Kifuliiru',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Kifuliiru()),
+                                );
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 170,
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Colors.white54,
+                                ),
+                                child: const Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: [
+                                      Positioned(
+                                        top: 20,
+                                        height: 100,
+                                        width: 100,
+                                        child: CircleAvatar(
+                                          backgroundImage: AssetImage(
+                                              'assets/images/rdc.png'),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Positioned(
+                                          bottom: 20,
+                                          child: Text(
+                                            'Kifuliiru mu Congo',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ))
+                                    ]),
+                              ),
+                            ),
+                          ]),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const IbiyandikeMuKifuliiru()),
+                                );
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 170,
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Colors.white54,
+                                ),
+                                child: const Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: [
+                                      Positioned(
+                                        top: 20,
+                                        height: 100,
+                                        width: 100,
+                                        child: CircleAvatar(
+                                          backgroundImage: AssetImage(
+                                              'assets/images/kifuliiru.png'),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Positioned(
+                                        bottom: 20,
+                                        child: Text(
+                                          'Ibiyandike',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Imyazi()),
+                                );
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 170,
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Colors.white54,
+                                ),
+                                child: const Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: [
+                                      Positioned(
+                                        top: 20,
+                                        height: 100,
+                                        width: 100,
+                                        child: CircleAvatar(
+                                          backgroundImage: AssetImage(
+                                              'assets/images/rdc.png'),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Positioned(
+                                        bottom: 20,
+                                        child: Text(
+                                          'Imyazi',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            ),
+                          ]),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ]),
           ),
           const SizedBox(
             height: 10,
           ),
           Container(
+            margin: const EdgeInsets.all(10.0),
             decoration: const BoxDecoration(
-              color: Colors.white10,
-            ),
+                color: Colors.white54,
+                borderRadius: BorderRadius.all(Radius.circular(8.0))),
             width: MediaQuery.of(context).size.width,
             child: Column(children: [
               const SizedBox(
