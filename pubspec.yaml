@@ -13,6 +13,7 @@ dependencies:
   http: ^1.2.0
   introduction_screen: ^3.1.12
   #supabase_flutter: ^2.5.2
+  audioplayers: ^0.20.1  # Check for the latest version
 
 dev_dependencies:
   flutter_test:

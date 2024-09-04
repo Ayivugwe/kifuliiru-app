@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
+ // Import the audioplayers package
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   const KifuliiruNeKifuliiru({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<List<Igambo>> futureIgambo;
   List<Igambo> allIgambo = []; // Store the original list
+   // Create an instance of AudioPlayer
 
   @override
   void initState() {
@@ -41,6 +43,11 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     setState(() {
       futureIgambo = Future.value(results); // Update futureIgambo
     });
+  }
+
+  // Function to play audio
+  void _playAudio(String audioUrl) async {
+    await audioPlayer.play(audioUrl); // Play the audio from the provided URL
   }
 
   @override
@@ -102,6 +109,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                             ),
                                             builder: (context) {
                                               return Container(
+                                                width: 400, // Set a fixed width
                                                 height: 300, // Set a fixed height
                                                 padding: const EdgeInsets.all(10.0),
                                                 child: Column(
@@ -125,6 +133,14 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                                         .data![index]
                                                         .kifuliiru
                                                         .toString()),
+                                                    const SizedBox(height: 20),
+                                                    IconButton(
+                                                      icon: const Icon(Icons.play_arrow),
+                                                      onPressed: () {
+                                                        // Call the play audio function with the audio URL
+                                                        _playAudio(snapshot.data![index].audioUrl); // Ensure audioUrl is a property of Igambo
+                                                      },
+                                                    ),
                                                   ],
                                                 ),
                                               );
