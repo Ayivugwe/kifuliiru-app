@@ -45,10 +45,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
     });
   }
 
-  // Function to play audio
-  void _playAudio(String audioUrl) async {
-    await audioPlayer.play(audioUrl); // Play the audio from the provided URL
-  }
+  // Function to play audi
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +135,7 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                                       icon: const Icon(Icons.play_arrow),
                                                       onPressed: () {
                                                         // Call the play audio function with the audio URL
-                                                        _playAudio(snapshot.data![index].audioUrl); // Ensure audioUrl is a property of Igambo
+                                                       // Ensure audioUrl is a property of Igambo
                                                       },
                                                     ),
                                                   ],
