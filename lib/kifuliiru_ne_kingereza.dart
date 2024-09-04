@@ -12,36 +12,34 @@ class KifuliiruNeKingereza extends StatefulWidget {
 
 class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
   late Future<List<Igambo>> futureIgambo;
+  List<Igambo> allIgambo = []; // Store the original list
+
+  @override
+  void initState() {
+    super.initState();
+    MagamboList magamboList = MagamboList();
+    futureIgambo = magamboList.fetchIgambo().then((igamboList) {
+      allIgambo = igamboList; // Save the original list
+      return igamboList; // Return the list for future use
+    });
+  }
+
   void _looza(String igamboUmulooza) {
-    List<Map<String, dynamic>> results = [];
+    List<Igambo> results;
+
     if (igamboUmulooza.isEmpty) {
-    
-      results = futureIgambo as List<Map<String, dynamic>>;
+      results = allIgambo; // Use the original list when search is empty
     } else {
-      results = futureIgambo as List<Map<String, dynamic>>;
-      results = results
+      results = allIgambo
           .where((igambo) =>
-              igambo["igambo"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()) ||
-              igambo["sobaanuro"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()))
+              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
 
     // Refresh the UI
     setState(() {
-      //maga = results;
+      futureIgambo = Future.value(results); // Update futureIgambo
     });
-  }
-
-  @override
-  void initState() {
-    MagamboList magamboList = MagamboList();
-    super.initState();
-    futureIgambo = magamboList.fetchIgambo();
   }
 
   @override

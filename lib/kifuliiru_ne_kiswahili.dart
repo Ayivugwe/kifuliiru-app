@@ -12,38 +12,34 @@ class KifuliiruNeKiswahili extends StatefulWidget {
 
 class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
   late Future<List<Igambo>> futureIgambo;
+  List<Igambo> allIgambo = []; // Store the original list
 
-  // This function is called whenever the text field changes
+  @override
+  void initState() {
+    super.initState();
+    MagamboList magamboList = MagamboList();
+    futureIgambo = magamboList.fetchIgambo().then((igamboList) {
+      allIgambo = igamboList; // Save the original list
+      return igamboList; // Return the list for future use
+    });
+  }
+
   void _looza(String igamboUmulooza) {
-    List<Map<String, dynamic>> results = [];
+    List<Igambo> results;
+
     if (igamboUmulooza.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
-      results = futureIgambo as List<Map<String, dynamic>>;
+      results = allIgambo; // Use the original list when search is empty
     } else {
-      results = futureIgambo as List<Map<String, dynamic>>;
-      results = results
+      results = allIgambo
           .where((igambo) =>
-              igambo["igambo"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()) ||
-              igambo["sobaanuro"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()))
+              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
 
     // Refresh the UI
     setState(() {
-      //maga = results;
+      futureIgambo = Future.value(results); // Update futureIgambo
     });
-  }
-
-  @override
-  void initState() {
-    MagamboList magamboList = MagamboList();
-    super.initState();
-    futureIgambo = magamboList.fetchIgambo();
   }
 
   @override

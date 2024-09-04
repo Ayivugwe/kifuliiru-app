@@ -13,37 +13,33 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<List<Igambo>> futureIgambo;
+  List<Igambo> allIgambo = []; // Store the original list
 
   @override
   void initState() {
-    MagamboList magamboList = MagamboList();
     super.initState();
-    futureIgambo = magamboList.fetchIgambo();
+    MagamboList magamboList = MagamboList();
+    futureIgambo = magamboList.fetchIgambo().then((igamboList) {
+      allIgambo = igamboList; // Save the original list
+      return igamboList; // Return the list for future use
+    });
   }
 
-  // This function is called whenever the text field changes
   void _looza(String igamboUmulooza) {
-    List<Map<String, dynamic>> results = [];
+    List<Igambo> results;
+
     if (igamboUmulooza.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
-      results = futureIgambo as List<Map<String, dynamic>>;
+      results = allIgambo; // Use the original list when search is empty
     } else {
-      results = futureIgambo as List<Map<String, dynamic>>;
-      results = results
+      results = allIgambo
           .where((igambo) =>
-              igambo["igambo"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()) ||
-              igambo["sobaanuro"]
-                  .toLowerCase()
-                  .contains(igamboUmulooza.toLowerCase()))
+              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
 
     // Refresh the UI
     setState(() {
-      //maga = results;
+      futureIgambo = Future.value(results); // Update futureIgambo
     });
   }
 
@@ -105,44 +101,33 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                                           20.0)),
                                             ),
                                             builder: (context) {
-                                              return Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      10.0),
-                                                  child: FractionallySizedBox(
-                                                      heightFactor: 0.5,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        //Pour aligner les éléments de la colonne de haut vers le bas
-                                                        /*  mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center, */
-
-                                                        //Pour aligner les elements de la colonne de droir vers la gauche
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-
-                                                        children: [
-                                                          const SizedBox(
-                                                              height: 20),
-                                                          Text(
-                                                            snapshot
-                                                                .data![index]
-                                                                .igambo
-                                                                .toString(),
-                                                            style: const TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                          Text(snapshot
-                                                              .data![index]
-                                                              .kifuliiru
-                                                              .toString()),
-                                                        ],
-                                                      )));
+                                              return Container(
+                                                height: 300, // Set a fixed height
+                                                padding: const EdgeInsets.all(10.0),
+                                                child: Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    const SizedBox(height: 20),
+                                                    Text(
+                                                      snapshot
+                                                          .data![index]
+                                                          .igambo
+                                                          .toString(),
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight
+                                                                  .bold),
+                                                    ),
+                                                    Text(snapshot
+                                                        .data![index]
+                                                        .kifuliiru
+                                                        .toString()),
+                                                  ],
+                                                ),
+                                              );
                                             });
                                       },
                                       hoverColor: Colors.blue,
