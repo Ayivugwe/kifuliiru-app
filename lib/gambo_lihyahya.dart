@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-//import 'package:supabase_flutter/supabase_flutter.dart';
-import 'igambo.dart';
 
 class GamboLihyahya extends StatelessWidget {
   const GamboLihyahya({Key? key}) : super(key: key);
 
   @override
-  // ignore: avoid_renaming_method_parameters
-  Widget build(BuildContext ctxt) {
+  Widget build(BuildContext context) {
     final txtControllerIgambo = TextEditingController(),
         txtControllerKifuliiru = TextEditingController(),
         txtControllerKiswahili = TextEditingController(),
         txtControllerKifaransa = TextEditingController(),
         txtControllerKingereza = TextEditingController();
 
-    Igambo gaambo;
-    List<Igambo> listeMagambo = [];
-    String gamboMuKifuliiru,
-        gamboKifuliiruKifuliiru,
-        gamboKifuliiruKiswahili,
-        gamboKifuliiruKifaransa,
-        gamboKifuliiruKingereza;
 
     //['Kifuliiru', 'Kiswahili', 'Kifaransa', 'Kingereza']
 
@@ -194,23 +184,7 @@ class GamboLihyahya extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () async {
-                        gamboMuKifuliiru = txtControllerKifuliiru.text;
-                        gamboKifuliiruKifuliiru = txtControllerKifuliiru.text;
-                        gamboKifuliiruKiswahili = txtControllerKiswahili.text;
-                        gamboKifuliiruKifaransa = txtControllerKifaransa.text;
-                        gamboKifuliiruKingereza = txtControllerKingereza.text;
-
-                        gaambo = Igambo(
-                            igambo: gamboMuKifuliiru,
-                            kifuliiru: gamboKifuliiruKifuliiru,
-                            kiswahili: gamboKifuliiruKiswahili,
-                            kifaransa: gamboKifuliiruKifaransa,
-                            kingereza: gamboKifuliiruKingereza);
-
-                       /*  await Supabase.instance.client
-                            .from('magambo')
-                            .insert(gaambo);
-                        //listeMagambo.add(gaambo); */
+                        // Add code to save data
                       },
                       child: const Text('Bika bino wayandika'))
                 ],

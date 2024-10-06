@@ -1,10 +1,10 @@
 name: kifuliiru_app
 description: "Kifuliiru App for Kifuliiru learning, news and much more."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
   carousel_slider: ^4.2.1
@@ -13,7 +13,9 @@ dependencies:
   http: ^1.2.0
   introduction_screen: ^3.1.12
   #supabase_flutter: ^2.5.2
-  audioplayers: ^0.20.1  # Check for the latest version
+  audioplayers: ^5.2.1 # Check for the latest version
+  smooth_page_indicator: ^1.0.0 # Check for the latest version on pub.dev
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:

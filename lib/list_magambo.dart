@@ -22,7 +22,9 @@ class MagamboList {
     final response = await http.get(Uri.parse(
         'https://ibufuliiru.editorx.io/ibufuliiru/_functions/magamboGeKifuliiruMuKifuliiru'));
     if (response.statusCode == 200) {
-      return parseIgambo(response.body);
+      List<Igambo> igamboList = parseIgambo(response.body);
+      igamboList.sort((a, b) => a.igambo!.compareTo(b.igambo!)); // Sort the list in ascending order
+      return igamboList; // Return the sorted list
     } else {
       throw Exception('Twayabirwa ukuleta amagambo.');
     }
