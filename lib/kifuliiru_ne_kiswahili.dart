@@ -31,8 +31,8 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
       results = allIgambo; // Use the original list when search is empty
     } else {
       results = allIgambo
-          .where((igambo) =>
-              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
+          .where((igambo) => (igambo.igambo?.toLowerCase() ?? '')
+              .contains(igamboUmulooza.toLowerCase()))
           .toList();
     }
 
@@ -46,14 +46,14 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Kifuliiru - Kingereza',
+        title: 'Kifuliiru - Kiswahili',
         theme: ThemeData(
           primaryColor: Colors.white,
         ),
         home: Scaffold(
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
-            title: const Text('Kifuliiru - Kingereza'),
+            title: const Text('Kifuliiru - Kiswahili'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context, false),
@@ -147,6 +147,8 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                       title: Text(
                                           snapshot.data![index].igambo
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
@@ -154,6 +156,8 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                       subtitle: Text(
                                           snapshot.data![index].kiswahili
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal,

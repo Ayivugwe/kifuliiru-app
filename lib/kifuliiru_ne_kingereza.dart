@@ -147,6 +147,8 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
                                       title: Text(
                                           snapshot.data![index].igambo
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
@@ -154,6 +156,8 @@ class _KifuliiruNeKingerezaState extends State<KifuliiruNeKingereza> {
                                       subtitle: Text(
                                           snapshot.data![index].kingereza
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal,

@@ -150,6 +150,8 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                       title: Text(
                                           snapshot.data![index].igambo
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
@@ -157,6 +159,8 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                       subtitle: Text(
                                           snapshot.data![index].kifaransa
                                               .toString(),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal,
