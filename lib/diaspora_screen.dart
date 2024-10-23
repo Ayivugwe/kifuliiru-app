@@ -1,118 +1,156 @@
-// diaspora_screen.dart
+// screens/diaspora_screen.dart
 import 'package:flutter/material.dart';
 
+import 'CountryDetailScreen.dart';
+import 'data/countries_data.dart';
+import 'models/buguma.dart';
+import 'models/country.dart';
+
 class DiasporaScreen extends StatelessWidget {
-  final String title;
-  const DiasporaScreen({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
+  const DiasporaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Diaspora'),
+        elevation: 0,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          _buildCommunitySection('Find Communities'),
-          const SizedBox(height: 20),
-          _buildEventsSection('Upcoming Events'),
-          const SizedBox(height: 20),
-          _buildResourcesSection('Resources'),
-        ],
-      ),
+      body: const CountrySelectionView(),
     );
   }
+}
 
-  Widget _buildCommunitySection(String title) {
+// views/country_selection_view.dart
+class CountrySelectionView extends StatefulWidget {
+  const CountrySelectionView({Key? key}) : super(key: key);
+
+  @override
+  State<CountrySelectionView> createState() => _CountrySelectionViewState();
+}
+
+class _CountrySelectionViewState extends State<CountrySelectionView> {
+  final TextEditingController _searchController = TextEditingController();
+  List<Country> _filteredCountries = [];
+  List<Country> _allCountries = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeCountries();
+  }
+
+  void _initializeCountries() {
+    _allCountries = CountriesData.getAllCountries()
+      ..sort((a, b) => a.name.compareTo(b.name)); // Sort alphabetically
+    _filteredCountries = _allCountries;
+  }
+
+  void _filterCountries(String query) {
+    setState(() {
+      _filteredCountries = _allCountries
+          .where((country) =>
+              country.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 120,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Card(
-                margin: const EdgeInsets.only(right: 12),
-                child: SizedBox(
-                  width: 200,
-                  child: ListTile(
-                    title: Text('Community ${index + 1}'),
-                    subtitle: const Text('Location • Members'),
-                    onTap: () {},
+        Container(
+          padding: const EdgeInsets.all(16),
+          color: Theme.of(context).primaryColor.withOpacity(0.1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Find Bafuliiru Communities Worldwide',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: _searchController,
+                onChanged: _filterCountries,
+                decoration: InputDecoration(
+                  hintText: 'Search countries...',
+                  prefixIcon: const Icon(Icons.search),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
                   ),
                 ),
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildEventsSection(String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 12),
-        Card(
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: const Icon(Icons.event),
-                title: Text('Event ${index + 1}'),
-                subtitle: const Text('Date • Location'),
-                onTap: () {},
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildResourcesSection(String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 12),
-        Card(
-          child: Column(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.article),
-                title: const Text('Cultural Resources'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.people),
-                title: const Text('Community Guidelines'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.help),
-                title: const Text('Support'),
-                onTap: () {},
               ),
             ],
           ),
         ),
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: _filteredCountries.length,
+            itemBuilder: (context, index) {
+              final country = _filteredCountries[index];
+              return _CountryCard(
+                country: country,
+                onTap: () => _navigateToCountryDetail(context, country),
+              );
+            },
+          ),
+        ),
       ],
+    );
+  }
+
+  void _navigateToCountryDetail(BuildContext context, Country country) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CountryDetailScreen(country: country),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+}
+
+// widgets/country_card.dart
+class _CountryCard extends StatelessWidget {
+  final Country country;
+  final VoidCallback onTap;
+
+  const _CountryCard({
+    Key? key,
+    required this.country,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ListTile(
+        onTap: onTap,
+        title: Text(
+          country.name,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: country.hasStates
+            ? Text('${country.states.length} states/provinces')
+            : null,
+        trailing: const Icon(Icons.chevron_right),
+      ),
     );
   }
 }

@@ -6,22 +6,51 @@ class TeachersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Find Teachers',
+          style: TextStyle(
+            color: Color(0xFF2C4356),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.filter_list,
+              color: Color(0xFF2C4356),
+            ),
+            onPressed: () {
+              // Implement filter functionality
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            _buildIntroSection(),
-            const SizedBox(height: 24),
-            _buildTeachersSection(context),
-            const SizedBox(height: 24),
-            _buildBecomeTeacherSection(context),
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.all(16),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  _buildIntroSection(),
+                  const SizedBox(height: 24),
+                  _buildTeachersSection(context),
+                  const SizedBox(height: 24),
+                  _buildBecomeTeacherSection(context),
+                  // Add bottom padding to ensure last item is visible
+                  const SizedBox(height: 24),
+                ]),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  // ... [Previous implementations remain the same until _buildTeacherHeader] ...
   Widget _buildIntroSection() {
     return Card(
       elevation: 4,
@@ -246,53 +275,6 @@ class TeachersScreen extends StatelessWidget {
     );
   }
 
-  void _showTeacherDetails(BuildContext context, Map<String, dynamic> teacher) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.9,
-        minChildSize: 0.5,
-        maxChildSize: 0.95,
-        builder: (_, controller) => Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          child: ListView(
-            controller: controller,
-            padding: const EdgeInsets.all(24),
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              _buildTeacherHeader(teacher),
-              const SizedBox(height: 24),
-              _buildAvailabilitySection(),
-              const SizedBox(height: 24),
-              _buildAboutSection(teacher),
-              const SizedBox(height: 24),
-              _buildExpertiseSection(teacher),
-              const SizedBox(height: 24),
-              _buildReviewsSection(teacher),
-              const SizedBox(height: 24),
-              _buildBookingSection(teacher),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildTeacherCard(BuildContext context, Map<String, dynamic> teacher) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
@@ -424,6 +406,53 @@ class TeachersScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showTeacherDetails(BuildContext context, Map<String, dynamic> teacher) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.9,
+        minChildSize: 0.5,
+        maxChildSize: 0.95,
+        builder: (_, controller) => Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: ListView(
+            controller: controller,
+            padding: const EdgeInsets.all(24),
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              _buildTeacherHeader(teacher),
+              const SizedBox(height: 24),
+              _buildAvailabilitySection(),
+              const SizedBox(height: 24),
+              _buildAboutSection(teacher),
+              const SizedBox(height: 24),
+              _buildExpertiseSection(teacher),
+              const SizedBox(height: 24),
+              _buildReviewsSection(teacher),
+              const SizedBox(height: 24),
+              _buildBookingSection(teacher),
             ],
           ),
         ),
@@ -597,23 +626,11 @@ class TeachersScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Row(
                 children: [
-                  _buildStatItem(
-                    'Students',
-                    '120+',
-                    Icons.people_outline,
-                  ),
+                  _buildStatItem('Students', '120+', Icons.people_outline),
                   const SizedBox(width: 24),
-                  _buildStatItem(
-                    'Lessons',
-                    '1.5K+',
-                    Icons.school_outlined,
-                  ),
+                  _buildStatItem('Lessons', '1.5K+', Icons.school_outlined),
                   const SizedBox(width: 24),
-                  _buildStatItem(
-                    'Response',
-                    '< 2h',
-                    Icons.timer_outlined,
-                  ),
+                  _buildStatItem('Response', '< 2h', Icons.timer_outlined),
                 ],
               ),
             ],
@@ -878,14 +895,15 @@ class TeachersScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: List.generate(
-                            5,
-                            (index) => Icon(
-                                  Icons.star,
-                                  size: 16,
-                                  color: index < (review['rating'] as int)
-                                      ? Colors.amber[700]
-                                      : Colors.grey[300],
-                                )),
+                          5,
+                          (index) => Icon(
+                            Icons.star,
+                            size: 16,
+                            color: index < (review['rating'] as int)
+                                ? Colors.amber[700]
+                                : Colors.grey[300],
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Text(

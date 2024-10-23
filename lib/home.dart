@@ -1217,9 +1217,7 @@ class _HomeState extends State<Home> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DiasporaScreen(
-              title: 'Kifuliiru Diaspora',
-            ),
+            builder: (context) => const DiasporaScreen(),
           ),
         );
         break;

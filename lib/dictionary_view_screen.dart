@@ -483,7 +483,42 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                       ),
                                     ),
                                   ),
-                                  if (_isTTSSupported())
+                                  if (widget.dictionaryType ==
+                                      DictionaryType.kifuliiru)
+                                    // Show Kifuliiru audio button for Kifuliiru dictionary
+                                    IconButton(
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: const Text(
+                                                  'Audio Coming Soon'),
+                                              content: const Text(
+                                                'We are currently working on adding audio pronunciations for Kifuliiru words. This feature will be available in a future update!',
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.of(context)
+                                                          .pop(),
+                                                  child: const Text('OK'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.volume_up,
+                                        color: Colors.blue,
+                                        size: 24,
+                                      ),
+                                      tooltip: 'Play definition audio',
+                                    )
+                                  else if (_isTTSSupported())
+                                    // Show TTS button for French and English dictionaries
                                     IconButton(
                                       onPressed: () => _speakDefinition(
                                           _getDefinitionForLanguage(word)),
