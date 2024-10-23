@@ -19,6 +19,8 @@ dependencies:
   card_swiper: ^2.0.4
   flutter_launcher_icons: ^0.13.1 # Make sure this version is up to date
   json_annotation: ^4.8.1
+  just_audio: ^0.9.36
+  flutter_tts: ^3.8.5
 
 dev_dependencies:
   flutter_test:

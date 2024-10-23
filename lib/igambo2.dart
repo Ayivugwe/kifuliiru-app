@@ -1,34 +1,78 @@
 // lib/models/igambo.dart
-class Igambo {
-  final String word;
-  final String definition;
-  final String? example;
-  final String? notes;
 
-  Igambo({
-    required this.word,
-    required this.definition,
-    this.example,
-    this.notes,
-  });
+class DictionaryResponse {
+  List<Igambo>? items;
 
-  factory Igambo.fromJson(Map<String, dynamic> json) {
-    // Handle potential null values by providing default empty strings
-    final word = json['word'];
-    final definition = json['definition'];
+  DictionaryResponse({this.items});
 
-    return Igambo(
-      word: word == null ? '' : word.toString(),
-      definition: definition == null ? '' : definition.toString(),
-      example: json['example']?.toString(),
-      notes: json['notes']?.toString(),
-    );
+  DictionaryResponse.fromJson(Map<String, dynamic> json) {
+    if (json['items'] != null) {
+      items = <Igambo>[];
+      json['items'].forEach((v) {
+        items!.add(Igambo.fromJson(v));
+      });
+    }
   }
 
-  Map<String, dynamic> toJson() => {
-        'word': word,
-        'definition': definition,
-        if (example != null) 'example': example,
-        if (notes != null) 'notes': notes,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (items != null) {
+      data['items'] = items!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Igambo {
+  String? sId;
+  String? sOwner;
+  String? sCreatedDate;
+  String? sUpdatedDate;
+  String? igambo;
+  String? kiswahili;
+  String? kifuliiru;
+  String? kingereza;
+  String? kifaransa;
+  List<String>? holidesirwi;
+
+  Igambo({
+    this.sId,
+    this.sOwner,
+    this.sCreatedDate,
+    this.sUpdatedDate,
+    this.kiswahili,
+    this.kifuliiru,
+    this.igambo,
+    this.kingereza,
+    this.kifaransa,
+    this.holidesirwi,
+  });
+
+  Igambo.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    sOwner = json['_owner'];
+    sCreatedDate = json['_createdDate'];
+    sUpdatedDate = json['_updatedDate'];
+    kiswahili = json['sobaanuroYeKiswahili'];
+    kifuliiru = json['sobaanuro'];
+    igambo = json['title'];
+    kingereza = json['sobaanuroYeKingereza'];
+    kifaransa = json['sobaanuroYeKifaransa'];
+    holidesirwi = json['holidesirwi']?.cast<String>();
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['_owner'] = sOwner;
+    data['_createdDate'] = sCreatedDate;
+    data['_updatedDate'] = sUpdatedDate;
+    data['sobaanuroYeKiswahili'] = kiswahili;
+    data['sobaanuro'] = kifuliiru;
+    data['title'] = igambo;
+    data['sobaanuroYeKingereza'] = kingereza;
+    data['sobaanuroYeKifaransa'] = kifaransa;
+    data['holidesirwi'] = holidesirwi;
+    return data;
+  }
 }

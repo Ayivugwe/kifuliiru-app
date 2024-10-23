@@ -1,40 +1,26 @@
+// lib/services/dictionary_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:kifuliiru_app/igambo2.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
-import 'package:kifuliiru_app/models/igambo.dart';
 
 class DictionaryService {
   static const baseUrl = 'https://ibufuliiru.editorx.io/ibufuliiru/_functions';
 
   Future<List<Igambo>> fetchDictionary(DictionaryType type) async {
     final endpoint = _getEndpoint(type);
+
     try {
       final response = await http.get(Uri.parse('$baseUrl/$endpoint'));
-
       if (response.statusCode == 200) {
-        // Decode the response body
-        final dynamic decodedResponse = json.decode(response.body);
+        final Map<String, dynamic> decodedResponse = json.decode(response.body);
+        final dictionaryResponse = DictionaryResponse.fromJson(decodedResponse);
 
-        // Handle both array and object responses
-        List<dynamic> jsonData;
-        if (decodedResponse is Map<String, dynamic>) {
-          // If response is an object with items array
-          jsonData = decodedResponse['items'] as List<dynamic>? ?? [];
-        } else if (decodedResponse is List) {
-          // If response is directly an array
-          jsonData = decodedResponse;
-        } else {
-          throw Exception('Unexpected response format');
+        if (dictionaryResponse.items == null) {
+          return [];
         }
 
-        // Convert each item to Igambo object
-        return jsonData.map((item) {
-          if (item is Map<String, dynamic>) {
-            return Igambo.fromJson(item);
-          } else {
-            throw Exception('Invalid item format in response');
-          }
-        }).toList();
+        return dictionaryResponse.items!;
       } else {
         throw Exception(
             'Failed to load dictionary data: ${response.statusCode}');
@@ -51,9 +37,9 @@ class DictionaryService {
       case DictionaryType.kiswahili:
         return 'magamboGeKifuliiruMuKiswahili';
       case DictionaryType.french:
-        return 'magamboGeKifuliiruMuFrancais';
+        return 'magamboGeKifuliiruMuKifaransa';
       case DictionaryType.english:
-        return 'magamboGeKifuliiruMuEnglish';
+        return 'magamboGeKifuliiruMuKingereza';
     }
   }
 }
