@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(News());
+  runApp(const News());
 }
 
 class News extends StatelessWidget {
+  const News({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +39,8 @@ class _NewsScreenState extends State<NewsScreen> {
     },
     {
       'title': 'Latest Update',
-      'description': 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'image': 'https://via.placeholder.com/150',
     },
     // Add more news items here
@@ -51,12 +54,14 @@ class _NewsScreenState extends State<NewsScreen> {
       _newsList = [
         {
           'title': 'New Breaking News',
-          'description': 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          'description':
+              'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           'image': 'https://via.placeholder.com/150',
         },
         {
           'title': 'Updated Latest Update',
-          'description': 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          'description':
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
           'image': 'https://via.placeholder.com/150',
         },
         // Add more updated news items here

@@ -780,6 +780,7 @@ class _MyHomePageWidgetState extends State<MyHomePage> {
   }
 }
  */
+
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:kifuliiru_app/abaami.dart';
@@ -1011,7 +1012,7 @@ class _HomeState extends State<Home> {
 
   Widget _buildCulturalHeritageGrid() {
     return GridView.count(
-      crossAxisCount: 2,
+      crossAxisCount: 3,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1049,7 +1050,7 @@ class _HomeState extends State<Home> {
 
   Widget _buildLanguageResourcesGrid() {
     return GridView.count(
-      crossAxisCount: 2,
+      crossAxisCount: 3,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1082,7 +1083,7 @@ class _HomeState extends State<Home> {
         ),
         _buildGridButton(
           icon: Icons.build,
-          title: 'Biindu by amasomo',
+          title: 'Soma',
           color: Colors.teal,
           onPressed: () => _handleNavigation('study_tools'),
         ),
@@ -1092,7 +1093,7 @@ class _HomeState extends State<Home> {
 
   Widget _buildCommunityGrid() {
     return GridView.count(
-      crossAxisCount: 2,
+      crossAxisCount: 3,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1107,7 +1108,7 @@ class _HomeState extends State<Home> {
         ),
         _buildGridButton(
           icon: Icons.add_circle,
-          title: 'Yongera amagambo',
+          title: 'Tugwaase',
           color: Colors.blue,
           onPressed: () => _handleNavigation('add_words'),
         ),

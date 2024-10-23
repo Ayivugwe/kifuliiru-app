@@ -1,35 +1,34 @@
-// igambo.dart
+// lib/models/igambo.dart
 class Igambo {
-  String? igambo;
-  String? kiswahili;
-  String? francais;
-  String? english;
-  String? phonetic;
-  String? partOfSpeech;
-  List<String>? examples;
-  List<String>? synonyms;
+  final String word;
+  final String definition;
+  final String? example;
+  final String? notes;
 
   Igambo({
-    this.igambo,
-    this.kiswahili,
-    this.francais,
-    this.english,
-    this.phonetic,
-    this.partOfSpeech,
-    this.examples,
-    this.synonyms,
+    required this.word,
+    required this.definition,
+    this.example,
+    this.notes,
   });
 
   factory Igambo.fromJson(Map<String, dynamic> json) {
+    // Handle potential null values by providing default empty strings
+    final word = json['word'];
+    final definition = json['definition'];
+
     return Igambo(
-      igambo: json['igambo'],
-      kiswahili: json['kiswahili'],
-      francais: json['francais'],
-      english: json['english'],
-      phonetic: json['phonetic'],
-      partOfSpeech: json['partOfSpeech'],
-      examples: List<String>.from(json['examples'] ?? []),
-      synonyms: List<String>.from(json['synonyms'] ?? []),
+      word: word == null ? '' : word.toString(),
+      definition: definition == null ? '' : definition.toString(),
+      example: json['example']?.toString(),
+      notes: json['notes']?.toString(),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'word': word,
+        'definition': definition,
+        if (example != null) 'example': example,
+        if (notes != null) 'notes': notes,
+      };
 }

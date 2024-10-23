@@ -21,19 +21,36 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   final TextEditingController _searchController = TextEditingController();
   List<Igambo> _filteredWords = [];
   List<Igambo> _allWords = [];
+  bool _isLoading = true;
+  String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
-    _dictionaryFuture = _loadDictionary();
+    _loadDictionary();
   }
 
-  Future<List<Igambo>> _loadDictionary() async {
-    final service = DictionaryService();
-    final words = await service.fetchDictionary(widget.dictionaryType);
-    _allWords = words;
-    _filteredWords = words;
-    return words;
+  Future<void> _loadDictionary() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    try {
+      final service = DictionaryService();
+      final words = await service.fetchDictionary(widget.dictionaryType);
+      setState(() {
+        _allWords = words;
+        _filteredWords = words;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString();
+        _isLoading = false;
+      });
+      print('Error loading dictionary: $e'); // For debugging
+    }
   }
 
   void _filterWords(String query) {
@@ -69,61 +86,167 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     }
   }
 
+  Widget _buildSearchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextField(
+        controller: _searchController,
+        onChanged: _filterWords,
+        decoration: InputDecoration(
+          labelText: 'Search',
+          hintText: 'Enter a word or definition',
+          prefixIcon: const Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          filled: true,
+          fillColor: Colors.grey[50],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildErrorView() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.error_outline,
+              size: 48,
+              color: Colors.red,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Error Loading Dictionary',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              _errorMessage ?? 'An unknown error occurred',
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              onPressed: _loadDictionary,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Retry'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWordList() {
+    if (_filteredWords.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'No words found',
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: _filteredWords.length,
+      padding: const EdgeInsets.only(bottom: 16),
+      itemBuilder: (context, index) {
+        final word = _filteredWords[index];
+        return Card(
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 4.0,
+          ),
+          child: ExpansionTile(
+            title: Text(
+              word.word,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      word.definition,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    if (word.example != null && word.example!.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Example:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        word.example!,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                    if (word.notes != null && word.notes!.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Notes:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        word.notes!,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(_getTitle()),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _loadDictionary,
+          ),
+        ],
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              onChanged: _filterWords,
-              decoration: const InputDecoration(
-                labelText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
+          _buildSearchBar(),
           Expanded(
-            child: FutureBuilder<List<Igambo>>(
-              future: _dictionaryFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                }
-
-                return ListView.builder(
-                  itemCount: _filteredWords.length,
-                  itemBuilder: (context, index) {
-                    final word = _filteredWords[index];
-                    return Card(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 4.0,
-                      ),
-                      child: ListTile(
-                        title: Text(word.word),
-                        subtitle: Text(word.definition),
-                        onTap: () {
-                          // Handle word selection
-                        },
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _errorMessage != null
+                    ? _buildErrorView()
+                    : _buildWordList(),
           ),
         ],
       ),

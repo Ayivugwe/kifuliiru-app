@@ -1,4 +1,3 @@
-// lib/services/dictionary_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:kifuliiru_app/models/dictionary_type.dart';
@@ -13,10 +12,32 @@ class DictionaryService {
       final response = await http.get(Uri.parse('$baseUrl/$endpoint'));
 
       if (response.statusCode == 200) {
-        List<dynamic> jsonData = json.decode(response.body);
-        return jsonData.map((json) => Igambo.fromJson(json)).toList();
+        // Decode the response body
+        final dynamic decodedResponse = json.decode(response.body);
+
+        // Handle both array and object responses
+        List<dynamic> jsonData;
+        if (decodedResponse is Map<String, dynamic>) {
+          // If response is an object with items array
+          jsonData = decodedResponse['items'] as List<dynamic>? ?? [];
+        } else if (decodedResponse is List) {
+          // If response is directly an array
+          jsonData = decodedResponse;
+        } else {
+          throw Exception('Unexpected response format');
+        }
+
+        // Convert each item to Igambo object
+        return jsonData.map((item) {
+          if (item is Map<String, dynamic>) {
+            return Igambo.fromJson(item);
+          } else {
+            throw Exception('Invalid item format in response');
+          }
+        }).toList();
       } else {
-        throw Exception('Failed to load dictionary data');
+        throw Exception(
+            'Failed to load dictionary data: ${response.statusCode}');
       }
     } catch (e) {
       throw Exception('Error fetching dictionary data: $e');
