@@ -16,6 +16,7 @@ dependencies:
   audioplayers: ^5.2.1 # Check for the latest version
   smooth_page_indicator: ^1.0.0 # Check for the latest version on pub.dev
   flutter_svg: ^1.1.6
+  card_swiper: ^2.0.4
 
 dev_dependencies:
   flutter_test:
