@@ -1,5 +1,6 @@
-// dictionary_screen.dart
+// lib/screens/dictionary_screen.dart
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/models/dictionary_type.dart';
 
 import 'dictionary_view_screen.dart';
 
@@ -161,18 +162,10 @@ class DictionaryScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => DictionaryViewScreen(
-          type: type,
-          title:
-              'Kifuliiru - ${type.name.substring(0, 1).toUpperCase()}${type.name.substring(1)}',
+          dictionaryType:
+              type, // Fixed: Now properly passing the dictionary type
         ),
       ),
     );
   }
-}
-
-enum DictionaryType {
-  kifuliiru,
-  kiswahili,
-  french,
-  english,
 }

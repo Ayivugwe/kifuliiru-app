@@ -804,7 +804,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentNewsIndex = 0;
+  //int _currentNewsIndex = 0;
   final List<Map<String, String>> _newsItems = [
     {
       'title': 'Muhumanano gwe misore yitu 2024',

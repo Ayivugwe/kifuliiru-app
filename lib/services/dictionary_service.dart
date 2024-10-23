@@ -1,6 +1,8 @@
-// dictionary_service.dart
+// lib/services/dictionary_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:kifuliiru_app/models/dictionary_type.dart';
+import 'package:kifuliiru_app/models/igambo.dart';
 
 class DictionaryService {
   static const baseUrl = 'https://ibufuliiru.editorx.io/ibufuliiru/_functions';
@@ -9,7 +11,7 @@ class DictionaryService {
     final endpoint = _getEndpoint(type);
     try {
       final response = await http.get(Uri.parse('$baseUrl/$endpoint'));
-      
+
       if (response.statusCode == 200) {
         List<dynamic> jsonData = json.decode(response.body);
         return jsonData.map((json) => Igambo.fromJson(json)).toList();
