@@ -831,7 +831,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Kifuliiru Ndeto Yitu',
+          'Kifuliiru - Ibufuliiru - Abafuliiru',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
