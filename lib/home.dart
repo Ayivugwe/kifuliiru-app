@@ -787,7 +787,13 @@ import 'package:kifuliiru_app/bafuliiru.dart';
 import 'package:kifuliiru_app/ibufuliiru.dart';
 import 'package:kifuliiru_app/utwaya.dart';
 
+import 'about_screen.dart';
+import 'add_words_screen.dart';
 import 'amagambo.dart';
+import 'contribute_screen.dart';
+import 'diaspora_screen.dart';
+import 'learning_screen.dart';
+import 'study_tools_screen.dart';
 import 'teachers_screen.dart';
 
 class Home extends StatefulWidget {
