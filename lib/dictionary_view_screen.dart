@@ -4,6 +4,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:kifuliiru_app/igambo2.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
 import 'package:kifuliiru_app/services/dictionary_service.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:flutter/services.dart';
 
 class DictionaryViewScreen extends StatefulWidget {
   final DictionaryType dictionaryType;
@@ -316,6 +318,44 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   }
 
   void _showWordDetails(Igambo word) {
+    // Function to generate shareable text
+    String generateShareText() {
+      StringBuffer shareText = StringBuffer();
+      shareText.writeln('📚 ${word.igambo}');
+      shareText.writeln('🔤 Definition: ${_getDefinitionForLanguage(word)}');
+      if (word.holidesirwi != null && word.holidesirwi!.isNotEmpty) {
+        shareText.writeln('\n📎 Related words & phrases:');
+        for (var relatedWord in word.holidesirwi!) {
+          shareText.writeln('• $relatedWord');
+        }
+      }
+      shareText.writeln('\nShared from Kifuliiru Dictionary App');
+      return shareText.toString();
+    }
+
+    // Function to handle sharing
+    void shareWord() async {
+      try {
+        await Share.share(
+          generateShareText(),
+          subject: 'Check out this word in Kifuliiru!',
+        );
+      } catch (e) {
+        print('Error sharing: $e');
+      }
+    }
+
+    // Function to handle copying to clipboard
+    void copyToClipboard(BuildContext context, String text) {
+      Clipboard.setData(ClipboardData(text: text));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Copied to clipboard'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -329,110 +369,303 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
             minChildSize: 0.5,
             maxChildSize: 0.95,
             expand: false,
-            builder: (context, scrollController) => SingleChildScrollView(
-              controller: scrollController,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 40,
-                        height: 4,
-                        margin: const EdgeInsets.only(bottom: 20),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            word.igambo ?? '',
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+            builder: (context, scrollController) => Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    controller: scrollController,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Drag Handle
+                          Center(
+                            child: Container(
+                              width: 40,
+                              height: 4,
+                              margin: const EdgeInsets.only(bottom: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(2),
+                              ),
                             ),
                           ),
-                        ),
-                        // TODO: Add Kifuliiru audio button when implemented
-                        // if (word.audioUrl != null) IconButton(...)
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            'Definition:',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
+
+                          // Kifuliiru Word Section
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Title row with label and icon
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.record_voice_over,
+                                    color: Colors.green,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  const Text(
+                                    'Kifuliiru:',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  // Kifuliiru audio button
+                                  IconButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title:
+                                                const Text('Audio Coming Soon'),
+                                            content: const Text(
+                                              'We are currently working on adding audio pronunciations for Kifuliiru words. This feature will be available in a future update!',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.of(context).pop(),
+                                                child: const Text('OK'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                    icon: const Icon(
+                                      Icons.volume_up,
+                                      color: Colors.green,
+                                      size: 24,
+                                    ),
+                                    tooltip: 'Play Kifuliiru audio',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+                              // Word text
+                              Text(
+                                word.igambo ?? '',
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        if (_isTTSSupported())
-                          IconButton(
-                            onPressed: () => _speakDefinition(
-                                _getDefinitionForLanguage(word)),
-                            icon: Icon(
-                              isSpeakingDefinition
-                                  ? Icons.stop_circle
-                                  : Icons.play_circle,
-                              color: Colors.blue,
-                              size: 28,
-                            ),
-                            tooltip: isSpeakingDefinition
-                                ? 'Stop'
-                                : 'Play definition',
+
+                          const SizedBox(height: 24),
+
+                          // Definition Section
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.menu_book,
+                                    color: Colors.blue,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  const Expanded(
+                                    child: Text(
+                                      'Definition:',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                  ),
+                                  if (_isTTSSupported())
+                                    IconButton(
+                                      onPressed: () => _speakDefinition(
+                                          _getDefinitionForLanguage(word)),
+                                      icon: Icon(
+                                        isSpeakingDefinition
+                                            ? Icons.stop_circle
+                                            : Icons.play_circle,
+                                        color: Colors.blue,
+                                        size: 28,
+                                      ),
+                                      tooltip: isSpeakingDefinition
+                                          ? 'Stop'
+                                          : 'Play definition',
+                                    ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                _getDefinitionForLanguage(word),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
                           ),
-                      ],
+
+                          // Related Words Section
+                          if (word.holidesirwi != null &&
+                              word.holidesirwi!.isNotEmpty) ...[
+                            const SizedBox(height: 24),
+                            const Row(
+                              children: [
+                                Icon(
+                                  Icons.connect_without_contact,
+                                  color: Colors.blue,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  'Related Words & Phrases:',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey[50],
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: word.holidesirwi!.length,
+                                separatorBuilder: (context, index) => Divider(
+                                  height: 1,
+                                  color: Colors.grey[300],
+                                ),
+                                itemBuilder: (context, index) {
+                                  final relatedWord = word.holidesirwi![index];
+                                  return InkWell(
+                                    onTap: () {
+                                      // Optional: Navigate to the word's detail if it exists in dictionary
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0,
+                                        horizontal: 16.0,
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            '•',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: Text(
+                                              relatedWord,
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                height: 1.4,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+
+                          // Creation Date Section
+                          if (word.sCreatedDate != null) ...[
+                            const SizedBox(height: 24),
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[50],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.calendar_today,
+                                    size: 16,
+                                    color: Colors.grey,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Added: ${DateTime.parse(word.sCreatedDate!).toLocal().toString().split('.')[0]}',
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+
+                          // Bottom padding for share/copy buttons
+                          const SizedBox(height: 80),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      _getDefinitionForLanguage(word),
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    if (word.holidesirwi != null &&
-                        word.holidesirwi!.isNotEmpty) ...[
-                      const SizedBox(height: 20),
-                      const Text(
-                        'Related Words:',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: word.holidesirwi!
-                            .map((related) => Chip(
-                                  label: Text(related),
-                                  backgroundColor: Colors.blue[50],
-                                ))
-                            .toList(),
-                      ),
-                    ],
-                    if (word.sCreatedDate != null) ...[
-                      const SizedBox(height: 20),
-                      Text(
-                        'Added: ${DateTime.parse(word.sCreatedDate!).toLocal().toString().split('.')[0]}',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ],
+                  ),
                 ),
-              ),
+                // Share and Copy icons container at bottom
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 4,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // Copy button
+                      IconButton(
+                        onPressed: () =>
+                            copyToClipboard(context, generateShareText()),
+                        icon: const Icon(
+                          Icons.copy,
+                          color: Colors.blue,
+                          size: 28,
+                        ),
+                        tooltip: 'Copy to clipboard',
+                      ),
+                      // Share button
+                      IconButton(
+                        onPressed: shareWord,
+                        icon: const Icon(
+                          Icons.share,
+                          color: Colors.blue,
+                          size: 28,
+                        ),
+                        tooltip: 'Share Word',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         },

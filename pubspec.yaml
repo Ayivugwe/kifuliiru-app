@@ -21,6 +21,7 @@ dependencies:
   json_annotation: ^4.8.1
   just_audio: ^0.9.36
   flutter_tts: ^3.8.5
+  share_plus: ^10.1.1
 
 dev_dependencies:
   flutter_test:
