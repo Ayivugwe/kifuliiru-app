@@ -32,7 +32,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
       results = allIgambo; // Use the original list when search is empty
     } else {
       results = allIgambo
-          .where((igambo) => (igambo.title?.toLowerCase() ?? '')
+          .where((igambo) => (igambo.title.toLowerCase())
               .contains(igamboUmulooza.toLowerCase()))
           .toList();
     }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'CountryDetailScreen.dart';
 import 'data/countries_data.dart';
-import 'models/buguma.dart';
 import 'models/country.dart';
 
 class DiasporaScreen extends StatelessWidget {
