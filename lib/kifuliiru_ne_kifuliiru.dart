@@ -1,9 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
- // Import the audioplayers package
+
+import 'models/igambo.dart';
+// Import the audioplayers package
 
 class KifuliiruNeKifuliiru extends StatefulWidget {
   const KifuliiruNeKifuliiru({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class KifuliiruNeKifuliiru extends StatefulWidget {
 class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
   late Future<List<Igambo>> futureIgambo;
   List<Igambo> allIgambo = []; // Store the original list
-   // Create an instance of AudioPlayer
+  // Create an instance of AudioPlayer
 
   @override
   void initState() {
@@ -34,8 +35,8 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
       results = allIgambo; // Use the original list when search is empty
     } else {
       results = allIgambo
-          .where((igambo) =>
-              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
+          .where((igambo) => (igambo.title?.toLowerCase() ?? '')
+              .contains(igamboUmulooza.toLowerCase()))
           .toList();
     }
 
@@ -107,35 +108,36 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                             builder: (context) {
                                               return Container(
                                                 width: 400, // Set a fixed width
-                                                height: 300, // Set a fixed height
-                                                padding: const EdgeInsets.all(10.0),
+                                                height:
+                                                    300, // Set a fixed height
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
                                                 child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     const SizedBox(height: 20),
                                                     Text(
                                                       snapshot
-                                                          .data![index]
-                                                          .igambo
+                                                          .data![index].title
                                                           .toString(),
                                                       style: const TextStyle(
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight
-                                                                  .bold),
+                                                              FontWeight.bold),
                                                     ),
                                                     Text(snapshot
-                                                        .data![index]
-                                                        .kifuliiru
+                                                        .data![index].sobaanuro
                                                         .toString()),
                                                     const SizedBox(height: 20),
                                                     IconButton(
-                                                      icon: const Icon(Icons.play_arrow),
+                                                      icon: const Icon(
+                                                          Icons.play_arrow),
                                                       onPressed: () {
                                                         // Call the play audio function with the audio URL
-                                                       // Ensure audioUrl is a property of Igambo
+                                                        // Ensure audioUrl is a property of Igambo
                                                       },
                                                     ),
                                                   ],
@@ -157,19 +159,19 @@ class _KifuliiruNeKifuliiruState extends State<KifuliiruNeKifuliiru> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].igambo
+                                          snapshot.data![index].title
                                               .toString(),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis ,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].kifuliiru
+                                          snapshot.data![index].sobaanuro
                                               .toString(),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal,

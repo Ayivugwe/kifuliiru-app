@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
+
+import 'models/igambo.dart';
 
 class KifuliiruNeKiswahili extends StatefulWidget {
   const KifuliiruNeKiswahili({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
       results = allIgambo; // Use the original list when search is empty
     } else {
       results = allIgambo
-          .where((igambo) => (igambo.igambo?.toLowerCase() ?? '')
+          .where((igambo) => (igambo.title?.toLowerCase() ?? '')
               .contains(igamboUmulooza.toLowerCase()))
           .toList();
     }
@@ -115,7 +116,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                                           Text(
                                                             snapshot
                                                                 .data![index]
-                                                                .igambo
+                                                                .title
                                                                 .toString(),
                                                             style: const TextStyle(
                                                                 fontSize: 20,
@@ -125,7 +126,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                                           ),
                                                           Text(snapshot
                                                               .data![index]
-                                                              .kiswahili
+                                                              .sobaanuroYeKiswahili
                                                               .toString()),
                                                         ],
                                                       )));
@@ -145,7 +146,7 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].igambo
+                                          snapshot.data![index].title
                                               .toString(),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
@@ -154,7 +155,8 @@ class _KifuliiruNeKiswahiliState extends State<KifuliiruNeKiswahili> {
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].kiswahili
+                                          snapshot
+                                              .data![index].sobaanuroYeKiswahili
                                               .toString(),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,

@@ -1,32 +1,39 @@
-// lib/models/igambo.dart
 class Igambo {
-  final String word;
-  final String definition;
-  final String? example;
-  final String? notes;
+  final String? id;
+  final String title;
+  final String? sobaanuro;
+  final String? sobaanuroYeKiswahili;
+  final String? sobaanuroYeKifaransa;
+  final String? sobaanuroYeKingereza;
+  final List<String>? holidesirwi;
+  final String? createdDate;
+  final String? status;
 
   Igambo({
-    required this.word,
-    required this.definition,
-    this.example,
-    this.notes,
+    this.id,
+    required this.title,
+    this.sobaanuro,
+    this.sobaanuroYeKiswahili,
+    this.sobaanuroYeKifaransa,
+    this.sobaanuroYeKingereza,
+    this.holidesirwi,
+    this.createdDate,
+    this.status,
   });
 
   factory Igambo.fromJson(Map<String, dynamic> json) {
     return Igambo(
-      word: json['word'] as String,
-      definition: json['definition'] as String,
-      example: json['example'] as String?,
-      notes: json['notes'] as String?,
+      id: json['_id'],
+      title: json['title'] ?? '',
+      sobaanuro: json['sobaanuro'],
+      sobaanuroYeKiswahili: json['sobaanuroYeKiswahili'],
+      sobaanuroYeKifaransa: json['sobaanuroYeKifaransa'],
+      sobaanuroYeKingereza: json['sobaanuroYeKingereza'],
+      holidesirwi: json['holidesirwi'] != null
+          ? List<String>.from(json['holidesirwi'])
+          : null,
+      createdDate: json['_createdDate'],
+      status: json['status'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'word': word,
-      'definition': definition,
-      'example': example,
-      'notes': notes,
-    };
   }
 }

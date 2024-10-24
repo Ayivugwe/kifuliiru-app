@@ -1,33 +1,46 @@
 // lib/services/dictionary_service.dart
-import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
-
-import '../igambo.dart';
+import 'package:kifuliiru_app/models/igambo.dart'; // Update this import
 
 class DictionaryService {
   static const baseUrl = 'https://ibufuliiru.editorx.io/ibufuliiru/_functions';
 
-  Future<List<Igambo>> fetchDictionary(DictionaryType type) async {
+  Future<DictionaryResponse> fetchDictionary(DictionaryType type) async {
     final endpoint = _getEndpoint(type);
+    final url = Uri.parse('$baseUrl/$endpoint');
 
     try {
-      final response = await http.get(Uri.parse('$baseUrl/$endpoint'));
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          if (kIsWeb) 'Access-Control-Allow-Origin': '*',
+        },
+      );
+
       if (response.statusCode == 200) {
-        final Map<String, dynamic> decodedResponse = json.decode(response.body);
-        final dictionaryResponse = DictionaryResponse.fromJson(decodedResponse);
+        final Map<String, dynamic> decodedData = json.decode(response.body);
+        final List<dynamic> items = decodedData['items'] ?? [];
 
-        if (dictionaryResponse.items == null) {
-          return [];
-        }
-
-        return dictionaryResponse.items!;
+        return DictionaryResponse(
+          success: true,
+          items: items.map((item) => Igambo.fromJson(item)).toList(),
+        );
       } else {
-        throw Exception(
-            'Failed to load dictionary data: ${response.statusCode}');
+        return DictionaryResponse(
+          success: false,
+          error: 'Failed to load dictionary: ${response.statusCode}',
+        );
       }
     } catch (e) {
-      throw Exception('Error fetching dictionary data: $e');
+      return DictionaryResponse(
+        success: false,
+        error: 'Error: $e',
+      );
     }
   }
 
@@ -43,4 +56,16 @@ class DictionaryService {
         return 'magamboGeKifuliiruMuKingereza';
     }
   }
+}
+
+class DictionaryResponse {
+  final List<Igambo>? items;
+  final bool success;
+  final String? error;
+
+  DictionaryResponse({
+    this.items,
+    required this.success,
+    this.error,
+  });
 }

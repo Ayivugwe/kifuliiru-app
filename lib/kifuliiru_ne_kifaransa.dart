@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
+
+import 'models/igambo.dart';
 
 class KifuliiruNeKifaransa extends StatefulWidget {
   const KifuliiruNeKifaransa({Key? key}) : super(key: key);
@@ -31,8 +32,8 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
       results = allIgambo; // Use the original list when search is empty
     } else {
       results = allIgambo
-          .where((igambo) =>
-              (igambo.igambo?.toLowerCase() ?? '').contains(igamboUmulooza.toLowerCase()))
+          .where((igambo) => (igambo.title?.toLowerCase() ?? '')
+              .contains(igamboUmulooza.toLowerCase()))
           .toList();
     }
 
@@ -111,14 +112,13 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
                                                                 .start,
-
                                                         children: [
                                                           const SizedBox(
                                                               height: 20),
                                                           Text(
                                                             snapshot
                                                                 .data![index]
-                                                                .igambo
+                                                                .title
                                                                 .toString(),
                                                             style: const TextStyle(
                                                                 fontSize: 20,
@@ -128,7 +128,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                                           ),
                                                           Text(snapshot
                                                               .data![index]
-                                                              .kifaransa
+                                                              .sobaanuroYeKifaransa
                                                               .toString()),
                                                         ],
                                                       )));
@@ -148,7 +148,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].igambo
+                                          snapshot.data![index].title
                                               .toString(),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
@@ -157,7 +157,8 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].kifaransa
+                                          snapshot
+                                              .data![index].sobaanuroYeKifaransa
                                               .toString(),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,

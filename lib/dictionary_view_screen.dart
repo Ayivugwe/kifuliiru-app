@@ -1,3 +1,4 @@
+// Then update the imports in your DictionaryViewScreen:
 // lib/screens/dictionary_view_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -5,8 +6,7 @@ import 'package:kifuliiru_app/models/dictionary_type.dart';
 import 'package:kifuliiru_app/services/dictionary_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/services.dart';
-
-import 'igambo.dart';
+import 'package:kifuliiru_app/models/igambo.dart'; // Update this import
 
 class DictionaryViewScreen extends StatefulWidget {
   final DictionaryType dictionaryType;
@@ -23,19 +23,19 @@ class DictionaryViewScreen extends StatefulWidget {
 class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   final TextEditingController _searchController = TextEditingController();
   final FlutterTts flutterTts = FlutterTts();
-  List<Igambo> _filteredWords = [];
+  final DictionaryService _dictionaryService = DictionaryService();
+
   List<Igambo> _allWords = [];
+  List<Igambo> _filteredWords = [];
   bool _isLoading = true;
   String? _errorMessage;
   bool isSpeakingDefinition = false;
-  // TODO: Add state variables for Kifuliiru audio playback
-  // bool isPlayingKifuliiruAudio = false;
 
   @override
   void initState() {
     super.initState();
-    _loadDictionary();
     _initializeTTS();
+    _loadDictionary();
   }
 
   void _initializeTTS() async {
@@ -46,6 +46,52 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
         setState(() => isSpeakingDefinition = false);
       });
     }
+  }
+
+  Future<void> _loadDictionary() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    try {
+      final response =
+          await _dictionaryService.fetchDictionary(widget.dictionaryType);
+
+      setState(() {
+        if (response.success && response.items != null) {
+          _allWords = response.items!;
+          _allWords.sort((a, b) => a.title.compareTo(b.title));
+          _filteredWords = List.from(_allWords);
+        } else {
+          _errorMessage = response.error ?? 'Failed to load dictionary';
+        }
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'Error loading dictionary: $e';
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _filterWords(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredWords = List.from(_allWords);
+      } else {
+        _filteredWords = _allWords.where((word) {
+          final titleMatch =
+              word.title.toLowerCase().contains(query.toLowerCase());
+          final definitionMatch = _getDefinitionForLanguage(word)
+              .toLowerCase()
+              .contains(query.toLowerCase());
+          return titleMatch || definitionMatch;
+        }).toList();
+      }
+      _filteredWords.sort((a, b) => a.title.compareTo(b.title));
+    });
   }
 
   bool _isTTSSupported() {
@@ -77,51 +123,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     await flutterTts.speak(text);
   }
 
-  Future<void> _loadDictionary() async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
-
-    try {
-      final service = DictionaryService();
-      final words = await service.fetchDictionary(widget.dictionaryType);
-      // Sort words alphabetically by igambo
-      words.sort((a, b) => (a.igambo ?? '').compareTo(b.igambo ?? ''));
-      setState(() {
-        _allWords = words;
-        _filteredWords = words;
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        _errorMessage = e.toString();
-        _isLoading = false;
-      });
-      print('Error loading dictionary: $e');
-    }
-  }
-
-  void _filterWords(String query) {
-    if (query.isEmpty) {
-      setState(() {
-        _filteredWords = _allWords;
-      });
-      return;
-    }
-
-    setState(() {
-      _filteredWords = _allWords.where((word) {
-        final wordText = word.igambo?.toLowerCase() ?? '';
-        final definitionText = _getDefinitionForLanguage(word).toLowerCase();
-        final searchLower = query.toLowerCase();
-
-        return wordText.contains(searchLower) ||
-            definitionText.contains(searchLower);
-      }).toList();
-    });
-  }
-
   String _getTitle() {
     switch (widget.dictionaryType) {
       case DictionaryType.kifuliiru:
@@ -138,13 +139,13 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   String _getDefinitionForLanguage(Igambo word) {
     switch (widget.dictionaryType) {
       case DictionaryType.kifuliiru:
-        return word.kifuliiru ?? '';
+        return word.sobaanuro ?? '';
       case DictionaryType.kiswahili:
-        return word.kiswahili ?? '';
+        return word.sobaanuroYeKiswahili ?? '';
       case DictionaryType.french:
-        return word.kifaransa ?? '';
+        return word.sobaanuroYeKifaransa ?? '';
       case DictionaryType.english:
-        return word.kingereza ?? '';
+        return word.sobaanuroYeKingereza ?? '';
     }
   }
 
@@ -224,105 +225,104 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
       padding: const EdgeInsets.only(bottom: 16),
       itemBuilder: (context, index) {
         final word = _filteredWords[index];
-        final dateCreated = word.sCreatedDate != null
-            ? DateTime.tryParse(word.sCreatedDate!)?.toLocal()
-            : null;
-
-        return Card(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 4.0,
-          ),
-          child: ExpansionTile(
-            title: Text(
-              word.igambo ?? '',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            subtitle: Text(
-              _getDefinitionForLanguage(word),
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Full Definition:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      _getDefinitionForLanguage(word),
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    if (word.holidesirwi != null &&
-                        word.holidesirwi!.isNotEmpty) ...[
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Related Words:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 8,
-                        children: word.holidesirwi!
-                            .map((related) => Chip(
-                                  label: Text(related),
-                                  backgroundColor: Colors.blue[50],
-                                ))
-                            .toList(),
-                      ),
-                    ],
-                    if (dateCreated != null) ...[
-                      const SizedBox(height: 8),
-                      Text(
-                        'Added: ${dateCreated.toString().split('.')[0]}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: 12),
-                    Center(
-                      child: TextButton.icon(
-                        onPressed: () => _showWordDetails(word),
-                        icon: const Icon(Icons.fullscreen),
-                        label: const Text('View Full Details'),
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
+        return _buildWordCard(word);
       },
     );
   }
 
+  Widget _buildWordCard(Igambo word) {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 4.0,
+      ),
+      child: ExpansionTile(
+        title: Text(
+          word.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          _getDefinitionForLanguage(word),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Full Definition:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  _getDefinitionForLanguage(word),
+                  style: const TextStyle(fontSize: 14),
+                ),
+                if (word.holidesirwi != null &&
+                    word.holidesirwi!.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Related Words:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 8,
+                    children: word.holidesirwi!
+                        .map((related) => Chip(
+                              label: Text(related),
+                              backgroundColor: Colors.blue[50],
+                            ))
+                        .toList(),
+                  ),
+                ],
+                if (word.createdDate != null) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    'Added: ${DateTime.parse(word.createdDate!).toLocal().toString().split('.')[0]}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 12),
+                Center(
+                  child: TextButton.icon(
+                    onPressed: () => _showWordDetails(word),
+                    icon: const Icon(Icons.fullscreen),
+                    label: const Text('View Full Details'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _showWordDetails(Igambo word) {
-    // Function to generate shareable text
     String generateShareText() {
       StringBuffer shareText = StringBuffer();
-      shareText.writeln('📚 ${word.igambo}');
+      shareText.writeln('📚 ${word.title}');
       shareText.writeln('🔤 Definition: ${_getDefinitionForLanguage(word)}');
       if (word.holidesirwi != null && word.holidesirwi!.isNotEmpty) {
         shareText.writeln('\n📎 Related words & phrases:');
@@ -334,7 +334,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
       return shareText.toString();
     }
 
-    // Function to handle sharing
     void shareWord() async {
       try {
         await Share.share(
@@ -342,11 +341,10 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
           subject: 'Check out this word in Kifuliiru!',
         );
       } catch (e) {
-        print('Error sharing: $e');
+        debugPrint('Error sharing: $e');
       }
     }
 
-    // Function to handle copying to clipboard
     void copyToClipboard(BuildContext context, String text) {
       Clipboard.setData(ClipboardData(text: text));
       ScaffoldMessenger.of(context).showSnackBar(
@@ -380,7 +378,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Drag Handle
                           Center(
                             child: Container(
                               width: 40,
@@ -392,12 +389,9 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                               ),
                             ),
                           ),
-
-                          // Kifuliiru Word Section
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // Title row with label and icon
                               Row(
                                 children: [
                                   const Icon(
@@ -415,7 +409,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                     ),
                                   ),
                                   const Spacer(),
-                                  // Kifuliiru audio button
                                   IconButton(
                                     onPressed: () {
                                       showDialog(
@@ -449,9 +442,8 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                 ],
                               ),
                               const SizedBox(height: 4),
-                              // Word text
                               Text(
-                                word.igambo ?? '',
+                                word.title,
                                 style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -459,10 +451,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                               ),
                             ],
                           ),
-
                           const SizedBox(height: 24),
-
-                          // Definition Section
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -486,7 +475,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                   ),
                                   if (widget.dictionaryType ==
                                       DictionaryType.kifuliiru)
-                                    // Show Kifuliiru audio button for Kifuliiru dictionary
                                     IconButton(
                                       onPressed: () {
                                         showDialog(
@@ -519,7 +507,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                       tooltip: 'Play definition audio',
                                     )
                                   else if (_isTTSSupported())
-                                    // Show TTS button for French and English dictionaries
                                     IconButton(
                                       onPressed: () => _speakDefinition(
                                           _getDefinitionForLanguage(word)),
@@ -546,8 +533,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                               ),
                             ],
                           ),
-
-                          // Related Words Section
                           if (word.holidesirwi != null &&
                               word.holidesirwi!.isNotEmpty) ...[
                             const SizedBox(height: 24),
@@ -587,7 +572,18 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                   final relatedWord = word.holidesirwi![index];
                                   return InkWell(
                                     onTap: () {
-                                      // Optional: Navigate to the word's detail if it exists in dictionary
+                                      // Find and show the related word if it exists in dictionary
+                                      final relatedWordEntry =
+                                          _allWords.firstWhere(
+                                        (w) =>
+                                            w.title.toLowerCase() ==
+                                            relatedWord.toLowerCase(),
+                                        orElse: () => word,
+                                      );
+                                      if (relatedWordEntry != word) {
+                                        Navigator.pop(context);
+                                        _showWordDetails(relatedWordEntry);
+                                      }
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -624,9 +620,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                               ),
                             ),
                           ],
-
-                          // Creation Date Section
-                          if (word.sCreatedDate != null) ...[
+                          if (word.createdDate != null) ...[
                             const SizedBox(height: 24),
                             Container(
                               padding: const EdgeInsets.all(12),
@@ -643,7 +637,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                                   ),
                                   const SizedBox(width: 8),
                                   Text(
-                                    'Added: ${DateTime.parse(word.sCreatedDate!).toLocal().toString().split('.')[0]}',
+                                    'Added: ${DateTime.parse(word.createdDate!).toLocal().toString().split('.')[0]}',
                                     style: const TextStyle(
                                       fontSize: 14,
                                       color: Colors.grey,
@@ -653,15 +647,12 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                               ),
                             ),
                           ],
-
-                          // Bottom padding for share/copy buttons
                           const SizedBox(height: 80),
                         ],
                       ),
                     ),
                   ),
                 ),
-                // Share and Copy icons container at bottom
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -677,7 +668,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      // Copy button
                       IconButton(
                         onPressed: () =>
                             copyToClipboard(context, generateShareText()),
@@ -688,7 +678,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
                         ),
                         tooltip: 'Copy to clipboard',
                       ),
-                      // Share button
                       IconButton(
                         onPressed: shareWord,
                         icon: const Icon(
@@ -740,7 +729,6 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   void dispose() {
     _searchController.dispose();
     flutterTts.stop();
-    // TODO: Clean up Kifuliiru audio resources when implemented
     super.dispose();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kifuliiru_app/igambo.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
+
+import 'models/igambo.dart';
 
 class Imyazi extends StatefulWidget {
   const Imyazi({Key? key}) : super(key: key);
@@ -115,14 +116,13 @@ class _ImyaziState extends State<Imyazi> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
                                                                 .start,
-
                                                         children: [
                                                           const SizedBox(
                                                               height: 20),
                                                           Text(
                                                             snapshot
                                                                 .data![index]
-                                                                .igambo
+                                                                .title
                                                                 .toString(),
                                                             style: const TextStyle(
                                                                 fontSize: 20,
@@ -132,7 +132,7 @@ class _ImyaziState extends State<Imyazi> {
                                                           ),
                                                           Text(snapshot
                                                               .data![index]
-                                                              .kifuliiru
+                                                              .sobaanuro
                                                               .toString()),
                                                         ],
                                                       )));
@@ -152,14 +152,14 @@ class _ImyaziState extends State<Imyazi> {
                                         ),
                                       ),
                                       title: Text(
-                                          snapshot.data![index].igambo
+                                          snapshot.data![index].title
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black)),
                                       subtitle: Text(
-                                          snapshot.data![index].kifuliiru
+                                          snapshot.data![index].sobaanuro
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 18,
