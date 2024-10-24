@@ -1,4 +1,5 @@
-// lib/screens/dictionary_view_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
@@ -23,19 +24,36 @@ class DictionaryViewScreen extends StatefulWidget {
 class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   final TextEditingController _searchController = TextEditingController();
   final FlutterTts flutterTts = FlutterTts();
-  List<Igambo> _filteredWords = [];
-  List<Igambo> _allWords = [];
+  final ScrollController _scrollController = ScrollController();
+
+  List<Igambo> _words = [];
   bool _isLoading = true;
+  bool _isLoadingMore = false;
   String? _errorMessage;
   bool isSpeakingDefinition = false;
-  // TODO: Add state variables for Kifuliiru audio playback
-  // bool isPlayingKifuliiruAudio = false;
+
+  int _currentPage = 1;
+  bool _hasNextPage = true;
+  String? _currentSearchQuery;
+  static const int _pageSize = 20;
 
   @override
   void initState() {
     super.initState();
-    _loadDictionary();
     _initializeTTS();
+    _loadDictionary();
+    _setupScrollListener();
+  }
+
+  void _setupScrollListener() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent * 0.8 &&
+          !_isLoadingMore &&
+          _hasNextPage) {
+        _loadMoreWords();
+      }
+    });
   }
 
   void _initializeTTS() async {
@@ -77,20 +95,28 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     await flutterTts.speak(text);
   }
 
-  Future<void> _loadDictionary() async {
+  Future<void> _loadDictionary({String? searchQuery}) async {
+    if (_isLoading) return;
+
     setState(() {
       _isLoading = true;
       _errorMessage = null;
+      _currentPage = 1;
+      _currentSearchQuery = searchQuery;
     });
 
     try {
       final service = DictionaryService();
-      final words = await service.fetchDictionary(widget.dictionaryType);
-      // Sort words alphabetically by igambo
-      words.sort((a, b) => (a.igambo ?? '').compareTo(b.igambo ?? ''));
+      final response = await service.fetchDictionary(
+        widget.dictionaryType,
+        page: _currentPage,
+        pageSize: _pageSize,
+        searchQuery: searchQuery,
+      );
+
       setState(() {
-        _allWords = words;
-        _filteredWords = words;
+        _words = response.items;
+        _hasNextPage = response.hasNextPage;
         _isLoading = false;
       });
     } catch (e) {
@@ -102,25 +128,43 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     }
   }
 
-  void _filterWords(String query) {
-    if (query.isEmpty) {
+  Future<void> _loadMoreWords() async {
+    if (_isLoadingMore || !_hasNextPage) return;
+
+    setState(() => _isLoadingMore = true);
+
+    try {
+      final service = DictionaryService();
+      final response = await service.fetchDictionary(
+        widget.dictionaryType,
+        page: _currentPage + 1,
+        pageSize: _pageSize,
+        searchQuery: _currentSearchQuery,
+      );
+
       setState(() {
-        _filteredWords = _allWords;
+        _words.addAll(response.items);
+        _hasNextPage = response.hasNextPage;
+        _currentPage++;
+        _isLoadingMore = false;
       });
-      return;
+    } catch (e) {
+      setState(() {
+        _isLoadingMore = false;
+        // Optionally show an error snackbar here
+      });
+      print('Error loading more words: $e');
     }
+  }
 
-    setState(() {
-      _filteredWords = _allWords.where((word) {
-        final wordText = word.igambo?.toLowerCase() ?? '';
-        final definitionText = _getDefinitionForLanguage(word).toLowerCase();
-        final searchLower = query.toLowerCase();
-
-        return wordText.contains(searchLower) ||
-            definitionText.contains(searchLower);
-      }).toList();
+  void _onSearchChanged(String query) {
+    if (_searchDebounce?.isActive ?? false) _searchDebounce!.cancel();
+    _searchDebounce = Timer(const Duration(milliseconds: 500), () {
+      _loadDictionary(searchQuery: query);
     });
   }
+
+  Timer? _searchDebounce;
 
   String _getTitle() {
     switch (widget.dictionaryType) {
@@ -153,7 +197,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
       padding: const EdgeInsets.all(16.0),
       child: TextField(
         controller: _searchController,
-        onChanged: _filterWords,
+        onChanged: _onSearchChanged,
         decoration: InputDecoration(
           labelText: 'Search',
           hintText: 'Enter a word or definition',
@@ -193,7 +237,8 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
-              onPressed: _loadDictionary,
+              onPressed: () =>
+                  _loadDictionary(searchQuery: _currentSearchQuery),
               icon: const Icon(Icons.refresh),
               label: const Text('Retry'),
             ),
@@ -204,7 +249,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   }
 
   Widget _buildWordList() {
-    if (_filteredWords.isEmpty) {
+    if (_words.isEmpty && !_isLoading) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -220,101 +265,118 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     }
 
     return ListView.builder(
-      itemCount: _filteredWords.length,
+      controller: _scrollController,
+      itemCount: _words.length + (_hasNextPage ? 1 : 0),
       padding: const EdgeInsets.only(bottom: 16),
       itemBuilder: (context, index) {
-        final word = _filteredWords[index];
-        final dateCreated = word.sCreatedDate != null
-            ? DateTime.tryParse(word.sCreatedDate!)?.toLocal()
-            : null;
+        if (index == _words.length) {
+          return _buildLoadingIndicator();
+        }
 
-        return Card(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 4.0,
-          ),
-          child: ExpansionTile(
-            title: Text(
-              word.igambo ?? '',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            subtitle: Text(
-              _getDefinitionForLanguage(word),
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Full Definition:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      _getDefinitionForLanguage(word),
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    if (word.holidesirwi != null &&
-                        word.holidesirwi!.isNotEmpty) ...[
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Related Words:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 8,
-                        children: word.holidesirwi!
-                            .map((related) => Chip(
-                                  label: Text(related),
-                                  backgroundColor: Colors.blue[50],
-                                ))
-                            .toList(),
-                      ),
-                    ],
-                    if (dateCreated != null) ...[
-                      const SizedBox(height: 8),
-                      Text(
-                        'Added: ${dateCreated.toString().split('.')[0]}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: 12),
-                    Center(
-                      child: TextButton.icon(
-                        onPressed: () => _showWordDetails(word),
-                        icon: const Icon(Icons.fullscreen),
-                        label: const Text('View Full Details'),
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
+        final word = _words[index];
+        return _buildWordCard(word);
       },
+    );
+  }
+
+  Widget _buildLoadingIndicator() {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      alignment: Alignment.center,
+      child: const CircularProgressIndicator(),
+    );
+  }
+
+  Widget _buildWordCard(Igambo word) {
+    final dateCreated = word.sCreatedDate != null
+        ? DateTime.tryParse(word.sCreatedDate!)?.toLocal()
+        : null;
+
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 4.0,
+      ),
+      child: ExpansionTile(
+        title: Text(
+          word.igambo ?? '',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          _getDefinitionForLanguage(word),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Full Definition:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  _getDefinitionForLanguage(word),
+                  style: const TextStyle(fontSize: 14),
+                ),
+                if (word.holidesirwi != null &&
+                    word.holidesirwi!.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Related Words:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 8,
+                    children: word.holidesirwi!
+                        .map((related) => Chip(
+                              label: Text(related),
+                              backgroundColor: Colors.blue[50],
+                            ))
+                        .toList(),
+                  ),
+                ],
+                if (dateCreated != null) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    'Added: ${dateCreated.toString().split('.')[0]}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 12),
+                Center(
+                  child: TextButton.icon(
+                    onPressed: () => _showWordDetails(word),
+                    icon: const Icon(Icons.fullscreen),
+                    label: const Text('View Full Details'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -717,7 +779,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: _loadDictionary,
+            onPressed: () => _loadDictionary(searchQuery: _currentSearchQuery),
           ),
         ],
       ),
@@ -725,7 +787,7 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
         children: [
           _buildSearchBar(),
           Expanded(
-            child: _isLoading
+            child: _isLoading && _words.isEmpty
                 ? const Center(child: CircularProgressIndicator())
                 : _errorMessage != null
                     ? _buildErrorView()
@@ -739,8 +801,9 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   @override
   void dispose() {
     _searchController.dispose();
+    _scrollController.dispose();
+    _searchDebounce?.cancel();
     flutterTts.stop();
-    // TODO: Clean up Kifuliiru audio resources when implemented
     super.dispose();
   }
 }
