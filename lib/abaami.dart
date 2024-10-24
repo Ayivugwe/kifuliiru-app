@@ -9,53 +9,52 @@ class KingsScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<KingsScreen> createState() => _KingsScreenState();
+  State<KingsScreen> createState() => _BafuliiruLeadersScreenState();
 }
 
-class _KingsScreenState extends State<KingsScreen> {
+class _BafuliiruLeadersScreenState extends State<KingsScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  // Sample kings data - replace with actual historical data
-  final List<Map<String, String>> _kings = [
+  final List<Map<String, String>> _leaders = [
     {
-      'name': 'Mwami Ndare I',
-      'period': '1780 - 1820',
+      'name': 'Chief Mokogabwe',
+      'period': '1850 - 1880',
       'description':
-          'Founded the Bafuliiru kingdom and established the first royal court.',
+          'A visionary leader who unified various Bafuliiru communities and established key alliances.',
       'achievements':
-          'United the Bafuliiru clans, established trade routes with neighboring kingdoms',
-      'image': 'assets/kings/ndare_1.jpg'
+          'Created the first formal council system, established trade networks, and promoted cultural preservation',
+      'image': 'assets/leaders/mokogabwe.jpg'
     },
     {
-      'name': 'Mwami Kabare',
-      'period': '1820 - 1855',
+      'name': 'Chief Mushakulu',
+      'period': '1880 - 1910',
       'description':
-          'Known for his diplomatic skills and expansion of the kingdom.',
+          'Led during a period of significant change and protected Bafuliiru interests.',
       'achievements':
-          'Built the first royal palace, created the council of elders',
-      'image': 'assets/kings/kabare.jpg'
+          'Maintained independence during colonial pressures, built first community centers, preserved traditional laws',
+      'image': 'assets/leaders/mushakulu.jpg'
     },
     {
-      'name': 'Mwami Muganga',
-      'period': '1855 - 1890',
-      'description': 'Led during the challenging period of colonial contact.',
+      'name': 'Chief Nyamugira',
+      'period': '1910 - 1940',
+      'description':
+          'Known for his diplomatic skills and educational initiatives.',
       'achievements':
-          'Protected Bafuliiru culture, established education system',
-      'image': 'assets/kings/muganga.jpg'
+          'Established first schools, strengthened traditional governance, promoted peace with neighbors',
+      'image': 'assets/leaders/nyamugira.jpg'
     },
-    // Add more kings with their historical information
   ];
 
-  List<Map<String, String>> get _filteredKings {
+  List<Map<String, String>> get _filteredLeaders {
     if (_searchQuery.isEmpty) {
-      return _kings;
+      return _leaders;
     }
-    return _kings.where((king) {
+    return _leaders.where((leader) {
       final searchLower = _searchQuery.toLowerCase();
-      final nameLower = king['name']?.toLowerCase() ?? '';
-      final periodLower = king['period']?.toLowerCase() ?? '';
-      final descriptionLower = king['description']?.toLowerCase() ?? '';
+      final nameLower = leader['name']?.toLowerCase() ?? '';
+      final periodLower = leader['period']?.toLowerCase() ?? '';
+      final descriptionLower = leader['description']?.toLowerCase() ?? '';
 
       return nameLower.contains(searchLower) ||
           periodLower.contains(searchLower) ||
@@ -88,7 +87,7 @@ class _KingsScreenState extends State<KingsScreen> {
         children: [
           _buildSearchHeader(),
           Expanded(
-            child: _buildKingsList(),
+            child: _buildLeadersList(),
           ),
         ],
       ),
@@ -103,7 +102,7 @@ class _KingsScreenState extends State<KingsScreen> {
         controller: _searchController,
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          hintText: 'Search kings...',
+          hintText: 'Search leaders...',
           hintStyle: const TextStyle(color: Colors.white70),
           prefixIcon: const Icon(Icons.search, color: Colors.white70),
           suffixIcon: _searchQuery.isNotEmpty
@@ -133,8 +132,8 @@ class _KingsScreenState extends State<KingsScreen> {
     );
   }
 
-  Widget _buildKingsList() {
-    if (_filteredKings.isEmpty) {
+  Widget _buildLeadersList() {
+    if (_filteredLeaders.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +145,7 @@ class _KingsScreenState extends State<KingsScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'No kings found matching "$_searchQuery"',
+              'No leaders found matching "$_searchQuery"',
               style: TextStyle(
                 color: Colors.grey[600],
                 fontSize: 16,
@@ -159,9 +158,9 @@ class _KingsScreenState extends State<KingsScreen> {
 
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: _filteredKings.length,
+      itemCount: _filteredLeaders.length,
       itemBuilder: (context, index) {
-        final king = _filteredKings[index];
+        final leader = _filteredLeaders[index];
         return Card(
           elevation: 2,
           margin: const EdgeInsets.only(bottom: 16),
@@ -169,7 +168,7 @@ class _KingsScreenState extends State<KingsScreen> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: InkWell(
-            onTap: () => _showKingDetails(king),
+            onTap: () => _showLeaderDetails(leader),
             borderRadius: BorderRadius.circular(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -183,7 +182,7 @@ class _KingsScreenState extends State<KingsScreen> {
                       color: const Color(0xFF2C4356).withOpacity(0.1),
                     ),
                     child: const Icon(
-                      Icons.account_balance,
+                      Icons.person,
                       size: 64,
                       color: Color(0xFF2C4356),
                     ),
@@ -195,7 +194,7 @@ class _KingsScreenState extends State<KingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        king['name'] ?? '',
+                        leader['name'] ?? '',
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -204,7 +203,7 @@ class _KingsScreenState extends State<KingsScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        king['period'] ?? '',
+                        leader['period'] ?? '',
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
@@ -213,7 +212,7 @@ class _KingsScreenState extends State<KingsScreen> {
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        king['description'] ?? '',
+                        leader['description'] ?? '',
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.black87,
@@ -232,7 +231,7 @@ class _KingsScreenState extends State<KingsScreen> {
     );
   }
 
-  void _showKingDetails(Map<String, String> king) {
+  void _showLeaderDetails(Map<String, String> leader) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -268,14 +267,14 @@ class _KingsScreenState extends State<KingsScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
-                  Icons.account_balance,
+                  Icons.person,
                   size: 80,
                   color: Color(0xFF2C4356),
                 ),
               ),
               const SizedBox(height: 24),
               Text(
-                king['name'] ?? '',
+                leader['name'] ?? '',
                 style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -284,7 +283,7 @@ class _KingsScreenState extends State<KingsScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                king['period'] ?? '',
+                leader['period'] ?? '',
                 style: const TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
@@ -302,7 +301,7 @@ class _KingsScreenState extends State<KingsScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                king['description'] ?? '',
+                leader['description'] ?? '',
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black87,
@@ -320,7 +319,7 @@ class _KingsScreenState extends State<KingsScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                king['achievements'] ?? '',
+                leader['achievements'] ?? '',
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black87,

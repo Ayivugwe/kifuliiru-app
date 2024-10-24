@@ -1,11 +1,12 @@
 // lib/screens/dictionary_view_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:kifuliiru_app/igambo2.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
 import 'package:kifuliiru_app/services/dictionary_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/services.dart';
+
+import 'igambo.dart';
 
 class DictionaryViewScreen extends StatefulWidget {
   final DictionaryType dictionaryType;

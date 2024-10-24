@@ -13,7 +13,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About'),
+        title: const Text('Twehe - Guno mukolwa'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -24,7 +24,7 @@ class AboutScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Text(
-            'App Name',
+            'Kifuliiru App',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
@@ -42,12 +42,15 @@ class AboutScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'About Us',
+                    'Twehe',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Description of the app and its mission goes here. This can be multiple lines of text explaining the purpose and goals of the application.',
+                    'Guno mukolwa guliri hano, tukaguyinika iziina lye\'ndeto yiitu Kifuliiru. Tuliri Bafuliiru, tugweti tugakola bweneene hogulu lyo\'kudeta kwo indeto yiitu Kifuliiru ihike hala.',
+                  ),
+                  Text(
+                    'Guno mukolwa guliri hano, tukaguyinika iziina lye\'ndeto yiitu Kifuliiru. Tuliri Bafuliiru, tugweti tugakola bweneene hogulu lyo\'kudeta kwo indeto yiitu Kifuliiru ihike hala. Tuliri Bafuliiru, tukoliyiji biingi, yibyo tukoli yiiji tukwaniini tubikoleese higulu tutabaale indeto yitu itatereeke. Guno mukolwa guliri muguma mu mikolwa miingi kera iyagwajikwa no kukolwa na mwenewitu wa Ayivugwe Kabemba. Uno naye anabe aliri muhinga mu bindu bye\'binabwenge. Kera atabaala ibitali na biniini, anakiri mukola ibindi biingi. Guno mukolwa guliri hano higulu tushubi longa ahandi handu ho twangalengera ukulonga imyazi mingi ku Kifuliiru mu Kifuliiru. Tuliri Bafuliiru, tukoli yiji bingi. Kera twabona ngisi kwo ibiindu bigweti bigazaata. Ku zene ibindu byooshi bigweti bigaba ku Internet. Ukudeta kwo nitu tuzamuule indetu Kifuliiru, tukwaniini ukubika byotuyiji ku Internet, Byo\'bitumiri guno mukolwa guliri hano.Menya biguma mu byo\'tuloziizi hano ha lulyo.',
                   ),
                 ],
               ),

@@ -33,7 +33,7 @@ class _IntroScreen extends State<IntroScreen> {
     );
 
     return IntroductionScreen(
-      globalBackgroundColor: const Color.fromARGB(255, 123, 31, 3),
+      globalBackgroundColor: const Color.fromARGB(255, 3, 17, 123),
       //main background of screen
       pages: [
         //set your page view here

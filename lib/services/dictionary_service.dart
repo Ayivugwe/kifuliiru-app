@@ -1,8 +1,9 @@
 // lib/services/dictionary_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:kifuliiru_app/igambo2.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
+
+import '../igambo.dart';
 
 class DictionaryService {
   static const baseUrl = 'https://ibufuliiru.editorx.io/ibufuliiru/_functions';
