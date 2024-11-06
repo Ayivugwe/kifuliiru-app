@@ -455,7 +455,7 @@ class _HomeState extends State<Home> {
           context,
           MaterialPageRoute(
             builder: (context) => const AddWordsScreen(
-              title: 'Add Words',
+              title: 'Yongera amagambo',
             ),
           ),
         );
@@ -465,7 +465,7 @@ class _HomeState extends State<Home> {
           context,
           MaterialPageRoute(
             builder: (context) => const ContributeScreen(
-              title: 'Contribute',
+              title: 'Tabaala',
             ),
           ),
         );

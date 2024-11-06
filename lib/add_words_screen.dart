@@ -110,7 +110,7 @@ class AddWordsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Join Our Community of Contributors',
+            'Ba Muguma wa Balya Abagweti Bagayandika',
             style: TextStyle(
               color: const Color(0xFF2C4356),
               fontSize: 28,
@@ -121,7 +121,7 @@ class AddWordsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Help preserve and expand our language database by becoming a verified contributor',
+            'Tabaala ukubiika no kuhisa hala indeto yitu Kifuliiru mu kuba umwandisi uyemirwi',
             style: TextStyle(
               color: const Color(0xFF2C4356).withOpacity(0.85),
               fontSize: 16,
