@@ -10,6 +10,11 @@ import '../profile/profile_screen.dart';
 import '../settings/settings_screen.dart';
 import '../grammar/grammar_screen.dart';
 import '../pronunciation/pronunciation_screen.dart';
+import '../culture/customs_screen.dart';
+import '../culture/festivals_screen.dart';
+import '../culture/art_music_screen.dart';
+import '../learning/lessons_screen.dart';
+import '../learning/practice_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,23 +24,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          // App Bar with Search and Profile
+          // App Bar with Profile and Settings
           SliverAppBar(
             expandedHeight: 120,
             floating: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search...',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              title: Text(
+                'Kifuliiru',
+                style: TextStyle(
+                  color: KifuliiruTheme.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
                 ),
               ),
             ),
@@ -185,34 +185,33 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         _buildFeatureCard(
                           context,
-                          'Traditions',
-                          'Learn about Fuliiru traditions',
-                          Icons.celebration,
+                          'Customs',
+                          'Traditional customs and practices',
+                          Icons.people,
                           () => Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const CultureScreen()),
+                            MaterialPageRoute(builder: (context) => const CustomsScreen()),
                           ),
                         ),
                         _buildFeatureCard(
                           context,
-                          'Customs',
-                          'Explore Fuliiru customs',
-                          Icons.people,
-                          () {},
-                        ),
-                        _buildFeatureCard(
-                          context,
                           'Festivals',
-                          'Discover Fuliiru festivals',
-                          Icons.event,
-                          () {},
+                          'Cultural festivals and celebrations',
+                          Icons.celebration,
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const FestivalsScreen()),
+                          ),
                         ),
                         _buildFeatureCard(
                           context,
                           'Art & Music',
-                          'Experience Fuliiru arts',
+                          'Traditional art and music',
                           Icons.music_note,
-                          () {},
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ArtMusicScreen()),
+                          ),
                         ),
                       ],
                     ),
@@ -324,14 +323,20 @@ class HomeScreen extends StatelessWidget {
                           'Lessons',
                           'Structured learning materials',
                           Icons.school,
-                          () {},
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const LessonsScreen()),
+                          ),
                         ),
                         _buildFeatureCard(
                           context,
                           'Practice',
                           'Interactive exercises',
                           Icons.edit_note,
-                          () {},
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const PracticeScreen()),
+                          ),
                         ),
                         _buildFeatureCard(
                           context,
