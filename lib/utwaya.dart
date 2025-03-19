@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/theme.dart';
 
-class VillagesScreen extends StatefulWidget {
+class VillagesScreen extends StatelessWidget {
   final String title;
 
   const VillagesScreen({
@@ -9,368 +10,165 @@ class VillagesScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<VillagesScreen> createState() => _VillagesScreenState();
-}
-
-class _VillagesScreenState extends State<VillagesScreen> {
-  final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
-
-  // Sample villages data - replace with actual data
-  final List<Map<String, String>> _villages = [
-    {
-      'name': 'Luvungi',
-      'chief': 'Mwami Ndare',
-      'population': '15,000',
-      'description':
-          'A historic village known for its traditional markets and cultural ceremonies. Located along the main trade route.',
-      'features': 'Traditional market, Cultural center, Ancient tree shrine',
-      'location': 'Central Uvira Territory',
-    },
-    {
-      'name': 'Sange',
-      'chief': 'Mwami Kabego',
-      'population': '12,500',
-      'description':
-          'Agricultural center famous for its fertile lands and traditional farming practices.',
-      'features': 'Agricultural center, Weekly market, Community center',
-      'location': 'Southern Uvira Territory',
-    },
-    {
-      'name': 'Lemera',
-      'chief': 'Mwami Lukogo',
-      'population': '8,000',
-      'description':
-          'Mountain village renowned for its healing springs and traditional medicine practitioners.',
-      'features':
-          'Healing springs, Traditional medicine center, Mountain views',
-      'location': 'Eastern Highlands',
-    },
-    {
-      'name': 'Kibogoye',
-      'chief': 'Mwami Bisimwa',
-      'population': '6,500',
-      'description':
-          'Artisanal village known for its skilled craftsmen and traditional pottery.',
-      'features': 'Pottery workshops, Artisan market, Cultural museum',
-      'location': 'Northern Uvira Territory',
-    },
-  ];
-
-  List<Map<String, String>> get _filteredVillages {
-    if (_searchQuery.isEmpty) {
-      return _villages;
-    }
-    return _villages.where((village) {
-      final searchLower = _searchQuery.toLowerCase();
-      final nameLower = village['name']?.toLowerCase() ?? '';
-      final chiefLower = village['chief']?.toLowerCase() ?? '';
-      final descriptionLower = village['description']?.toLowerCase() ?? '';
-
-      return nameLower.contains(searchLower) ||
-          chiefLower.contains(searchLower) ||
-          descriptionLower.contains(searchLower);
-    }).toList();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        title: ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+          ).createShader(bounds),
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        backgroundColor: const Color(0xFF2C4356),
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _buildSearchHeader(),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 1,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Text(
+              'Our Villages',
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
           Expanded(
-            child: _buildVillagesList(),
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                _buildVillageCard(
+                  context,
+                  'Mikenge',
+                  'Traditional village center',
+                  'Home to many families and cultural events',
+                  Icons.location_city,
+                  KifuliiruTheme.primaryColor,
+                ),
+                const SizedBox(height: 16),
+                _buildVillageCard(
+                  context,
+                  'Kigoma',
+                  'Coastal village',
+                  'Known for fishing and trade',
+                  Icons.water,
+                  KifuliiruTheme.secondaryColor,
+                ),
+                const SizedBox(height: 16),
+                _buildVillageCard(
+                  context,
+                  'Rutshuru',
+                  'Mountain village',
+                  'Famous for its scenic beauty',
+                  Icons.terrain,
+                  KifuliiruTheme.primaryColor,
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSearchHeader() {
-    return Container(
-      color: const Color(0xFF2C4356),
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-      child: TextField(
-        controller: _searchController,
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          hintText: 'Search villages...',
-          hintStyle: const TextStyle(color: Colors.white70),
-          prefixIcon: const Icon(Icons.search, color: Colors.white70),
-          suffixIcon: _searchQuery.isNotEmpty
-              ? IconButton(
-                  icon: const Icon(Icons.clear, color: Colors.white70),
-                  onPressed: () {
-                    _searchController.clear();
-                    setState(() {
-                      _searchQuery = '';
-                    });
-                  },
-                )
-              : null,
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.1),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none,
-          ),
+  Widget _buildVillageCard(
+    BuildContext context,
+    String name,
+    String type,
+    String description,
+    IconData icon,
+    Color color,
+  ) {
+    final theme = Theme.of(context);
+    
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
         ),
-        onChanged: (value) {
-          setState(() {
-            _searchQuery = value;
-          });
-        },
       ),
-    );
-  }
-
-  Widget _buildVillagesList() {
-    if (_filteredVillages.isEmpty) {
-      return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.search_off,
-              size: 64,
-              color: Colors.grey[400],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'No villages found matching "$_searchQuery"',
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: _filteredVillages.length,
-      itemBuilder: (context, index) {
-        final village = _filteredVillages[index];
-        return Card(
-          elevation: 2,
-          margin: const EdgeInsets.only(bottom: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: InkWell(
-            onTap: () => _showVillageDetails(village),
-            borderRadius: BorderRadius.circular(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            Row(
               children: [
-                ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(12)),
-                  child: Container(
-                    height: 160,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF2C4356).withOpacity(0.1),
-                    ),
-                    child: const Icon(
-                      Icons.location_city,
-                      size: 64,
-                      color: Color(0xFF2C4356),
-                    ),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: color,
+                    size: 28,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
+                const SizedBox(width: 16),
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        village['name']!,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2C4356),
+                        name,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: KifuliiruTheme.textColor,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 4),
                       Text(
-                        'Chief: ${village['chief']!}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500,
+                        type,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[600],
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        village['description']!,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.black87,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          ),
-        );
-      },
-    );
-  }
-
-  void _showVillageDetails(Map<String, String> village) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.9,
-        minChildSize: 0.5,
-        maxChildSize: 0.95,
-        builder: (_, controller) => Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          child: ListView(
-            controller: controller,
-            padding: const EdgeInsets.all(24),
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(2),
-                  ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: Colors.grey[50],
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Text(
+                description,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: Colors.grey[600],
                 ),
               ),
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF2C4356).withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Icon(
-                  Icons.location_city,
-                  size: 80,
-                  color: Color(0xFF2C4356),
-                ),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                village['name']!,
-                style: const TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2C4356),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Chief: ${village['chief']!}',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 16),
-              _buildDetailItem('Population', village['population']!),
-              _buildDetailItem('Location', village['location']!),
-              const SizedBox(height: 24),
-              const Text(
-                'About',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2C4356),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                village['description']!,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black87,
-                  height: 1.5,
-                ),
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'Key Features',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2C4356),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                village['features']!,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black87,
-                  height: 1.5,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildDetailItem(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '$label: ',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Expanded(
-            child: Text(
-              value,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

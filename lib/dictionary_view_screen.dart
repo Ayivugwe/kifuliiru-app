@@ -7,6 +7,7 @@ import 'package:kifuliiru_app/services/dictionary_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:kifuliiru_app/models/igambo.dart'; // Update this import
+import 'package:kifuliiru_app/theme.dart';
 
 class DictionaryViewScreen extends StatefulWidget {
   final DictionaryType dictionaryType;
@@ -149,18 +150,73 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+          ).createShader(bounds),
+          child: Text(
+            _getTitle(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: Column(
+        children: [
+          _buildSearchBar(),
+          Expanded(
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _errorMessage != null
+                    ? _buildErrorView()
+                    : _buildWordList(),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildSearchBar() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
       child: TextField(
         controller: _searchController,
         onChanged: _filterWords,
         decoration: InputDecoration(
           labelText: 'Search',
           hintText: 'Enter a word or definition',
-          prefixIcon: const Icon(Icons.search),
+          prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[300]!),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[300]!),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: KifuliiruTheme.primaryColor),
           ),
           filled: true,
           fillColor: Colors.grey[50],
@@ -170,26 +226,32 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   }
 
   Widget _buildErrorView() {
+    final theme = Theme.of(context);
+    
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.error_outline,
               size: 48,
-              color: Colors.red,
+              color: KifuliiruTheme.secondaryColor,
             ),
             const SizedBox(height: 16),
             Text(
               'Error Loading Dictionary',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: KifuliiruTheme.textColor,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
               _errorMessage ?? 'An unknown error occurred',
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.grey[600],
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -206,14 +268,14 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
 
   Widget _buildWordList() {
     if (_filteredWords.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             'No words found',
             style: TextStyle(
               fontSize: 16,
-              color: Colors.grey,
+              color: Colors.grey[600],
             ),
           ),
         ),
@@ -231,24 +293,37 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
   }
 
   Widget _buildWordCard(Igambo word) {
+    final theme = Theme.of(context);
+    
     return Card(
       margin: const EdgeInsets.symmetric(
         horizontal: 16.0,
         vertical: 4.0,
       ),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
+      ),
       child: ExpansionTile(
         title: Text(
           word.title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: KifuliiruTheme.textColor,
+            fontWeight: FontWeight.w600,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
           _getDefinitionForLanguage(word),
-          maxLines: 3,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: Colors.grey[600],
+          ),
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
         children: [
@@ -257,59 +332,82 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Full Definition:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                if (word.sobaanuro != null) ...[
+                  _buildDefinitionSection(
+                    'Kifuliiru',
+                    word.sobaanuro!,
+                    theme,
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  _getDefinitionForLanguage(word),
-                  style: const TextStyle(fontSize: 14),
-                ),
-                if (word.holidesirwi != null &&
-                    word.holidesirwi!.isNotEmpty) ...[
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Related Words:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
+                  const SizedBox(height: 16),
+                ],
+                if (word.sobaanuroYeKiswahili != null) ...[
+                  _buildDefinitionSection(
+                    'Kiswahili',
+                    word.sobaanuroYeKiswahili!,
+                    theme,
                   ),
-                  const SizedBox(height: 4),
-                  Wrap(
-                    spacing: 8,
-                    children: word.holidesirwi!
-                        .map((related) => Chip(
-                              label: Text(related),
-                              backgroundColor: Colors.blue[50],
-                            ))
-                        .toList(),
+                  const SizedBox(height: 16),
+                ],
+                if (word.sobaanuroYeKifaransa != null) ...[
+                  _buildDefinitionSection(
+                    'Français',
+                    word.sobaanuroYeKifaransa!,
+                    theme,
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (word.sobaanuroYeKingereza != null) ...[
+                  _buildDefinitionSection(
+                    'English',
+                    word.sobaanuroYeKingereza!,
+                    theme,
                   ),
                 ],
-                if (word.createdDate != null) ...[
-                  const SizedBox(height: 8),
-                  Text(
-                    'Added: ${DateTime.parse(word.createdDate!).toLocal().toString().split('.')[0]}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (_isTTSSupported())
+                      IconButton(
+                        icon: Icon(
+                          isSpeakingDefinition
+                              ? Icons.stop
+                              : Icons.volume_up,
+                          color: KifuliiruTheme.primaryColor,
+                        ),
+                        onPressed: () => _speakDefinition(
+                          _getDefinitionForLanguage(word),
+                        ),
+                      ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.copy,
+                        color: KifuliiruTheme.primaryColor,
+                      ),
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(
+                          text: '${word.title}\n${_getDefinitionForLanguage(word)}',
+                        ));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Copied to clipboard'),
+                            backgroundColor: KifuliiruTheme.primaryColor,
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                ],
-                const SizedBox(height: 12),
-                Center(
-                  child: TextButton.icon(
-                    onPressed: () => _showWordDetails(word),
-                    icon: const Icon(Icons.fullscreen),
-                    label: const Text('View Full Details'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.blue,
+                    IconButton(
+                      icon: Icon(
+                        Icons.share,
+                        color: KifuliiruTheme.primaryColor,
+                      ),
+                      onPressed: () {
+                        Share.share(
+                          '${word.title}\n${_getDefinitionForLanguage(word)}',
+                        );
+                      },
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
@@ -319,409 +417,29 @@ class _DictionaryViewScreenState extends State<DictionaryViewScreen> {
     );
   }
 
-  void _showWordDetails(Igambo word) {
-    String generateShareText() {
-      StringBuffer shareText = StringBuffer();
-      shareText.writeln('📚 ${word.title}');
-      shareText.writeln('🔤 Definition: ${_getDefinitionForLanguage(word)}');
-      if (word.holidesirwi != null && word.holidesirwi!.isNotEmpty) {
-        shareText.writeln('\n📎 Related words & phrases:');
-        for (var relatedWord in word.holidesirwi!) {
-          shareText.writeln('• $relatedWord');
-        }
-      }
-      shareText.writeln('\nShared from Kifuliiru Dictionary App');
-      return shareText.toString();
-    }
-
-    void shareWord() async {
-      try {
-        await Share.share(
-          generateShareText(),
-          subject: 'Check out this word in Kifuliiru!',
-        );
-      } catch (e) {
-        debugPrint('Error sharing: $e');
-      }
-    }
-
-    void copyToClipboard(BuildContext context, String text) {
-      Clipboard.setData(ClipboardData(text: text));
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Copied to clipboard'),
-          duration: Duration(seconds: 2),
+  Widget _buildDefinitionSection(
+    String language,
+    String definition,
+    ThemeData theme,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          language,
+          style: theme.textTheme.titleSmall?.copyWith(
+            color: KifuliiruTheme.primaryColor,
+            fontWeight: FontWeight.w600,
+          ),
         ),
-      );
-    }
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) {
-          return DraggableScrollableSheet(
-            initialChildSize: 0.7,
-            minChildSize: 0.5,
-            maxChildSize: 0.95,
-            expand: false,
-            builder: (context, scrollController) => Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Container(
-                              width: 40,
-                              height: 4,
-                              margin: const EdgeInsets.only(bottom: 20),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.record_voice_over,
-                                    color: Colors.green,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  const Text(
-                                    'Kifuliiru:',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                    onPressed: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title:
-                                                const Text('Audio Coming Soon'),
-                                            content: const Text(
-                                              'We are currently working on adding audio pronunciations for Kifuliiru words. This feature will be available in a future update!',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () =>
-                                                    Navigator.of(context).pop(),
-                                                child: const Text('OK'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                    icon: const Icon(
-                                      Icons.volume_up,
-                                      color: Colors.green,
-                                      size: 24,
-                                    ),
-                                    tooltip: 'Play Kifuliiru audio',
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                word.title,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 24),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.menu_book,
-                                    color: Colors.blue,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  const Expanded(
-                                    child: Text(
-                                      'Definition:',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.blue,
-                                      ),
-                                    ),
-                                  ),
-                                  if (widget.dictionaryType ==
-                                      DictionaryType.kifuliiru)
-                                    IconButton(
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              title: const Text(
-                                                  'Audio Coming Soon'),
-                                              content: const Text(
-                                                'We are currently working on adding audio pronunciations for Kifuliiru words. This feature will be available in a future update!',
-                                                style: TextStyle(fontSize: 16),
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.of(context)
-                                                          .pop(),
-                                                  child: const Text('OK'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.volume_up,
-                                        color: Colors.blue,
-                                        size: 24,
-                                      ),
-                                      tooltip: 'Play definition audio',
-                                    )
-                                  else if (_isTTSSupported())
-                                    IconButton(
-                                      onPressed: () => _speakDefinition(
-                                          _getDefinitionForLanguage(word)),
-                                      icon: Icon(
-                                        isSpeakingDefinition
-                                            ? Icons.stop_circle
-                                            : Icons.play_circle,
-                                        color: Colors.blue,
-                                        size: 28,
-                                      ),
-                                      tooltip: isSpeakingDefinition
-                                          ? 'Stop'
-                                          : 'Play definition',
-                                    ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                _getDefinitionForLanguage(word),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  height: 1.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                          if (word.holidesirwi != null &&
-                              word.holidesirwi!.isNotEmpty) ...[
-                            const SizedBox(height: 24),
-                            const Row(
-                              children: [
-                                Icon(
-                                  Icons.connect_without_contact,
-                                  color: Colors.blue,
-                                  size: 20,
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  'Related Words & Phrases:',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 12),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[50],
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: word.holidesirwi!.length,
-                                separatorBuilder: (context, index) => Divider(
-                                  height: 1,
-                                  color: Colors.grey[300],
-                                ),
-                                itemBuilder: (context, index) {
-                                  final relatedWord = word.holidesirwi![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      // Find and show the related word if it exists in dictionary
-                                      final relatedWordEntry =
-                                          _allWords.firstWhere(
-                                        (w) =>
-                                            w.title.toLowerCase() ==
-                                            relatedWord.toLowerCase(),
-                                        orElse: () => word,
-                                      );
-                                      if (relatedWordEntry != word) {
-                                        Navigator.pop(context);
-                                        _showWordDetails(relatedWordEntry);
-                                      }
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12.0,
-                                        horizontal: 16.0,
-                                      ),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            '•',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Expanded(
-                                            child: Text(
-                                              relatedWord,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                height: 1.4,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                          if (word.createdDate != null) ...[
-                            const SizedBox(height: 24),
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[50],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.calendar_today,
-                                    size: 16,
-                                    color: Colors.grey,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'Added: ${DateTime.parse(word.createdDate!).toLocal().toString().split('.')[0]}',
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                          const SizedBox(height: 80),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 4,
-                        offset: const Offset(0, -2),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () =>
-                            copyToClipboard(context, generateShareText()),
-                        icon: const Icon(
-                          Icons.copy,
-                          color: Colors.blue,
-                          size: 28,
-                        ),
-                        tooltip: 'Copy to clipboard',
-                      ),
-                      IconButton(
-                        onPressed: shareWord,
-                        icon: const Icon(
-                          Icons.share,
-                          color: Colors.blue,
-                          size: 28,
-                        ),
-                        tooltip: 'Share Word',
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_getTitle()),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _loadDictionary,
+        const SizedBox(height: 4),
+        Text(
+          definition,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: KifuliiruTheme.textColor,
           ),
-        ],
-      ),
-      body: Column(
-        children: [
-          _buildSearchBar(),
-          Expanded(
-            child: _isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : _errorMessage != null
-                    ? _buildErrorView()
-                    : _buildWordList(),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

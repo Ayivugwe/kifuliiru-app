@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/list_magambo.dart';
-
-import 'models/igambo.dart';
+import 'package:kifuliiru_app/models/igambo.dart';
+import 'package:kifuliiru_app/theme.dart';
 
 class KifuliiruNeKifaransa extends StatefulWidget {
   const KifuliiruNeKifaransa({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _KifuliiruNeKifaransaState createState() => _KifuliiruNeKifaransaState();
 }
 
 class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
   late Future<List<Igambo>> futureIgambo;
-  List<Igambo> allIgambo = []; // Store the original list
+  List<Igambo> allIgambo = [];
 
   @override
   void initState() {
     super.initState();
     MagamboList magamboList = MagamboList();
     futureIgambo = magamboList.fetchIgambo().then((igamboList) {
-      allIgambo = igamboList; // Save the original list
-      return igamboList; // Return the list for future use
+      allIgambo = igamboList;
+      return igamboList;
     });
   }
 
@@ -29,7 +28,7 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
     List<Igambo> results;
 
     if (igamboUmulooza.isEmpty) {
-      results = allIgambo; // Use the original list when search is empty
+      results = allIgambo;
     } else {
       results = allIgambo
           .where((igambo) => (igambo.title.toLowerCase())
@@ -37,146 +36,171 @@ class _KifuliiruNeKifaransaState extends State<KifuliiruNeKifaransa> {
           .toList();
     }
 
-    // Refresh the UI
     setState(() {
-      futureIgambo = Future.value(results); // Update futureIgambo
+      futureIgambo = Future.value(results);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Kifuliiru - Kifaransa',
-        theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            iconTheme: const IconThemeData(
-              color: Colors.black,
-            ),
-            title: const Text('Kifuliiru - Kifaransa'),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context, false),
+    final theme = Theme.of(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+          ).createShader(bounds),
+          child: const Text(
+            'Kifuliiru - Français',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          body: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: TextField(
-                    onChanged: (value) => _looza(value),
-                    decoration: const InputDecoration(
-                        labelText: 'Looza hano ... ',
-                        suffixIcon: Icon(Icons.search)),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Expanded(
-                  child: FutureBuilder<List<Igambo>>(
-                      future: futureIgambo,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return ListView.builder(
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (_, index) => Card(
-                                    child: ListTile(
-                                      onTap: () {
-                                        showModalBottomSheet(
-                                            context: context,
-                                            isScrollControlled: true,
-                                            isDismissible: true,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.vertical(
-                                                      top: Radius.circular(
-                                                          20.0)),
-                                            ),
-                                            builder: (context) {
-                                              return Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      10.0),
-                                                  child: FractionallySizedBox(
-                                                      heightFactor: 0.5,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          const SizedBox(
-                                                              height: 20),
-                                                          Text(
-                                                            snapshot
-                                                                .data![index]
-                                                                .title
-                                                                .toString(),
-                                                            style: const TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                          Text(snapshot
-                                                              .data![index]
-                                                              .sobaanuroYeKifaransa
-                                                              .toString()),
-                                                        ],
-                                                      )));
-                                            });
-                                      },
-                                      hoverColor: Colors.blue,
-                                      leading: const CircleAvatar(
-                                        radius: 37,
-                                        backgroundColor: Colors.blue,
-                                        child: CircleAvatar(
-                                          radius: 33,
-                                          backgroundColor: Colors.white,
-                                          child: Icon(
-                                            Icons.book,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                      ),
-                                      title: Text(
-                                          snapshot.data![index].title
-                                              .toString(),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black)),
-                                      subtitle: Text(
-                                          snapshot
-                                              .data![index].sobaanuroYeKifaransa
-                                              .toString(),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.normal,
-                                              color: Colors.black54)),
-                                    ),
-                                  ));
-                        } else {
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        }
-                      }),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 1,
+                  offset: const Offset(0, 1),
                 ),
               ],
             ),
+            child: TextField(
+              onChanged: (value) => _looza(value),
+              decoration: InputDecoration(
+                labelText: 'Looza hano ...',
+                hintText: 'Search for a word',
+                prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: KifuliiruTheme.primaryColor),
+                ),
+                filled: true,
+                fillColor: Colors.grey[50],
+              ),
+            ),
           ),
-        ));
+          Expanded(
+            child: FutureBuilder<List<Igambo>>(
+              future: futureIgambo,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => Card(
+                      elevation: 0,
+                      margin: const EdgeInsets.only(bottom: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(
+                          color: Colors.grey.withOpacity(0.1),
+                          width: 1,
+                        ),
+                      ),
+                      child: ListTile(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            isDismissible: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20.0),
+                              ),
+                            ),
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: FractionallySizedBox(
+                                  heightFactor: 0.5,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        snapshot.data![index].title.toString(),
+                                        style: theme.textTheme.titleLarge?.copyWith(
+                                          color: KifuliiruTheme.textColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      Text(
+                                        snapshot.data![index].sobaanuroYeKifaransa.toString(),
+                                        style: theme.textTheme.bodyLarge?.copyWith(
+                                          color: Colors.grey[600],
+                                          height: 1.5,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        leading: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.book,
+                            color: KifuliiruTheme.primaryColor,
+                            size: 24,
+                          ),
+                        ),
+                        title: Text(
+                          snapshot.data![index].title.toString(),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: KifuliiruTheme.textColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        subtitle: Text(
+                          snapshot.data![index].sobaanuroYeKifaransa.toString(),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

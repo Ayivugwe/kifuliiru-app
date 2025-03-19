@@ -15,32 +15,31 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreen extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
-    //this is a page decoration for intro screen
-    PageDecoration pageDecoration = const PageDecoration(
-      titleTextStyle: TextStyle(
+    final theme = Theme.of(context);
+    
+    PageDecoration pageDecoration = PageDecoration(
+      titleTextStyle: theme.textTheme.headlineLarge ?? const TextStyle(
         fontSize: 28.0,
         fontWeight: FontWeight.w700,
         color: Colors.black,
-      ), //tile font size, weight and color
-      bodyTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
-      //body text size and color
-      bodyPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
-      //decription padding
-      imagePadding: EdgeInsets.all(10), //image padding
+      ),
+      bodyTextStyle: theme.textTheme.bodyLarge ?? const TextStyle(
+        fontSize: 20.0,
+        color: Colors.black,
+      ),
+      bodyPadding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+      imagePadding: const EdgeInsets.all(10),
       boxDecoration: BoxDecoration(
-        color: Colors.white,
-      ), //show linear gradient background of page
+        color: theme.colorScheme.surface,
+      ),
     );
 
     return IntroductionScreen(
-      globalBackgroundColor: const Color.fromARGB(255, 3, 17, 123),
-      //main background of screen
+      globalBackgroundColor: theme.colorScheme.secondary,
       pages: [
-        //set your page view here
         PageViewModel(
           title: "Muyegerere",
-          body:
-              "Muyegerere, tumenye indeto yitu Kifuliiru.  Guno mukolwa guli hano higulu lye'Kifuliiru ndeto yitu.",
+          body: "Muyegerere, tumenye indeto yitu Kifuliiru.  Guno mukolwa guli hano higulu lye'Kifuliiru ndeto yitu.",
           image: introImage('assets/images/img1.png'),
           decoration: pageDecoration,
         ),
@@ -56,55 +55,49 @@ class _IntroScreen extends State<IntroScreen> {
           image: introImage('assets/images/img3.png'),
           decoration: pageDecoration,
         ),
-
         PageViewModel(
           title: "Bafuliiru",
           body: "Muyegerere, tumenye abandu bitu Bafuliiru.",
           image: introImage('assets/images/img4.png'),
           decoration: pageDecoration,
         ),
-
-        //add more screen here
       ],
-
-      onDone: () => goHomepage(
-          context), //go to home page on done. When you finish visiting the introduction screen
-      onSkip: () => goHomepage(context), // You can override on skip
+      onDone: () => goHomepage(context),
+      onSkip: () => goHomepage(context),
       showSkipButton: true,
       dotsFlex: 0,
       nextFlex: 0,
-      skip: const Text(
+      skip: Text(
         'Gwajika',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: theme.colorScheme.onSecondary),
       ),
-      next: const Icon(
+      next: Icon(
         Icons.arrow_forward,
-        color: Colors.white,
+        color: theme.colorScheme.onSecondary,
       ),
-      done: const Text(
+      done: Text(
         'Gwajika',
-        style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: theme.colorScheme.onSecondary,
+        ),
       ),
-      dotsDecorator: const DotsDecorator(
-        size: Size(10.0, 10.0), //size of dots
-        color: Colors.white, //color of dots
-        activeSize: Size(22.0, 10.0),
-        //activeColor: Colors.white, //color of active dot
+      dotsDecorator: DotsDecorator(
+        size: const Size(10.0, 10.0),
+        color: theme.colorScheme.onSecondary,
+        activeSize: const Size(22.0, 10.0),
         activeShape: RoundedRectangleBorder(
-          //shave of active dot
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+          borderRadius: BorderRadius.circular(25.0),
         ),
       ),
     );
   }
 
   void goHomepage(context) {
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) {
-      return const Home();
-    }), (Route<dynamic> route) => false);
-    //Navigate to home page and remove the intro screen history
-    //so that "Back" button wont work.
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Home()),
+    );
   }
 
   Widget introImage(String assetName) {

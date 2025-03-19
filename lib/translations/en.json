@@ -1,0 +1,59 @@
+{
+  "app": {
+    "name": "Kifuliiru",
+    "description": "Fuliiru Language and Culture App"
+  },
+  "sections": {
+    "dictionary": {
+      "title": "Dictionary",
+      "search": "Search words",
+      "categories": "Categories",
+      "favorites": "Favorites",
+      "recent": "Recent Searches"
+    },
+    "culture": {
+      "title": "Culture",
+      "people": {
+        "title": "People",
+        "description": "Learn about the Fuliiru people"
+      },
+      "land": {
+        "title": "Land",
+        "description": "Explore the Fuliiru homeland"
+      },
+      "kings": {
+        "title": "Kings",
+        "description": "History of Fuliiru kings"
+      }
+    },
+    "diaspora": {
+      "title": "Diaspora",
+      "map": "Global Map",
+      "communities": "Communities",
+      "regions": "Regions"
+    },
+    "news": {
+      "title": "News",
+      "latest": "Latest News",
+      "categories": "Categories"
+    }
+  },
+  "common": {
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "no_results": "No results found",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "French",
+    "sw": "Swahili",
+    "fll": "Fuliiru",
+    "select": "Select Language",
+    "coming_soon": "Coming Soon"
+  }
+} 

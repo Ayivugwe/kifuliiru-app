@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/theme.dart';
 
 class HomelandScreen extends StatefulWidget {
   final String title;
@@ -32,6 +33,8 @@ class _HomelandScreenState extends State<HomelandScreen>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -40,25 +43,30 @@ class _HomelandScreenState extends State<HomelandScreen>
               expandedHeight: 200.0,
               floating: false,
               pinned: true,
-              backgroundColor: const Color(0xFF2C4356),
+              backgroundColor: Colors.white,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  widget.title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                title: ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+                  ).createShader(bounds),
+                  child: Text(
+                    widget.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
                     Container(
-                      color: const Color(0xFF2C4356),
-                      child: const Center(
+                      color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                      child: Center(
                         child: Icon(
                           Icons.landscape,
                           size: 80,
-                          color: Colors.white24,
+                          color: KifuliiruTheme.primaryColor.withOpacity(0.3),
                         ),
                       ),
                     ),
@@ -69,7 +77,7 @@ class _HomelandScreenState extends State<HomelandScreen>
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withOpacity(0.7),
+                            Colors.black.withOpacity(0.3),
                           ],
                         ),
                       ),
@@ -82,9 +90,9 @@ class _HomelandScreenState extends State<HomelandScreen>
               delegate: _SliverAppBarDelegate(
                 TabBar(
                   controller: _tabController,
-                  labelColor: const Color(0xFF2C4356),
+                  labelColor: KifuliiruTheme.primaryColor,
                   unselectedLabelColor: Colors.grey,
-                  indicatorColor: const Color(0xFF2C4356),
+                  indicatorColor: KifuliiruTheme.primaryColor,
                   tabs: const [
                     Tab(text: 'Overview'),
                     Tab(text: 'Geography'),
@@ -193,10 +201,16 @@ class _HomelandScreenState extends State<HomelandScreen>
     required String content,
     required IconData icon,
   }) {
+    final theme = Theme.of(context);
+    
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -205,18 +219,24 @@ class _HomelandScreenState extends State<HomelandScreen>
           children: [
             Row(
               children: [
-                Icon(
-                  icon,
-                  color: const Color(0xFF2C4356),
-                  size: 24,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: KifuliiruTheme.primaryColor,
+                    size: 24,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2C4356),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: KifuliiruTheme.textColor,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
@@ -224,9 +244,8 @@ class _HomelandScreenState extends State<HomelandScreen>
             const SizedBox(height: 12),
             Text(
               content,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.grey[600],
                 height: 1.5,
               ),
             ),
@@ -237,6 +256,7 @@ class _HomelandScreenState extends State<HomelandScreen>
   }
 
   Widget _buildKeyFacts() {
+    final theme = Theme.of(context);
     final List<Map<String, String>> facts = [
       {'title': 'Population', 'value': '500,000+'},
       {'title': 'Main City', 'value': 'Uvira'},
@@ -245,21 +265,24 @@ class _HomelandScreenState extends State<HomelandScreen>
     ];
 
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Key Facts',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C4356),
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 16),
@@ -271,17 +294,15 @@ class _HomelandScreenState extends State<HomelandScreen>
                         children: [
                           Text(
                             fact['title']!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black87,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: Colors.grey[600],
                             ),
                           ),
                           Text(
                             fact['value']!,
-                            style: const TextStyle(
-                              fontSize: 16,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: KifuliiruTheme.primaryColor,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF2C4356),
                             ),
                           ),
                         ],
@@ -295,6 +316,7 @@ class _HomelandScreenState extends State<HomelandScreen>
   }
 
   Widget _buildGeographicalFeatures() {
+    final theme = Theme.of(context);
     final List<Map<String, dynamic>> features = [
       {
         'name': 'Mountains',
@@ -321,27 +343,40 @@ class _HomelandScreenState extends State<HomelandScreen>
     return Column(
       children: features
           .map((feature) => Card(
-                elevation: 2,
+                elevation: 0,
                 margin: const EdgeInsets.only(bottom: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
+                  side: BorderSide(
+                    color: Colors.grey.withOpacity(0.1),
+                    width: 1,
+                  ),
                 ),
                 child: ListTile(
-                  leading: Icon(
-                    feature['icon'] as IconData,
-                    color: const Color(0xFF2C4356),
-                    size: 32,
+                  leading: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      feature['icon'] as IconData,
+                      color: KifuliiruTheme.primaryColor,
+                      size: 24,
+                    ),
                   ),
                   title: Text(
                     feature['name'] as String,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2C4356),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: KifuliiruTheme.textColor,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   subtitle: Text(
                     feature['description'] as String,
-                    style: const TextStyle(color: Colors.black87),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
                   ),
                 ),
               ))
@@ -366,29 +401,41 @@ class _HomelandScreenState extends State<HomelandScreen>
   }
 
   Widget _buildCultureCard(String title, IconData icon) {
+    final theme = Theme.of(context);
+    
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 40,
-              color: const Color(0xFF2C4356),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                size: 32,
+                color: KifuliiruTheme.primaryColor,
+              ),
             ),
             const SizedBox(height: 12),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C4356),
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -398,6 +445,7 @@ class _HomelandScreenState extends State<HomelandScreen>
   }
 
   Widget _buildLandmarksList() {
+    final theme = Theme.of(context);
     final List<Map<String, String>> landmarks = [
       {
         'name': 'Royal Palace',
@@ -424,10 +472,14 @@ class _HomelandScreenState extends State<HomelandScreen>
     return Column(
       children: landmarks
           .map((landmark) => Card(
-                elevation: 2,
+                elevation: 0,
                 margin: const EdgeInsets.only(bottom: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
+                  side: BorderSide(
+                    color: Colors.grey.withOpacity(0.1),
+                    width: 1,
+                  ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -436,34 +488,31 @@ class _HomelandScreenState extends State<HomelandScreen>
                     children: [
                       Text(
                         landmark['name']!,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2C4356),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: KifuliiruTheme.textColor,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         landmark['description']!,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[600],
                         ),
                       ),
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.location_on,
                             size: 16,
-                            color: Colors.grey,
+                            color: Colors.grey[600],
                           ),
                           const SizedBox(width: 4),
                           Text(
                             landmark['location']!,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 14,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: Colors.grey[600],
                             ),
                           ),
                         ],

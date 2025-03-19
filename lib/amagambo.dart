@@ -1,7 +1,7 @@
 // lib/screens/dictionary_screen.dart
 import 'package:flutter/material.dart';
 import 'package:kifuliiru_app/models/dictionary_type.dart';
-
+import 'package:kifuliiru_app/theme.dart';
 import 'dictionary_view_screen.dart';
 
 class DictionaryScreen extends StatelessWidget {
@@ -14,29 +14,45 @@ class DictionaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        title: ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+          ).createShader(bounds),
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        backgroundColor: const Color(0xFF2C4356),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            color: const Color(0xFF2C4356),
-            child: const Text(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 1,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Text(
               'Choose Dictionary Language',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
@@ -49,9 +65,8 @@ class DictionaryScreen extends StatelessWidget {
                   'Kifuliiru - Kifuliiru',
                   'Explore words and their meanings in Kifuliiru',
                   Icons.book,
-                  Colors.blue,
-                  () =>
-                      _navigateToDictionary(context, DictionaryType.kifuliiru),
+                  KifuliiruTheme.primaryColor,
+                  () => _navigateToDictionary(context, DictionaryType.kifuliiru),
                 ),
                 const SizedBox(height: 16),
                 _buildDictionaryOption(
@@ -59,9 +74,8 @@ class DictionaryScreen extends StatelessWidget {
                   'Kifuliiru - Kiswahili',
                   'Translate between Kifuliiru and Kiswahili',
                   Icons.translate,
-                  Colors.green,
-                  () =>
-                      _navigateToDictionary(context, DictionaryType.kiswahili),
+                  KifuliiruTheme.secondaryColor,
+                  () => _navigateToDictionary(context, DictionaryType.kiswahili),
                 ),
                 const SizedBox(height: 16),
                 _buildDictionaryOption(
@@ -69,7 +83,7 @@ class DictionaryScreen extends StatelessWidget {
                   'Kifuliiru - Français',
                   'Translate between Kifuliiru and French',
                   Icons.language,
-                  Colors.red,
+                  KifuliiruTheme.primaryColor,
                   () => _navigateToDictionary(context, DictionaryType.french),
                 ),
                 const SizedBox(height: 16),
@@ -78,7 +92,7 @@ class DictionaryScreen extends StatelessWidget {
                   'Kifuliiru - English',
                   'Translate between Kifuliiru and English',
                   Icons.language,
-                  Colors.purple,
+                  KifuliiruTheme.secondaryColor,
                   () => _navigateToDictionary(context, DictionaryType.english),
                 ),
               ],
@@ -97,10 +111,16 @@ class DictionaryScreen extends StatelessWidget {
     Color color,
     VoidCallback onTap,
   ) {
+    final theme = Theme.of(context);
+    
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: InkWell(
         onTap: onTap,
@@ -128,17 +148,15 @@ class DictionaryScreen extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2C4356),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: KifuliiruTheme.textColor,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       description,
-                      style: TextStyle(
-                        fontSize: 14,
+                      style: theme.textTheme.bodyMedium?.copyWith(
                         color: Colors.grey[600],
                       ),
                     ),
@@ -162,8 +180,7 @@ class DictionaryScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => DictionaryViewScreen(
-          dictionaryType:
-              type, // Fixed: Now properly passing the dictionary type
+          dictionaryType: type,
         ),
       ),
     );

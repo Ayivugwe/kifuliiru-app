@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kifuliiru_app/theme.dart';
 
 class BafuliiruScreen extends StatefulWidget {
   final String title;
@@ -32,6 +33,8 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -40,25 +43,30 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
               expandedHeight: 200.0,
               floating: false,
               pinned: true,
-              backgroundColor: const Color(0xFF2C4356),
+              backgroundColor: Colors.white,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  widget.title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                title: ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [Color(0xFFEA580C), Color(0xFFEF4444)],
+                  ).createShader(bounds),
+                  child: Text(
+                    widget.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
                     Container(
-                      color: const Color(0xFF2C4356),
-                      child: const Center(
+                      color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                      child: Center(
                         child: Icon(
                           Icons.people,
                           size: 80,
-                          color: Colors.white24,
+                          color: KifuliiruTheme.primaryColor.withOpacity(0.3),
                         ),
                       ),
                     ),
@@ -69,7 +77,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withOpacity(0.7),
+                            Colors.black.withOpacity(0.3),
                           ],
                         ),
                       ),
@@ -82,9 +90,9 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
               delegate: _SliverAppBarDelegate(
                 TabBar(
                   controller: _tabController,
-                  labelColor: const Color(0xFF2C4356),
+                  labelColor: KifuliiruTheme.primaryColor,
                   unselectedLabelColor: Colors.grey,
-                  indicatorColor: const Color(0xFF2C4356),
+                  indicatorColor: KifuliiruTheme.primaryColor,
                   tabs: const [
                     Tab(text: 'History'),
                     Tab(text: 'Culture'),
@@ -116,8 +124,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
       children: [
         _buildInfoCard(
           title: 'Historical Background',
-          content:
-              'The Bafuliiru people have a rich history dating back centuries...',
+          content: 'The Bafuliiru people have a rich history dating back centuries...',
           icon: Icons.history,
         ),
         const SizedBox(height: 16),
@@ -138,8 +145,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
       children: [
         _buildInfoCard(
           title: 'Cultural Heritage',
-          content:
-              'The Bafuliiru people maintain strong cultural traditions...',
+          content: 'The Bafuliiru people maintain strong cultural traditions...',
           icon: Icons.people,
         ),
         const SizedBox(height: 16),
@@ -181,8 +187,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
       children: [
         _buildInfoCard(
           title: 'Linguistics',
-          content:
-              'The Bafuliiru language belongs to the Bantu language family...',
+          content: 'The Bafuliiru language belongs to the Bantu language family...',
           icon: Icons.record_voice_over,
         ),
         const SizedBox(height: 16),
@@ -202,10 +207,16 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
     required String content,
     required IconData icon,
   }) {
+    final theme = Theme.of(context);
+    
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -214,18 +225,24 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
           children: [
             Row(
               children: [
-                Icon(
-                  icon,
-                  color: const Color(0xFF2C4356),
-                  size: 24,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: KifuliiruTheme.primaryColor,
+                    size: 24,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2C4356),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: KifuliiruTheme.textColor,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
@@ -233,9 +250,8 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
             const SizedBox(height: 12),
             Text(
               content,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.grey[600],
                 height: 1.5,
               ),
             ),
@@ -246,6 +262,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
   }
 
   Widget _buildKeyFacts() {
+    final theme = Theme.of(context);
     final List<Map<String, String>> facts = [
       {'title': 'Population', 'value': '500,000+'},
       {'title': 'Region', 'value': 'Eastern DRC'},
@@ -254,49 +271,48 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
     ];
 
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Key Facts',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C4356),
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 16),
-            ...facts
-                .map((fact) => Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            fact['title']!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          Text(
-                            fact['value']!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF2C4356),
-                            ),
-                          ),
-                        ],
+            ...facts.map((fact) => Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        fact['title']!,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[600],
+                        ),
                       ),
-                    ))
-                .toList(),
+                      Text(
+                        fact['value']!,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: KifuliiruTheme.primaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),
@@ -304,6 +320,7 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
   }
 
   Widget _buildGeographicalFeatures() {
+    final theme = Theme.of(context);
     final List<Map<String, dynamic>> features = [
       {
         'name': 'Mountains',
@@ -328,33 +345,44 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
     ];
 
     return Column(
-      children: features
-          .map((feature) => Card(
-                elevation: 2,
-                margin: const EdgeInsets.only(bottom: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+      children: features.map((feature) => Card(
+            elevation: 0,
+            margin: const EdgeInsets.only(bottom: 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.1),
+                width: 1,
+              ),
+            ),
+            child: ListTile(
+              leading: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: ListTile(
-                  leading: Icon(
-                    feature['icon'] as IconData,
-                    color: const Color(0xFF2C4356),
-                    size: 32,
-                  ),
-                  title: Text(
-                    feature['name'] as String,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2C4356),
-                    ),
-                  ),
-                  subtitle: Text(
-                    feature['description'] as String,
-                    style: const TextStyle(color: Colors.black87),
-                  ),
+                child: Icon(
+                  feature['icon'] as IconData,
+                  color: KifuliiruTheme.primaryColor,
+                  size: 24,
                 ),
-              ))
-          .toList(),
+              ),
+              title: Text(
+                feature['name'] as String,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: KifuliiruTheme.textColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              subtitle: Text(
+                feature['description'] as String,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
+              ),
+            ),
+          )).toList(),
     );
   }
 
@@ -375,29 +403,41 @@ class _BafuliiruScreenState extends State<BafuliiruScreen>
   }
 
   Widget _buildCultureCard(String title, IconData icon) {
+    final theme = Theme.of(context);
+    
     return Card(
-      elevation: 2,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 40,
-              color: const Color(0xFF2C4356),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: KifuliiruTheme.primaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                size: 32,
+                color: KifuliiruTheme.primaryColor,
+              ),
             ),
             const SizedBox(height: 12),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2C4356),
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: KifuliiruTheme.textColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -434,8 +474,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => _tabBar.preferredSize.height;
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       color: Colors.white,
       child: _tabBar,

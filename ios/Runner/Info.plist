@@ -45,5 +45,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Firebase Configuration -->
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>GIDClientID</key>
+	<string>494033019984-03trqi1klr4vn374d05hvfg4f4lp5ol0.apps.googleusercontent.com</string>
 </dict>
 </plist>
