@@ -18,123 +18,231 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppComponents.appBar('Kifuliiru', title: 'Kifuliiru'),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Daily Challenge Section
-              Container(
-                padding: const EdgeInsets.all(Spacing.lg),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.brandOrange.withOpacity(0.1),
-                      AppColors.brandPurple.withOpacity(0.1),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColors.brandOrange.withOpacity(0.05),
+              AppColors.brandPurple.withOpacity(0.05),
+              Colors.white,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Welcome Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.brandOrange.withOpacity(0.1),
+                        AppColors.brandPurple.withOpacity(0.1),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
                     ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Welcome to Fuliiru Hub',
+                        style: AppTypography.headingLarge.copyWith(
+                          color: AppColors.neutralBlack,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.sm),
+                      Text(
+                        'Your gateway to learning and exploring the BAfuliiru language and culture.',
+                        style: AppTypography.bodyLarge.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+
+                // Featured Story
+                Container(
+                  height: 200,
+                  margin: const EdgeInsets.symmetric(horizontal: Spacing.lg),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    image: const DecorationImage(
+                      image: NetworkImage('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'),
+                      fit: BoxFit.cover,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          AppColors.neutralBlack.withOpacity(0.7),
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(Spacing.lg),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: AppColors.brandOrange.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Icon(
-                            Icons.emoji_events,
-                            color: AppColors.brandOrange,
-                            size: 24,
+                        Text(
+                          'The BAfuliiru People',
+                          style: AppTypography.headingMedium.copyWith(
+                            color: Colors.white,
                           ),
                         ),
-                        const SizedBox(width: Spacing.md),
+                        const SizedBox(height: Spacing.xs),
                         Text(
-                          'Daily Challenge',
-                          style: AppTypography.h3.copyWith(
-                            color: AppColors.neutralBlack,
+                          'Discover the rich heritage and traditions of the BAfuliiru community',
+                          style: AppTypography.bodyMedium.copyWith(
+                            color: Colors.white.withOpacity(0.9),
                           ),
+                        ),
+                        const SizedBox(height: Spacing.md),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Navigate to BAfuliiru story
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.brandOrange,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text('Read More'),
                         ),
                       ],
                     ),
-                    const SizedBox(height: Spacing.md),
-                    Container(
-                      padding: const EdgeInsets.all(Spacing.md),
-                      decoration: BoxDecoration(
-                        color: AppColors.neutralWhite,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.neutralBlack.withOpacity(0.05),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Word of the Day',
-                                  style: AppTypography.cardTitle,
-                                ),
-                                const SizedBox(height: Spacing.xs),
-                                Text(
-                                  'Mukulu',
-                                  style: AppTypography.headingMedium.copyWith(
-                                    color: AppColors.brandOrange,
-                                  ),
-                                ),
-                                const SizedBox(height: Spacing.xs),
-                                Text(
-                                  'Meaning: Grandfather',
-                                  style: AppTypography.bodyMedium,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColors.brandOrange.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Icon(
-                              Icons.volume_up,
-                              color: AppColors.brandOrange,
-                              size: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
 
-              // About Kifuliiru Section
-              Padding(
-                padding: const EdgeInsets.all(Spacing.lg),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('About Kifuliiru', style: AppTypography.sectionTitle),
-                    const SizedBox(height: Spacing.md),
-                    SizedBox(
-                      height: 160,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
+                // Daily Challenge Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Daily Challenge',
+                        style: AppTypography.sectionTitle,
+                      ),
+                      const SizedBox(height: Spacing.xs),
+                      Text(
+                        'Test your knowledge and learn something new every day',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      SizedBox(
+                        height: 160,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            _buildGlassCard(
+                              'Word of the Day',
+                              'Mukulu',
+                              'Grandfather',
+                              Icons.book,
+                            ),
+                            _buildGlassCard(
+                              'Pronunciation',
+                              'Practice',
+                              'Listen & Repeat',
+                              Icons.record_voice_over,
+                            ),
+                            _buildGlassCard(
+                              'Quick Quiz',
+                              'Test Yourself',
+                              '5 Questions',
+                              Icons.quiz,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // About Kifuliiru Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'About Kifuliiru',
+                        style: AppTypography.sectionTitle,
+                      ),
+                      const SizedBox(height: Spacing.xs),
+                      Text(
+                        'Discover the rich heritage and linguistic roots of the BAfuliiru people',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: Spacing.md,
+                        crossAxisSpacing: Spacing.md,
                         children: [
-                          _buildFeatureCard(
+                          _buildGlassFeatureCard(
                             context,
                             'BAfuliiru',
                             'People and History',
@@ -144,7 +252,7 @@ class HomeScreen extends StatelessWidget {
                               MaterialPageRoute(builder: (context) => const CustomsScreen()),
                             ),
                           ),
-                          _buildFeatureCard(
+                          _buildGlassFeatureCard(
                             context,
                             'Ibufuliiru',
                             'Language Origins',
@@ -154,7 +262,7 @@ class HomeScreen extends StatelessWidget {
                               MaterialPageRoute(builder: (context) => const GrammarScreen()),
                             ),
                           ),
-                          _buildFeatureCard(
+                          _buildGlassFeatureCard(
                             context,
                             'Dictionary',
                             'Word Meanings',
@@ -166,218 +274,111 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
-              // Culture Section
-              Container(
-                padding: const EdgeInsets.all(Spacing.lg),
-                decoration: BoxDecoration(
-                  color: AppColors.neutralWhite,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.neutralBlack.withOpacity(0.05),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Culture & Heritage', style: AppTypography.sectionTitle),
-                    const SizedBox(height: Spacing.md),
-                    SizedBox(
-                      height: 160,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
+                // Quick Stats Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Quick Stats',
+                        style: AppTypography.sectionTitle,
+                      ),
+                      const SizedBox(height: Spacing.xs),
+                      Text(
+                        'Key information about the BAfuliiru language and community',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: Spacing.md,
+                        crossAxisSpacing: Spacing.md,
+                        childAspectRatio: 1.2,
                         children: [
-                          _buildFeatureCard(
-                            context,
-                            'Customs',
-                            'Traditional Practices',
+                          _buildGlassStatCard(
+                            'Speakers',
+                            '50K+',
                             Icons.people,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const CustomsScreen()),
-                            ),
+                            AppColors.brandOrange,
                           ),
-                          _buildFeatureCard(
-                            context,
-                            'Festivals',
-                            'Cultural Celebrations',
-                            Icons.celebration,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const FestivalsScreen()),
-                            ),
+                          _buildGlassStatCard(
+                            'Words',
+                            '10K+',
+                            Icons.book,
+                            AppColors.brandPurple,
                           ),
-                          _buildFeatureCard(
-                            context,
-                            'Art & Music',
-                            'Traditional Arts',
-                            Icons.music_note,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const ArtMusicScreen()),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Community Section
-              Padding(
-                padding: const EdgeInsets.all(Spacing.lg),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Join the Community', style: AppTypography.sectionTitle),
-                    const SizedBox(height: Spacing.md),
-                    SizedBox(
-                      height: 160,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          _buildFeatureCard(
-                            context,
-                            'Diaspora',
-                            'Connect Worldwide',
+                          _buildGlassStatCard(
+                            'Countries',
+                            '3+',
                             Icons.public,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const DiasporaScreen()),
-                            ),
+                            AppColors.brandOrange,
                           ),
-                          _buildFeatureCard(
-                            context,
-                            'News',
-                            'Latest Updates',
-                            Icons.newspaper,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const NewsScreen()),
-                            ),
-                          ),
-                          _buildFeatureCard(
-                            context,
-                            'Contribute',
-                            'Help Preserve',
-                            Icons.volunteer_activism,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const PracticeScreen()),
-                            ),
+                          _buildGlassStatCard(
+                            'Dialects',
+                            '2',
+                            Icons.language,
+                            AppColors.brandPurple,
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
-              // Learning Section
-              Container(
-                padding: const EdgeInsets.all(Spacing.lg),
-                decoration: BoxDecoration(
-                  color: AppColors.neutralWhite,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.neutralBlack.withOpacity(0.05),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Start Learning', style: AppTypography.sectionTitle),
-                    const SizedBox(height: Spacing.md),
-                    SizedBox(
-                      height: 160,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          _buildFeatureCard(
-                            context,
-                            'Lessons',
-                            'Structured Learning',
-                            Icons.school,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LessonsScreen()),
-                            ),
-                          ),
-                          _buildFeatureCard(
-                            context,
-                            'Practice',
-                            'Interactive Exercises',
-                            Icons.edit_note,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const PracticeScreen()),
-                            ),
-                          ),
-                          _buildFeatureCard(
-                            context,
-                            'Grammar',
-                            'Language Structure',
-                            Icons.auto_awesome,
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const GrammarScreen()),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+                // Continue with other sections...
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFeatureCard(
-    BuildContext context,
-    String title,
-    String description,
-    IconData icon,
-    VoidCallback onTap,
-  ) {
+  Widget _buildGlassCard(String title, String subtitle, String description, IconData icon) {
     return Container(
       width: 160,
       margin: const EdgeInsets.only(right: Spacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.neutralBlack.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: onTap,
+          onTap: () {},
           borderRadius: BorderRadius.circular(12),
-          child: Container(
+          child: Padding(
             padding: const EdgeInsets.all(Spacing.md),
-            decoration: BoxDecoration(
-              color: AppColors.neutralWhite,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.neutralBlack.withOpacity(0.1),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   padding: const EdgeInsets.all(Spacing.sm),
@@ -388,33 +389,133 @@ class HomeScreen extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: AppColors.brandOrange,
-                    size: 28,
+                    size: 24,
                   ),
                 ),
                 const SizedBox(height: Spacing.sm),
-                Flexible(
-                  child: Text(
-                    title,
-                    style: AppTypography.cardTitle,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Text(
+                  title,
+                  style: AppTypography.cardTitle,
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: Spacing.xs),
-                Flexible(
-                  child: Text(
-                    description,
-                    style: AppTypography.cardSubtitle,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                Text(
+                  subtitle,
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: AppColors.brandOrange,
+                    fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: Spacing.xs),
+                Text(
+                  description,
+                  style: AppTypography.bodySmall,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildGlassFeatureCard(
+    BuildContext context,
+    String title,
+    String description,
+    IconData icon,
+    VoidCallback onTap,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.neutralBlack.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(12),
+          child: Padding(
+            padding: const EdgeInsets.all(Spacing.md),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(Spacing.sm),
+                  decoration: BoxDecoration(
+                    color: AppColors.brandOrange.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: AppColors.brandOrange,
+                    size: 24,
+                  ),
+                ),
+                const SizedBox(height: Spacing.sm),
+                Text(
+                  title,
+                  style: AppTypography.cardTitle,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: Spacing.xs),
+                Text(
+                  description,
+                  style: AppTypography.bodySmall,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGlassStatCard(String title, String value, IconData icon, Color color) {
+    return Container(
+      padding: const EdgeInsets.all(Spacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.neutralBlack.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 24, color: color),
+          const SizedBox(height: Spacing.sm),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+          const SizedBox(height: Spacing.xs),
+          Text(
+            title,
+            style: AppTypography.bodySmall,
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
