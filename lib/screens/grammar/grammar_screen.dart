@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme.dart';
+import '../../theme/app_theme.dart';
+import '../../components/app_components.dart';
 import 'nouns_screen.dart';
 import 'verbs_screen.dart';
 
@@ -9,98 +10,76 @@ class GrammarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Grammar Rules'),
-        backgroundColor: KifuliiruTheme.primaryColor,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          _buildGrammarCategory(
-            'Nouns',
-            'Learn about Kifuliiru nouns and their classifications',
-            Icons.category,
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const NounsScreen()),
-            ),
-          ),
-          _buildGrammarCategory(
-            'Verbs',
-            'Understanding Kifuliiru verb tenses and conjugations',
-            Icons.auto_awesome,
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const VerbsScreen()),
-            ),
-          ),
-          _buildGrammarCategory(
-            'Adjectives',
-            'Using adjectives to describe nouns in Kifuliiru',
-            Icons.format_color_text,
-            () {},
-          ),
-          _buildGrammarCategory(
-            'Pronouns',
-            'Personal and possessive pronouns in Kifuliiru',
-            Icons.person,
-            () {},
-          ),
-          _buildGrammarCategory(
-            'Sentence Structure',
-            'Basic and complex sentence patterns',
-            Icons.format_align_left,
-            () {},
-          ),
-          _buildGrammarCategory(
-            'Tenses',
-            'Understanding different tenses in Kifuliiru',
-            Icons.access_time,
-            () {},
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGrammarCategory(
-    String title,
-    String description,
-    IconData icon,
-    VoidCallback onTap,
-  ) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(16),
-        leading: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: KifuliiruTheme.primaryColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(
-            icon,
-            color: KifuliiruTheme.primaryColor,
-            size: 24,
+      appBar: AppComponents.appBar('Grammar'),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(Spacing.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InfoCard(
+                title: 'Kifuliiru Grammar',
+                description: 'Learn the structure and rules of Kifuliiru language',
+                icon: Icons.auto_awesome,
+              ),
+              const SizedBox(height: Spacing.xl),
+              Text('Grammar Categories', style: AppTypography.sectionTitle),
+              const SizedBox(height: Spacing.md),
+              GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                mainAxisSpacing: Spacing.md,
+                crossAxisSpacing: Spacing.md,
+                children: [
+                  FeatureCard(
+                    title: 'Nouns',
+                    description: 'Learn about noun classes and pluralization',
+                    icon: Icons.format_list_bulleted,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const NounsScreen()),
+                    ),
+                  ),
+                  FeatureCard(
+                    title: 'Verbs',
+                    description: 'Study verb tenses and conjugations',
+                    icon: Icons.auto_awesome,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const VerbsScreen()),
+                    ),
+                  ),
+                  FeatureCard(
+                    title: 'Adjectives',
+                    description: 'Learn about descriptive words',
+                    icon: Icons.format_color_text,
+                    onTap: () {},
+                  ),
+                  FeatureCard(
+                    title: 'Pronouns',
+                    description: 'Study personal and possessive pronouns',
+                    icon: Icons.person,
+                    onTap: () {},
+                  ),
+                  FeatureCard(
+                    title: 'Sentence Structure',
+                    description: 'Learn how to form correct sentences',
+                    icon: Icons.format_quote,
+                    onTap: () {},
+                  ),
+                  FeatureCard(
+                    title: 'Tenses',
+                    description: 'Understand different time expressions',
+                    icon: Icons.access_time,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
-        subtitle: Text(
-          description,
-          style: TextStyle(
-            color: Colors.grey[600],
-            fontSize: 14,
-          ),
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
       ),
     );
   }
