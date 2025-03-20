@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppComponents.appBar(
-        title: 'Fuliiru Hub',
+        title: 'Kifuliiru', ' Kifuliiru',
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),

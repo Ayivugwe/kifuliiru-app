@@ -8,10 +8,7 @@ class KifuliiruScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar(
-        title: 'About Kifuliiru',
-        showBackButton: true,
-      ),
+     appBar: AppComponents.appBar('About Kifuliiru', title: 'About Kifuliiru'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

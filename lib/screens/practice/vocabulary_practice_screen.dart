@@ -61,8 +61,10 @@ class _VocabularyPracticeScreenState extends State<VocabularyPracticeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Vocabulary Practice'),
+      appBar: AppComponents.appBar('Vocabulary Practice', title: 'ocabulary Practice'),
       body: SafeArea(
+
+
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.all(Spacing.lg),

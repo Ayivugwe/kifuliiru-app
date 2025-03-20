@@ -106,6 +106,8 @@ class AppTypography {
     fontWeight: FontWeight.bold,
     color: AppColors.neutralWhite,
   );
+
+  static var h2;
 }
 
 class Spacing {
@@ -115,58 +117,6 @@ class Spacing {
   static const double lg = 24;
   static const double xl = 32;
   static const double xxl = 48.0;
-}
-
-class AppComponents {
-  static PreferredSizeWidget appBar(String title) {
-    return AppBar(
-      title: Text(title, style: AppTypography.headingLarge),
-      backgroundColor: AppColors.brandOrange.withOpacity(0.2),
-      elevation: 0,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.notifications_outlined),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.person_outline),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-  
-  static BoxDecoration cardDecoration = BoxDecoration(
-    color: AppColors.neutralWhite,
-    borderRadius: BorderRadius.circular(12),
-    boxShadow: [
-      BoxShadow(
-        color: AppColors.neutralBlack.withOpacity(0.1),
-        blurRadius: 8,
-        offset: const Offset(0, 2),
-      ),
-    ],
-  );
-  
-  static InputDecoration formFieldDecoration(String label, {IconData? prefixIcon}) {
-    return InputDecoration(
-      labelText: label,
-      prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.neutralLightGrey),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.brandOrange),
-      ),
-      filled: true,
-      fillColor: AppColors.neutralWhite,
-    );
-  }
 }
 
 class AppTheme {

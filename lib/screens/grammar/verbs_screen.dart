@@ -8,7 +8,7 @@ class VerbsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Verbs'),
+      appBar: AppComponents.appBar('Verbs', title: 'Verbs'),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

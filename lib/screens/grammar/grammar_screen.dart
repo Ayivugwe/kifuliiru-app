@@ -10,7 +10,7 @@ class GrammarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Grammar'),
+      appBar: AppComponents.appBar('Grammar', title: 'Grammar'),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

@@ -8,7 +8,7 @@ class NounsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Nouns'),
+      appBar: AppComponents.appBar('Nouns', title: 'Nouns'),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

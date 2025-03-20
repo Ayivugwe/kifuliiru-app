@@ -229,7 +229,7 @@ class AppButton extends StatelessWidget {
 }
 
 class AppComponents {
-  static PreferredSizeWidget appBar({
+  static PreferredSizeWidget appBar(String s, {
     required String title,
     bool showBackButton = false,
     List<Widget>? actions,
