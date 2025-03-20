@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Kifuliiru', title: 'Learn & Explore'),
+      appBar: AppComponents.appBar('Kifuliiru', title: 'Kifuliiru'),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -346,6 +346,78 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
+                // Fuliiru Hub CTA Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    image: const DecorationImage(
+                      image: NetworkImage('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'),
+                      fit: BoxFit.cover,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          AppColors.neutralBlack.withOpacity(0.7),
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(Spacing.lg),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Contribute to Fuliiru Hub',
+                          style: AppTypography.headingMedium.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: Spacing.xs),
+                        Text(
+                          'Help expand our language database and preserve BAfuliiru culture',
+                          style: AppTypography.bodyMedium.copyWith(
+                            color: Colors.white.withOpacity(0.9),
+                          ),
+                        ),
+                        const SizedBox(height: Spacing.md),
+                        ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Fuliiru Hub app will be available soon!'),
+                                backgroundColor: AppColors.brandOrange,
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.brandOrange,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text('Join Fuliiru Hub'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
                 // Learning & Resources Section
                 Container(
                   margin: const EdgeInsets.all(Spacing.lg),
@@ -407,44 +479,6 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(height: Spacing.md),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: Spacing.md,
-                        crossAxisSpacing: Spacing.md,
-                        children: [
-                          _buildGlassFeatureCard(
-                            context,
-                            'Audio',
-                            'Pronunciation Guide',
-                            Icons.audiotrack,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Videos',
-                            'Visual Lessons',
-                            Icons.video_library,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Materials',
-                            'Study Resources',
-                            Icons.library_books,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Practice',
-                            'Interactive Exercises',
-                            Icons.edit_note,
-                            () {},
-                          ),
-                        ],
                       ),
                     ],
                   ),
@@ -511,44 +545,6 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(height: Spacing.md),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: Spacing.md,
-                        crossAxisSpacing: Spacing.md,
-                        children: [
-                          _buildGlassFeatureCard(
-                            context,
-                            'Events',
-                            'Calendar & Meetups',
-                            Icons.event,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Forums',
-                            'Discussion Boards',
-                            Icons.forum,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Stories',
-                            'Success Journeys',
-                            Icons.auto_stories,
-                            () {},
-                          ),
-                          _buildGlassFeatureCard(
-                            context,
-                            'Exchange',
-                            'Language Partners',
-                            Icons.people_outline,
-                            () {},
-                          ),
-                        ],
                       ),
                     ],
                   ),
