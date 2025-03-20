@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppComponents.appBar('Kifuliiru', title: 'Kifuliiru'),
+      appBar: AppComponents.appBar('Kifuliiru', title: 'Learn & Explore'),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -62,14 +62,14 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Welcome to Fuliiru Hub',
+                        'Welcome to Kifuliiru',
                         style: AppTypography.headingLarge.copyWith(
                           color: AppColors.neutralBlack,
                         ),
                       ),
                       const SizedBox(height: Spacing.sm),
                       Text(
-                        'Your gateway to learning and exploring the BAfuliiru language and culture.',
+                        'Your gateway to learning and exploring the Bafuliiru language and culture.',
                         style: AppTypography.bodyLarge.copyWith(
                           color: AppColors.neutralGrey,
                         ),
@@ -346,7 +346,213 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                // Continue with other sections...
+                // Learning & Resources Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Learning & Resources',
+                        style: AppTypography.sectionTitle,
+                      ),
+                      const SizedBox(height: Spacing.xs),
+                      Text(
+                        'Access comprehensive learning materials and structured paths',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      SizedBox(
+                        height: 160,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            _buildGlassCard(
+                              'Beginner',
+                              'Start Here',
+                              'Basic Phrases & Grammar',
+                              Icons.play_circle,
+                            ),
+                            _buildGlassCard(
+                              'Intermediate',
+                              'Level Up',
+                              'Conversations & Culture',
+                              Icons.trending_up,
+                            ),
+                            _buildGlassCard(
+                              'Resources',
+                              'Study Materials',
+                              'Audio, Video & More',
+                              Icons.library_books,
+                            ),
+                            _buildGlassCard(
+                              'Practice',
+                              'Exercises',
+                              'Interactive Learning',
+                              Icons.edit_note,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: Spacing.md,
+                        crossAxisSpacing: Spacing.md,
+                        children: [
+                          _buildGlassFeatureCard(
+                            context,
+                            'Audio',
+                            'Pronunciation Guide',
+                            Icons.audiotrack,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Videos',
+                            'Visual Lessons',
+                            Icons.video_library,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Materials',
+                            'Study Resources',
+                            Icons.library_books,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Practice',
+                            'Interactive Exercises',
+                            Icons.edit_note,
+                            () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Community & Updates Section
+                Container(
+                  margin: const EdgeInsets.all(Spacing.lg),
+                  padding: const EdgeInsets.all(Spacing.lg),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.neutralBlack.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Community & Updates',
+                        style: AppTypography.sectionTitle,
+                      ),
+                      const SizedBox(height: Spacing.xs),
+                      Text(
+                        'Connect with the community and stay updated',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.neutralGrey,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      SizedBox(
+                        height: 160,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            _buildGlassCard(
+                              'Events',
+                              'Calendar',
+                              'Community Meetups',
+                              Icons.event,
+                            ),
+                            _buildGlassCard(
+                              'Forums',
+                              'Discussion',
+                              'Share & Learn',
+                              Icons.forum,
+                            ),
+                            _buildGlassCard(
+                              'Stories',
+                              'Success',
+                              'Journey Stories',
+                              Icons.auto_stories,
+                            ),
+                            _buildGlassCard(
+                              'News',
+                              'Updates',
+                              'Latest Updates',
+                              Icons.newspaper,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md),
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: Spacing.md,
+                        crossAxisSpacing: Spacing.md,
+                        children: [
+                          _buildGlassFeatureCard(
+                            context,
+                            'Events',
+                            'Calendar & Meetups',
+                            Icons.event,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Forums',
+                            'Discussion Boards',
+                            Icons.forum,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Stories',
+                            'Success Journeys',
+                            Icons.auto_stories,
+                            () {},
+                          ),
+                          _buildGlassFeatureCard(
+                            context,
+                            'Exchange',
+                            'Language Partners',
+                            Icons.people_outline,
+                            () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -376,12 +582,13 @@ class HomeScreen extends StatelessWidget {
           onTap: () {},
           borderRadius: BorderRadius.circular(12),
           child: Padding(
-            padding: const EdgeInsets.all(Spacing.md),
+            padding: const EdgeInsets.all(Spacing.sm),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(Spacing.sm),
+                  padding: const EdgeInsets.all(Spacing.xs),
                   decoration: BoxDecoration(
                     color: AppColors.brandOrange.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
@@ -389,14 +596,16 @@ class HomeScreen extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: AppColors.brandOrange,
-                    size: 24,
+                    size: 20,
                   ),
                 ),
-                const SizedBox(height: Spacing.sm),
+                const SizedBox(height: Spacing.xs),
                 Text(
                   title,
-                  style: AppTypography.cardTitle,
+                  style: AppTypography.cardTitle.copyWith(fontSize: 14),
                   textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: Spacing.xs),
                 Text(
@@ -404,14 +613,19 @@ class HomeScreen extends StatelessWidget {
                   style: AppTypography.bodyMedium.copyWith(
                     color: AppColors.brandOrange,
                     fontWeight: FontWeight.bold,
+                    fontSize: 12,
                   ),
                   textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: Spacing.xs),
                 Text(
                   description,
-                  style: AppTypography.bodySmall,
+                  style: AppTypography.bodySmall.copyWith(fontSize: 10),
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
