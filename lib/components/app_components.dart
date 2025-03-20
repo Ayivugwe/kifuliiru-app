@@ -237,10 +237,26 @@ class AppComponents {
     return AppBar(
       title: Text(title),
       leading: showBackButton ? const BackButton() : null,
-      actions: actions,
-      backgroundColor: AppColors.brandOrange,
-      foregroundColor: AppColors.neutralWhite,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.notifications_outlined),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.person_outline),
+          onPressed: () {},
+        ),
+        if (actions != null) ...actions,
+      ],
+      backgroundColor: Colors.white.withOpacity(0.8),
+      foregroundColor: AppColors.neutralBlack,
       elevation: 0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(16),
+          bottomRight: Radius.circular(16),
+        ),
+      ),
     );
   }
 
